@@ -432,7 +432,7 @@ MonoBehaviour:
   ropeSegmentPrefab: {fileID: 7839473792251510768, guid: 1e403bef66ea2aa4f8dcd03e9dd6458d, type: 3}
   start: {fileID: 1284897286}
   end: {fileID: 70172291}
-  segments: 10
+  segments: 20
 --- !u!4 &1025436886
 Transform:
   m_ObjectHideFlags: 0
