@@ -12,8 +12,6 @@ public class CylinderSegment : MonoBehaviour
 
     void Start()
     {
-        Physics.IgnoreLayerCollision(6, 6);
-        Physics.IgnoreLayerCollision(3, 6);
         initial_position = transform.position;
         initial_distance = Vector3.Distance(object1.position, object2.position);
     }

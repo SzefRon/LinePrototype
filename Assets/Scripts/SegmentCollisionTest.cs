@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class SegmentCollisionTest : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Material noCollisionMaterial;
+    [SerializeField] Material collisionMaterial;
+
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        transform.GetComponent<MeshRenderer>().material = collisionMaterial;  
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionExit(Collision collision)
     {
-        
+        transform.GetComponent<MeshRenderer>().material = noCollisionMaterial;
     }
 }
