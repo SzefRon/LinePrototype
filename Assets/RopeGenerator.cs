@@ -5,9 +5,13 @@ using UnityEngine;
 public class RopeGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject ropeSegmentPrefab;
+    [SerializeField] private GameObject ropeSegmentPrefab2;
     [SerializeField] private GameObject start;
     [SerializeField] private GameObject end;
     [SerializeField] private uint segments;
+
+    private List<GameObject> ballJoints = new();
+    private List<GameObject> cylinderSegments = new();    
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,8 @@ public class RopeGenerator : MonoBehaviour
             GameObject segmentObject = Instantiate(ropeSegmentPrefab, p1 + offset * i, Quaternion.identity);
             segmentObject.transform.SetParent(transform);
 
+            ballJoints.Add(segmentObject);
+
             ConfigurableJoint joint = segmentObject.GetComponent<ConfigurableJoint>();
             joint.connectedBody = lastObj.GetComponent<Rigidbody>();
             lastObj = segmentObject;
@@ -40,6 +46,19 @@ public class RopeGenerator : MonoBehaviour
         endJoint.yMotion = lastJoint.yMotion;
         endJoint.zMotion = lastJoint.zMotion;
         endJoint.linearLimitSpring = lastJoint.linearLimitSpring;
+
+        for(int i = 0; i < ballJoints.Count - 1; i++)
+        {
+            GameObject first = ballJoints[i];
+            GameObject second = ballJoints[i + 1];
+            Vector3 position = Vector3.Lerp(first.transform.position, second.transform.position, 0.5f);
+
+            GameObject segment = Instantiate(ropeSegmentPrefab2, position, Quaternion.identity);
+            segment.GetComponent<CylinderSegment>().object1 = first.transform;
+            segment.GetComponent<CylinderSegment>().object2 = second.transform;
+            segment.transform.SetParent(transform);
+            cylinderSegments.Add(segment);
+        }
     }
 
     // Update is called once per frame
