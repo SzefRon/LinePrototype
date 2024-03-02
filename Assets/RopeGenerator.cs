@@ -32,6 +32,7 @@ public class RopeGenerator : MonoBehaviour
         GameObject lastObj = start;
         for (uint i = 0; i <= div; i++) {
             GameObject segmentObject = Instantiate(ropeSegmentPrefab, p1 + offset * i, Quaternion.identity);
+            segmentObject.transform.name = $"Joint {i}";
             segmentObject.transform.SetParent(transform);
 
             ballJoints.Add(segmentObject);
@@ -59,7 +60,8 @@ public class RopeGenerator : MonoBehaviour
             GameObject segment = Instantiate(ropeSegmentPrefab2, position, Quaternion.identity);
             segment.GetComponent<SmallSegment>().object1 = first.transform;
             segment.GetComponent<SmallSegment>().object2 = second.transform;
-            segment.GetComponent<SmallSegment>().id = (uint)smallSegments.Count + 1;
+            segment.GetComponent<SmallSegment>().id = (uint)i;
+            segment.transform.name = $"Small Rope Segment {i}";    
             segment.transform.SetParent(transform);
             smallSegments.Add(segment);
         }

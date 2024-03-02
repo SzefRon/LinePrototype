@@ -43,7 +43,7 @@ public class RopeSelectionManager : MonoBehaviour
         }
 
         // Przesuniecie od gracza 1 do gracza 2. W domysle bedzie to udostepnione graczowi 1
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             selectedSmallSegments.Clear();
             selectedBigSegment++;
@@ -56,7 +56,7 @@ public class RopeSelectionManager : MonoBehaviour
 
 
         // Przesuniecie od gracza 2 do gracza 1. Dla gracza 2
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if(Input.GetKeyDown(KeyCode.RightShift))
         {
             selectedSmallSegments.Clear();
             if((selectedBigSegment == -1) || (selectedBigSegment == 0))
