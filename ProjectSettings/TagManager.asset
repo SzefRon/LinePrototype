@@ -8,6 +8,7 @@ TagManager:
   - Monster
   - BladeEffect
   - FlameEffect
+  - ShockEffect
   layers:
   - Default
   - TransparentFX

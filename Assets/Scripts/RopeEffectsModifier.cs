@@ -9,6 +9,7 @@ public class RopeEffectsModifier : MonoBehaviour
 
     [SerializeField] public GameObject bladesPrefab;
     [SerializeField] public GameObject flamePrefab;
+    [SerializeField] public GameObject shockPrefab;
 
     void Start()
     {
@@ -52,6 +53,10 @@ public class RopeEffectsModifier : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
             AddEffect(flamePrefab);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            AddEffect(shockPrefab);
         }
 
     }
