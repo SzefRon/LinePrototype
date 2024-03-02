@@ -395,7 +395,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 20, z: 6}
+  m_LocalPosition: {x: 0, y: 15, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 1025436886}
   - component: {fileID: 1025436885}
   - component: {fileID: 1025436887}
+  - component: {fileID: 1025436888}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
@@ -487,6 +488,21 @@ MonoBehaviour:
   previousSelectedBigSegment: 0
   selectedBigSegment: -1
   selectedSmallSegments: []
+--- !u!114 &1025436888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025436884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 456b3944763c86f4e88a48e4a88628a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 1025436885}
+  manager: {fileID: 1025436887}
+  bladesPrefab: {fileID: 7772545682637155757, guid: c3a639d566ad1da439a1ee052c72be7e, type: 3}
 --- !u!1 &1284897286
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +644,10 @@ PrefabInstance:
     - target: {fileID: 3969806118158454820, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969806118158454820, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,6 +9,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private float followRange;
     private uint collisions = 0;
 
+    [SerializeField] public int collisionsToDeath;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +32,8 @@ public class EnemyScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (collisions >= 14) {
-            Destroy(gameObject, 1.0f);
+        if (collisions >= collisionsToDeath) {
+            Destroy(gameObject, 1);
         }
 
         GameObject closestTarget = null;

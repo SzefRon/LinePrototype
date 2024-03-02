@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4770632652049286998}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   - {fileID: 0}
   followSpeed: 1
   followRange: 6
+  collisionsToDeath: 16
 --- !u!54 &-4770632652049286998
 Rigidbody:
   m_ObjectHideFlags: 0
