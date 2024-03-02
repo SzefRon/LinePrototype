@@ -8,6 +8,7 @@ public class RopeEffectsModifier : MonoBehaviour
     public RopeSelectionManager manager;
 
     [SerializeField] public GameObject bladesPrefab;
+    [SerializeField] public GameObject flamePrefab;
 
     void Start()
     {
@@ -15,35 +16,43 @@ public class RopeEffectsModifier : MonoBehaviour
         manager = GetComponent<RopeSelectionManager>();
     }
 
-    void Update()
+    void AddEffect(GameObject prefab)
     {
-        if(Input.GetKeyDown(KeyCode.O))
+        // Dla wszystkich obecnie wybranych segmentow
+        foreach (var a in manager.selectedSmallSegments)
         {
-            print("AA");
-            foreach(var a in manager.selectedSmallSegments) 
+            foreach (var b in a.GetComponent<ModifiableSegment>().attachmentPoints)
             {
-                print("BB");
-                foreach (var b in a.GetComponent<ModifiableSegment>().attachmentPoints)
+                // Wchodzi jezeli obecnie jest cos doczepione do tego punku
+                if (b.transform.childCount > 0)
                 {
-                    print("CC");
-                    // Wchodzi jezeli obecnie jest cos doczepione do tego punku
-                    if (b.transform.childCount > 0)
+                    // Niszczy obecne efekty
+                    for (int i = 0; i < b.transform.childCount; i++)
                     {
-                        // Niszczy obecne efekty
-                        for(int i = 0; i < b.transform.childCount; i++)
-                        {
-                            DestroyImmediate(b.transform.GetChild(i).gameObject);
-                        }
+                        DestroyImmediate(b.transform.GetChild(i).gameObject);
                     }
-
-                    GameObject effect = Instantiate(bladesPrefab);
-                    effect.transform.SetParent(b.transform);
-                    effect.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                    effect.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-                    effect.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                    
                 }
+
+                GameObject newEffect = Instantiate(prefab);
+                newEffect.transform.SetParent(b.transform);
+                newEffect.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                newEffect.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                newEffect.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
         }
+    }
+
+    void Update()
+    {
+        // Dodaje ostrza
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            AddEffect(bladesPrefab);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            AddEffect(flamePrefab);
+        }
+
     }
 }
