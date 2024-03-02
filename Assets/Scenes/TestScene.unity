@@ -426,6 +426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1025436886}
   - component: {fileID: 1025436885}
+  - component: {fileID: 1025436887}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
@@ -450,6 +451,8 @@ MonoBehaviour:
   start: {fileID: 1284897286}
   end: {fileID: 70172291}
   segments: 30
+  ballJoints: []
+  cylinderSegments: []
 --- !u!4 &1025436886
 Transform:
   m_ObjectHideFlags: 0
@@ -465,6 +468,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1025436887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025436884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee2c9db6d9810e4c9da2064f30c8435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 1025436885}
+  selectedMaterial: {fileID: 2100000, guid: b754efc5431a86b46b02c0115d0d3cd0, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: 92cd24af8bb70cf46a9d8ff215c40201, type: 2}
+  bigSegmentNum: 10
+  selectedBigSegment: -1
 --- !u!1 &1284897286
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,7 +759,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 47eef54fb133cf9408d4376e44fe936c, type: 2}
+  - {fileID: 2100000, guid: 9ea14d89f6bd0604c8f851d8b057a80c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -979,7 +999,7 @@ Transform:
   m_GameObject: {fileID: 2012473673}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 1.145538, y: -8.531057, z: 11.146561}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

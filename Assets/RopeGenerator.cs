@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class RopeGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject ropeSegmentPrefab;
-    [SerializeField] private GameObject ropeSegmentPrefab2;
-    [SerializeField] private GameObject start;
-    [SerializeField] private GameObject end;
-    [SerializeField] private uint segments;
+    [SerializeField] public GameObject ropeSegmentPrefab;
+    [SerializeField] public GameObject ropeSegmentPrefab2;
+    [SerializeField] public GameObject start;
+    [SerializeField] public GameObject end;
+    [SerializeField] public uint segments;
 
-    private List<GameObject> ballJoints = new();
-    private List<GameObject> cylinderSegments = new();    
+    public List<GameObject> ballJoints = new();
+    public List<GameObject> smallSegments = new();    
 
     // Start is called before the first frame update
     void Start()
@@ -57,10 +57,11 @@ public class RopeGenerator : MonoBehaviour
             Vector3 position = Vector3.Lerp(first.transform.position, second.transform.position, 0.5f);
 
             GameObject segment = Instantiate(ropeSegmentPrefab2, position, Quaternion.identity);
-            segment.GetComponent<CylinderSegment>().object1 = first.transform;
-            segment.GetComponent<CylinderSegment>().object2 = second.transform;
+            segment.GetComponent<SmallSegment>().object1 = first.transform;
+            segment.GetComponent<SmallSegment>().object2 = second.transform;
+            segment.GetComponent<SmallSegment>().id = (uint)smallSegments.Count + 1;
             segment.transform.SetParent(transform);
-            cylinderSegments.Add(segment);
+            smallSegments.Add(segment);
         }
     }
 

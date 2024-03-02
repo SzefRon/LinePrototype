@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CylinderSegment : MonoBehaviour
+public class SmallSegment : MonoBehaviour
 {
     public Transform object1;
     public Transform object2;
 
     private Vector3 initial_position;
     private float initial_distance;
+
+    public uint id;
 
     void Start()
     {
