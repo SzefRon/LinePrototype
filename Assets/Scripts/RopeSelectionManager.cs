@@ -30,8 +30,10 @@ public class RopeSelectionManager : MonoBehaviour
     void Update()
     {
         previousSelectedBigSegment = selectedBigSegment;
+        // Odznaczenie wszystkiego
         if (Input.GetKey(KeyCode.Escape)) 
         {
+            selectedSmallSegments.Clear();
             selectedBigSegment = -1;
             
             for (int i = 0; i < data.smallSegments.Count; i++)
@@ -40,7 +42,8 @@ public class RopeSelectionManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        // Przesuniecie od gracza 1 do gracza 2. W domysle bedzie to udostepnione graczowi 1
+        if (Input.GetKeyDown(KeyCode.RightShift))
         {
             selectedSmallSegments.Clear();
             selectedBigSegment++;
@@ -51,59 +54,51 @@ public class RopeSelectionManager : MonoBehaviour
             }
         }
 
-        if (previousSelectedBigSegment != selectedBigSegment)
-        {
-            if (selectedBigSegment != -1)
-            {
-                if (selectedBigSegment == 0)
-                {
-                    int begining = (bigSegmentNum - 1) * segInSeg;
-                    int end = (bigSegmentNum) * segInSeg;
 
-                    for (int i = begining; i < end; i++)
+        // Przesuniecie od gracza 2 do gracza 1. Dla gracza 2
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            selectedSmallSegments.Clear();
+            if((selectedBigSegment == -1) || (selectedBigSegment == 0))
+            {
+                selectedBigSegment = bigSegmentNum -1;
+            }
+            else
+            {
+                selectedBigSegment--;
+
+            }
+        }
+
+        // Wchodz jesli jest cos wybrane
+        if (selectedBigSegment != -1) 
+        {
+            // Wchodzi jesli wybor sie zmienil
+            if (previousSelectedBigSegment != selectedBigSegment)
+            {
+                int beginning = 0;
+                int end = 0;
+                //Odkolorowuje poprzednie
+                //Wchodzi jestli poprzednie to bylo zaznaczenie a nie brak zaznaczenia
+                if (previousSelectedBigSegment != -1)
+                {
+                    beginning = previousSelectedBigSegment * segInSeg;
+                    end = (previousSelectedBigSegment + 1) * segInSeg;
+
+                    for (int i = beginning; i < end; i++)
                     {
                         data.smallSegments[i].transform.GetComponent<MeshRenderer>().material = defaultMaterial;
-                    }
-
-                    begining = selectedBigSegment * segInSeg;
-                    end = (selectedBigSegment + 1) * segInSeg;
-
-                    for (int i = begining; i < end; i++)
-                    {
-                        data.smallSegments[i].transform.GetComponent<MeshRenderer>().material = selectedMaterial;
-                        selectedSmallSegments.Add(data.smallSegments[i]);
-                    }
-
-                    //Logowanie
-                    foreach (var a in selectedSmallSegments)
-                    {
-                        print(a.GetComponent<SmallSegment>().id);
                     }
                 }
-                else
+
+                //Zakolorowuje nowe
+                beginning = selectedBigSegment * segInSeg;
+                end = (selectedBigSegment + 1) * segInSeg;
+
+                for (int i = beginning; i < end; i++)
                 {
-                    int begining = (selectedBigSegment - 1) * segInSeg;
-                    int end = (selectedBigSegment - 1 + 1) * segInSeg;
-
-                    for (int i = begining; i < end; i++)
-                    {
-                        data.smallSegments[i].transform.GetComponent<MeshRenderer>().material = defaultMaterial;
-                    }
-
-                    begining = selectedBigSegment * segInSeg;
-                    end = (selectedBigSegment + 1) * segInSeg;
-
-                    for (int i = begining; i < end; i++)
-                    {
-                        data.smallSegments[i].transform.GetComponent<MeshRenderer>().material = selectedMaterial;
-                        selectedSmallSegments.Add(data.smallSegments[i]);
-                    }
-
-                    //Logowanie
-                    foreach (var a in selectedSmallSegments)
-                    {
-                        print(a.GetComponent<SmallSegment>().id);
-                    }
+                    data.smallSegments[i].transform.GetComponent<MeshRenderer>().material = selectedMaterial;
+                    selectedSmallSegments.Add(data.smallSegments[i]);
                 }
             }
         }
