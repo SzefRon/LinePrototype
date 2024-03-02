@@ -18,15 +18,14 @@ public class Barrel : MonoBehaviour
     {
         print(collision.transform.tag);
         if(collision.transform.tag == "FlameEffect")
-        {
-            print("AAAAA");
+        {            
             if(idx < flameSpots.Length)
             {
                 GameObject newFlames = GameObject.Instantiate(flamePrefab);
                 newFlames.transform.SetParent(flameSpots[idx].transform);
                 newFlames.transform.localPosition = Vector3.zero;
-                idx++;
             }
+            idx++;
         }
     }
 

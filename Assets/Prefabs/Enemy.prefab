@@ -127,6 +127,8 @@ MonoBehaviour:
   followSpeed: 1
   followRange: 6
   collisionsToDeath: 16
+  hp: 100
+  bloodSplashPrefab: {fileID: 7043002562970436748, guid: ab0abe6a42efe2c4cbec58ca44d89f7e, type: 3}
 --- !u!54 &-4770632652049286998
 Rigidbody:
   m_ObjectHideFlags: 0

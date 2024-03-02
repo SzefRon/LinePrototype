@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> followTargets;
+    [SerializeField] public List<GameObject> followTargets;
     [SerializeField] private float followSpeed;
     [SerializeField] private float followRange;
     private uint collisions = 0;
-
+    
     [SerializeField] public int collisionsToDeath;
+
+    [SerializeField] public int hp;
+    [SerializeField] public GameObject bloodSplashPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +24,11 @@ public class EnemyScript : MonoBehaviour
     {
         if (LayerMask.LayerToName(other.gameObject.layer).Equals("Segments")) {
             collisions++;
+        }
+
+        if (other.transform.tag == "BladeEffect")
+        {
+            hp--;
         }
     }
 
@@ -34,6 +43,14 @@ public class EnemyScript : MonoBehaviour
     {
         if (collisions >= collisionsToDeath) {
             Destroy(gameObject, 1);
+        }
+
+        if (hp < 0)
+        {
+            var effect = Instantiate(bloodSplashPrefab, transform.position, Quaternion.identity);
+            Destroy(effect, 2);
+            Destroy(gameObject, 1);
+            
         }
 
         GameObject closestTarget = null;
@@ -54,5 +71,7 @@ public class EnemyScript : MonoBehaviour
             && collisions <= 4) {
             transform.position += followSpeed * Time.fixedDeltaTime * directionToClosest.normalized;
         }
+
+        
     }
 }

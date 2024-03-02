@@ -190,6 +190,8 @@ MonoBehaviour:
   - {fileID: 7593456505909115692}
   - {fileID: 1288888554237174328}
   - {fileID: 7144204775166342238}
+  weakLayer: 
+  hp: 10000
 --- !u!1 &7144204775166342238
 GameObject:
   m_ObjectHideFlags: 0
