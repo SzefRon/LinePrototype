@@ -2,8 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SegmentType
+{
+    None,
+    Fire,
+    Shock,
+    Blades
+}
+
+
 public class SmallSegment : MonoBehaviour
 {
+    public SegmentType segmentType;
     public Transform object1;
     public Transform object2;
 

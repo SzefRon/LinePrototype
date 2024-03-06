@@ -17,11 +17,12 @@ public class RopeEffectsModifier : MonoBehaviour
         manager = GetComponent<RopeSelectionManager>();
     }
 
-    void AddEffect(GameObject prefab)
+    void AddEffect(GameObject prefab, SegmentType segmentType)
     {
         // Dla wszystkich obecnie wybranych segmentow
         foreach (var a in manager.selectedSmallSegments)
         {
+            a.transform.GetComponent<SmallSegment>().segmentType = segmentType;
             foreach (var b in a.GetComponent<ModifiableSegment>().attachmentPoints)
             {
                 // Wchodzi jezeli obecnie jest cos doczepione do tego punku
@@ -43,21 +44,45 @@ public class RopeEffectsModifier : MonoBehaviour
         }
     }
 
+    void ClearEffects()
+    {
+        // Dla wszystkich obecnie wybranych segmentow
+        foreach (var a in manager.selectedSmallSegments)
+        {
+            a.transform.GetComponent<SmallSegment>().segmentType = SegmentType.None;
+            foreach (var b in a.GetComponent<ModifiableSegment>().attachmentPoints)
+            {
+                // Wchodzi jezeli obecnie jest cos doczepione do tego punku
+                if (b.transform.childCount > 0)
+                {
+                    // Niszczy obecne efekty
+                    for (int i = 0; i < b.transform.childCount; i++)
+                    {
+                        DestroyImmediate(b.transform.GetChild(i).gameObject);
+                    }
+                }
+            }
+        }
+    }
+
     void Update()
     {
         // Dodaje ostrza
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            AddEffect(bladesPrefab);
+            AddEffect(bladesPrefab, SegmentType.Blades);
         }
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            AddEffect(flamePrefab);
+            AddEffect(flamePrefab, SegmentType.Fire);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            AddEffect(shockPrefab);
+            AddEffect(shockPrefab, SegmentType.Shock);
         }
-
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            ClearEffects();
+        }
     }
 }

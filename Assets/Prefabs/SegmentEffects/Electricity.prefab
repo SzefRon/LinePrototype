@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8965982440092259109}
   - component: {fileID: 1144519273305401397}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Electricity
-  m_TagString: FlameEffect
+  m_TagString: ShockEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +48,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -65,9 +65,9 @@ GameObject:
   - component: {fileID: 759121387133828072}
   - component: {fileID: 3393499250775054814}
   - component: {fileID: 126865256024166572}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Particle System
-  m_TagString: Untagged
+  m_TagString: ShockEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

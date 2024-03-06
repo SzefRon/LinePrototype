@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4378397731803685280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7437676848645323050}
+  - component: {fileID: 5786150756979566397}
+  - component: {fileID: 6777137705573853140}
+  - component: {fileID: 3067376122058386996}
+  m_Layer: 0
+  m_Name: Rope
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7437676848645323050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378397731803685280}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.24980557, y: 0.7489009, z: 1.8194243}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5786150756979566397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378397731803685280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be09a5e177da3ae4f8417ab7cf5b1354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ropeSegmentPrefab: {fileID: 7839473792251510768, guid: 1e403bef66ea2aa4f8dcd03e9dd6458d, type: 3}
+  ropeSegmentPrefab2: {fileID: 170365448108215950, guid: 0c803131a60a98247a58caa6539e2ad6, type: 3}
+  start: {fileID: 0}
+  end: {fileID: 0}
+  segments: 30
+  ballJoints: []
+  smallSegments: []
+--- !u!114 &6777137705573853140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378397731803685280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee2c9db6d9810e4c9da2064f30c8435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 5786150756979566397}
+  selectedMaterial: {fileID: 2100000, guid: b754efc5431a86b46b02c0115d0d3cd0, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: 92cd24af8bb70cf46a9d8ff215c40201, type: 2}
+  bigSegmentNum: 5
+  previousSelectedBigSegment: 0
+  selectedBigSegment: -1
+  selectedSmallSegments: []
+--- !u!114 &3067376122058386996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378397731803685280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 456b3944763c86f4e88a48e4a88628a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 5786150756979566397}
+  manager: {fileID: 6777137705573853140}
+  bladesPrefab: {fileID: 7772545682637155757, guid: c3a639d566ad1da439a1ee052c72be7e, type: 3}
+  flamePrefab: {fileID: 868394749264835347, guid: 0737e11e8b1070147bad8f439b7790db, type: 3}
+  shockPrefab: {fileID: 868394749264835347, guid: 96e5acf5eff25ce4eb2acb6b66c36820, type: 3}

@@ -45,7 +45,7 @@ public class EnemyScript : MonoBehaviour
             Destroy(gameObject, 1);
         }
 
-        if (hp < 0)
+        if (hp == 0)
         {
             var effect = Instantiate(bloodSplashPrefab, transform.position, Quaternion.identity);
             Destroy(effect, 2);
