@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2738030090715206555}
   - component: {fileID: 610468801872972299}
   - component: {fileID: 2989692154783119049}
-  - component: {fileID: 7944043574334194073}
   - component: {fileID: 5727719445559225072}
   m_Layer: 6
   m_Name: CyllinderSegment
@@ -150,23 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde2301cb8304ee48a6764af28f28aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  segmentType: 0
   object1: {fileID: 0}
   object2: {fileID: 0}
   id: 0
---- !u!114 &7944043574334194073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170365448108215950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9235b94eb54c959438aa78d0f727551a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noCollisionMaterial: {fileID: 2100000, guid: 92cd24af8bb70cf46a9d8ff215c40201, type: 2}
-  collisionMaterial: {fileID: 2100000, guid: 89b9b17e941888b468eab0db6726f815, type: 2}
 --- !u!114 &5727719445559225072
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,9 @@ public class Obelisco : MonoBehaviour, IActivator
     [SerializeField] public SegmentType segmentType;
     [SerializeField] public Activable target;
 
+    [SerializeField] public Material inactivated_material;
+    [SerializeField] public Material activated_material;
+
     private uint collisions = 0;
 
     private bool activable = true;
@@ -19,7 +22,8 @@ public class Obelisco : MonoBehaviour, IActivator
     // Start is called before the first frame update
     void Start()
     {
-        
+        var mr = GetComponentInChildren<MeshRenderer>();  
+        mr.material = inactivated_material;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,6 +57,8 @@ public class Obelisco : MonoBehaviour, IActivator
         if(activable && (collisions >= collisionsToActivation))
         {
             Activate();
+            var mr = GetComponentInChildren<MeshRenderer>();
+            mr.material = activated_material;
             activable = false;
         }
     }

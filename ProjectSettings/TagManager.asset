@@ -9,6 +9,8 @@ TagManager:
   - BladeEffect
   - FlameEffect
   - ShockEffect
+  - ActivatorCube
+  - MirrorEffect
   layers:
   - Default
   - TransparentFX
