@@ -7,7 +7,8 @@ public enum SegmentType
     None,
     Fire,
     Shock,
-    Blades
+    Blades,
+    Mirror
 }
 
 

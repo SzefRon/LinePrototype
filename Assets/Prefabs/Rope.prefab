@@ -89,3 +89,4 @@ MonoBehaviour:
   bladesPrefab: {fileID: 7772545682637155757, guid: c3a639d566ad1da439a1ee052c72be7e, type: 3}
   flamePrefab: {fileID: 868394749264835347, guid: 0737e11e8b1070147bad8f439b7790db, type: 3}
   shockPrefab: {fileID: 868394749264835347, guid: 96e5acf5eff25ce4eb2acb6b66c36820, type: 3}
+  mirrorPrefab: {fileID: 6713796708977132582, guid: e24dcb24ee5c53b4a8e635a7f6097ede, type: 3}

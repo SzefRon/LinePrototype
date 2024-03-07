@@ -10,6 +10,7 @@ public class RopeEffectsModifier : MonoBehaviour
     [SerializeField] public GameObject bladesPrefab;
     [SerializeField] public GameObject flamePrefab;
     [SerializeField] public GameObject shockPrefab;
+    [SerializeField] public GameObject mirrorPrefab;
 
     void Start()
     {
@@ -80,7 +81,11 @@ public class RopeEffectsModifier : MonoBehaviour
         {
             AddEffect(shockPrefab, SegmentType.Shock);
         }
-        if(Input.GetKeyDown(KeyCode.Alpha0))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            AddEffect(mirrorPrefab, SegmentType.Mirror);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             ClearEffects();
         }
