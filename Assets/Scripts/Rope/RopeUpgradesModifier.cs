@@ -70,8 +70,12 @@ public class RopeUpgradesModifier : MonoBehaviour
                 newEffect.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
         }
-        OnUpgradeChangedArgs onUpgradeChangedArgs = new OnUpgradeChangedArgs(manager.selectedBigSegment, segmentType);
-        OnUpgradeChanged(onUpgradeChangedArgs);
+
+        if(manager.selectedBigSegment > -1)
+        {
+            OnUpgradeChangedArgs onUpgradeChangedArgs = new OnUpgradeChangedArgs(manager.selectedBigSegment, segmentType);
+            OnUpgradeChanged(onUpgradeChangedArgs);
+        }
     }
 
     void ClearEffects()
