@@ -1,8 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class RopeEffectsModifier : MonoBehaviour
+public class OnUpgradeChangedArgs : EventArgs
+{
+    private int index;
+    private SegmentUpgrades upgrade;
+    public OnUpgradeChangedArgs(int index, SegmentUpgrades upgrade)
+    {
+        this.index = index;
+        this.upgrade = upgrade; 
+    }
+    public int Index { get { return index; } }
+    public SegmentUpgrades Upgrade { get {  return upgrade; } }
+}
+
+public class RopeUpgradesModifier : MonoBehaviour
 {
     public RopeGenerator data;
     public RopeSelectionManager manager;
@@ -11,6 +27,17 @@ public class RopeEffectsModifier : MonoBehaviour
     [SerializeField] public GameObject flamePrefab;
     [SerializeField] public GameObject shockPrefab;
     [SerializeField] public GameObject mirrorPrefab;
+
+    public event EventHandler<OnUpgradeChangedArgs> UpgradeChanged;
+
+    public virtual void OnUpgradeChanged(OnUpgradeChangedArgs e)
+    {
+        EventHandler<OnUpgradeChangedArgs> handler = UpgradeChanged;
+        if (handler != null)
+        {
+            handler(this, e);
+        }
+    }
 
     void Start()
     {
@@ -43,6 +70,8 @@ public class RopeEffectsModifier : MonoBehaviour
                 newEffect.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
         }
+        OnUpgradeChangedArgs onUpgradeChangedArgs = new OnUpgradeChangedArgs(manager.selectedBigSegment, segmentType);
+        OnUpgradeChanged(onUpgradeChangedArgs);
     }
 
     void ClearEffects()
@@ -64,6 +93,9 @@ public class RopeEffectsModifier : MonoBehaviour
                 }
             }
         }
+
+        OnUpgradeChangedArgs onUpgradeChangedArgs = new OnUpgradeChangedArgs(manager.selectedBigSegment, SegmentUpgrades.None);
+        OnUpgradeChanged(onUpgradeChangedArgs);
     }
 
     void Update()

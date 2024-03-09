@@ -7,23 +7,24 @@ using UnityEngine.Assertions;
 
 public class RopeSelectionManager : MonoBehaviour
 {
-    [SerializeField] public RopeGenerator data;
+    [SerializeField] public RopeGenerator ropeGenerator;
+
     [SerializeField] public Material selectedMaterial;
     [SerializeField] public Material defaultMaterial;
-    [SerializeField] public int bigSegmentNum;
 
     public int previousSelectedBigSegment = -1;
     public int selectedBigSegment = -1;
     private int segInSeg;
 
     public List<GameObject> selectedSmallSegments = new();
+    private int segmentNum;
 
     // Start is called before the first frame update
     void Start()
     {
-        data = transform.GetComponent<RopeGenerator>();      
-        Assert.IsTrue((data.smallSegmentsNum % bigSegmentNum) == 0);
-        segInSeg = (int)data.smallSegmentsNum / bigSegmentNum;
+        ropeGenerator = transform.GetComponent<RopeGenerator>();
+        segmentNum = ropeGenerator.segmentNum;
+        segInSeg = (int)ropeGenerator.smallSegmentsNum / segmentNum;
     }
 
     // Update is called once per frame
@@ -36,9 +37,9 @@ public class RopeSelectionManager : MonoBehaviour
             selectedSmallSegments.Clear();
             selectedBigSegment = -1;
             
-            for (int i = 0; i < data.smallSegments.Count; i++)
+            for (int i = 0; i < ropeGenerator.smallSegments.Count; i++)
             {
-                data.smallSegments[i].transform.GetComponent<MeshRenderer>().material = defaultMaterial;
+                ropeGenerator.smallSegments[i].transform.GetComponent<MeshRenderer>().material = defaultMaterial;
             }
         }
 
@@ -48,7 +49,7 @@ public class RopeSelectionManager : MonoBehaviour
             selectedSmallSegments.Clear();
             selectedBigSegment++;
 
-            if(selectedBigSegment == bigSegmentNum)
+            if(selectedBigSegment == segmentNum)
             {
                 selectedBigSegment = 0;
             }
@@ -61,7 +62,7 @@ public class RopeSelectionManager : MonoBehaviour
             selectedSmallSegments.Clear();
             if((selectedBigSegment == -1) || (selectedBigSegment == 0))
             {
-                selectedBigSegment = bigSegmentNum -1;
+                selectedBigSegment = segmentNum -1;
             }
             else
             {
@@ -87,7 +88,7 @@ public class RopeSelectionManager : MonoBehaviour
 
                     for (int i = beginning; i < end; i++)
                     {
-                        data.smallSegments[i].transform.GetComponent<MeshRenderer>().material = defaultMaterial;
+                        ropeGenerator.smallSegments[i].transform.GetComponent<MeshRenderer>().material = defaultMaterial;
                     }
                 }
 
@@ -97,8 +98,8 @@ public class RopeSelectionManager : MonoBehaviour
 
                 for (int i = beginning; i < end; i++)
                 {
-                    data.smallSegments[i].transform.GetComponent<MeshRenderer>().material = selectedMaterial;
-                    selectedSmallSegments.Add(data.smallSegments[i]);
+                    ropeGenerator.smallSegments[i].transform.GetComponent<MeshRenderer>().material = selectedMaterial;
+                    selectedSmallSegments.Add(ropeGenerator.smallSegments[i]);
                 }
             }
         }

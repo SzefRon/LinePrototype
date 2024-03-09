@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class RopeGenerator : MonoBehaviour
 {
@@ -13,8 +14,9 @@ public class RopeGenerator : MonoBehaviour
     [SerializeField] public GameObject end;
 
     [Header("Segment Configuration")]
+    [SerializeField] public int segmentNum;
     [SerializeField] public uint smallSegmentsNum;
-
+    
     [Header("Rope Fragments")]
     public List<GameObject> ballJoints = new();
     public List<GameObject> smallSegments = new();
@@ -75,6 +77,7 @@ public class RopeGenerator : MonoBehaviour
 
     void Start()
     {
+        Assert.IsTrue((smallSegmentsNum % segmentNum) == 0);
         Generate();
     }
 }
