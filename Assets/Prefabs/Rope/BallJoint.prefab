@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2140412152890963209}
   - component: {fileID: 6233523019150171933}
   m_Layer: 7
-  m_Name: RopeSegment
+  m_Name: BallJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

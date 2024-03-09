@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 796928756863841505}
   - component: {fileID: 3178478549702445451}
   - component: {fileID: 2918743269254442509}
-  - component: {fileID: -8970970155436602150}
   m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
@@ -135,17 +134,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
---- !u!114 &-8970970155436602150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5264812170688689758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fea9d6d92b8cf634aa405d2b641b9a5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inactivated_material: {fileID: 2100000, guid: 8876bdd1b348f564ca7987b6cd6c0186, type: 2}
-  activated_material: {fileID: 2100000, guid: 083adc8cb12feec46a31fb65a19cea75, type: 2}

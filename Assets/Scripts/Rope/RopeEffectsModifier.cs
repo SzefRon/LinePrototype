@@ -18,7 +18,7 @@ public class RopeEffectsModifier : MonoBehaviour
         manager = GetComponent<RopeSelectionManager>();
     }
 
-    void AddEffect(GameObject prefab, SegmentType segmentType)
+    void AddEffect(GameObject prefab, SegmentUpgrades segmentType)
     {
         // Dla wszystkich obecnie wybranych segmentow
         foreach (var a in manager.selectedSmallSegments)
@@ -50,7 +50,7 @@ public class RopeEffectsModifier : MonoBehaviour
         // Dla wszystkich obecnie wybranych segmentow
         foreach (var a in manager.selectedSmallSegments)
         {
-            a.transform.GetComponent<SmallSegment>().segmentType = SegmentType.None;
+            a.transform.GetComponent<SmallSegment>().segmentType = SegmentUpgrades.None;
             foreach (var b in a.GetComponent<ModifiableSegment>().attachmentPoints)
             {
                 // Wchodzi jezeli obecnie jest cos doczepione do tego punku
@@ -71,19 +71,19 @@ public class RopeEffectsModifier : MonoBehaviour
         // Dodaje ostrza
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            AddEffect(bladesPrefab, SegmentType.Blades);
+            AddEffect(bladesPrefab, SegmentUpgrades.Laser);
         }
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            AddEffect(flamePrefab, SegmentType.Fire);
+            AddEffect(flamePrefab, SegmentUpgrades.Fire);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            AddEffect(shockPrefab, SegmentType.Shock);
+            AddEffect(shockPrefab, SegmentUpgrades.Electricity);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            AddEffect(mirrorPrefab, SegmentType.Mirror);
+            AddEffect(mirrorPrefab, SegmentUpgrades.Mirror);
         }
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {

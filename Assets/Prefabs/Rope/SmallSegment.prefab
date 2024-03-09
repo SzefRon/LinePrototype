@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2989692154783119049}
   - component: {fileID: 5727719445559225072}
   m_Layer: 6
-  m_Name: CyllinderSegment
+  m_Name: SmallSegment
   m_TagString: Segment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

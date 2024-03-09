@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class RopeGenerator : MonoBehaviour
 {
-    [SerializeField] public GameObject ropeSegmentPrefab;
-    [SerializeField] public GameObject ropeSegmentPrefab2;
+    [Header("Prefabs")]
+    [SerializeField] public GameObject ballJointPrefab;
+    [SerializeField] public GameObject smallSegmentPrefab;
+
+    [Header("Players")]
     [SerializeField] public GameObject start;
     [SerializeField] public GameObject end;
-    [SerializeField] public uint segments;
 
+    [Header("Segment Configuration")]
+    [SerializeField] public uint smallSegmentsNum;
+
+    [Header("Rope Fragments")]
     public List<GameObject> ballJoints = new();
-    public List<GameObject> smallSegments = new();    
+    public List<GameObject> smallSegments = new();
 
-    // Start is called before the first frame update
-    void Start()
+    void Generate()
     {
         Physics.IgnoreLayerCollision(6, 6);
         Physics.IgnoreLayerCollision(3, 6);
@@ -26,12 +31,13 @@ public class RopeGenerator : MonoBehaviour
         Vector3 p2 = end.transform.position;
 
         Vector3 direction = p2 - p1;
-        uint div = segments + 1;
+        uint div = smallSegmentsNum + 1;
         Vector3 offset = direction / div;
 
         GameObject lastObj = start;
-        for (uint i = 0; i <= div; i++) {
-            GameObject segmentObject = Instantiate(ropeSegmentPrefab, p1 + offset * i, Quaternion.identity);
+        for (uint i = 0; i <= div; i++)
+        {
+            GameObject segmentObject = Instantiate(ballJointPrefab, p1 + offset * i, Quaternion.identity);
             segmentObject.transform.name = $"Joint {i}";
             segmentObject.transform.SetParent(transform);
 
@@ -51,25 +57,24 @@ public class RopeGenerator : MonoBehaviour
         endJoint.zMotion = lastJoint.zMotion;
         endJoint.linearLimitSpring = lastJoint.linearLimitSpring;
 
-        for(int i = 0; i < ballJoints.Count - 1; i++)
+        for (int i = 0; i < ballJoints.Count - 1; i++)
         {
             GameObject first = ballJoints[i];
             GameObject second = ballJoints[i + 1];
             Vector3 position = Vector3.Lerp(first.transform.position, second.transform.position, 0.5f);
 
-            GameObject segment = Instantiate(ropeSegmentPrefab2, position, Quaternion.identity);
+            GameObject segment = Instantiate(smallSegmentPrefab, position, Quaternion.identity);
             segment.GetComponent<SmallSegment>().object1 = first.transform;
             segment.GetComponent<SmallSegment>().object2 = second.transform;
             segment.GetComponent<SmallSegment>().id = (uint)i;
-            segment.transform.name = $"Small Rope Segment {i}";    
+            segment.transform.name = $"Small Rope Segment {i}";
             segment.transform.SetParent(transform);
             smallSegments.Add(segment);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        Generate();
     }
 }

@@ -22,8 +22,8 @@ public class RopeSelectionManager : MonoBehaviour
     void Start()
     {
         data = transform.GetComponent<RopeGenerator>();      
-        Assert.IsTrue((data.segments % bigSegmentNum) == 0);
-        segInSeg = (int)data.segments / bigSegmentNum;
+        Assert.IsTrue((data.smallSegmentsNum % bigSegmentNum) == 0);
+        segInSeg = (int)data.smallSegmentsNum / bigSegmentNum;
     }
 
     // Update is called once per frame

@@ -9,10 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private string inputNameHorizontal;
     [SerializeField] private string inputNameVertical;
 
-    [SerializeField] private Color color;
-
     private Rigidbody rb;
-    private Renderer renderer;
 
     private float inputHorizontal;
     private float inputVertical;
@@ -20,8 +17,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        renderer = GetComponentInChildren<Renderer>();
-        renderer.material.color = color;
     }
 
     private void Update()

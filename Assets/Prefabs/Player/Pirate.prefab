@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1274530771298356088}
   - component: {fileID: 2199804774072115411}
   m_Layer: 3
-  m_Name: Player1
+  m_Name: Pirate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5315047056958734298}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -1.11}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -47,10 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 10
-  acceleration: 400
-  inputNameHorizontal: Horizontal 1
-  inputNameVertical: Vertical 1
-  color: {r: 0, g: 0, b: 0, a: 0}
+  acceleration: 800
+  inputNameHorizontal: Horizontal 2
+  inputNameVertical: Vertical 2
 --- !u!54 &2199804774072115411
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -140,7 +139,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5a402de615e47ce4dbd903a15471883c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
