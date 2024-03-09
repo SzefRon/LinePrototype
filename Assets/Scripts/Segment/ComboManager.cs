@@ -95,7 +95,6 @@ public class ComboManager : MonoBehaviour
                 {
                     combo2 = comboDictionary[possibleCombo2];
                 }
-                
             }
         }
 
