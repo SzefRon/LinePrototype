@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2992781348547531614}
   m_Layer: 0
   m_Name: Rope
-  m_TagString: Untagged
+  m_TagString: Rope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,3 +103,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5f1963256b4454e830f4cf4aab5a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  segments: 

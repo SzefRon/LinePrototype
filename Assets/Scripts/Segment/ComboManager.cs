@@ -1,8 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Dictionary<(SegmentUpgrades, SegmentUpgrades), SegmentUpgrades> a = new();
+public class OnComboCheckedArgs : EventArgs
+{
+    private int currentSegment;
+    private SegmentUpgrades combo1;
+    private SegmentUpgrades combo2;
+
+    public SegmentUpgrades Combo1 { get => combo1; set => combo1 = value; }
+    public SegmentUpgrades Combo2 { get => combo2; set => combo2 = value; }
+    public int CurrentSegment { get => currentSegment; set => currentSegment = value; }
+
+    public OnComboCheckedArgs(int currentSegment, SegmentUpgrades combo1, SegmentUpgrades combo2)
+    {
+        this.currentSegment = currentSegment;
+        this.combo1 = combo1;
+        this.combo2 = combo2;
+    }   
+}
+
 
 public class ComboManager : MonoBehaviour
 {
@@ -49,6 +67,17 @@ public class ComboManager : MonoBehaviour
             segments[i] = SegmentUpgrades.None;
         }
         ropeUpgradesModifier.UpgradeChanged += CheckForCombos;
+    }
+
+    public event EventHandler<OnComboCheckedArgs> ComboChanged;
+
+    public virtual void OnComboChecked(OnComboCheckedArgs e)
+    {
+        EventHandler<OnComboCheckedArgs> handler = ComboChanged;
+        if (handler != null)
+        {
+            handler(this, e);
+        }
     }
 
     void CheckForCombos(object sender, OnUpgradeChangedArgs e)
@@ -98,9 +127,11 @@ public class ComboManager : MonoBehaviour
             }
         }
 
-        print($"Combo1: {combo1}, Combo2: {combo2}");
-        //print($"Changed segment: {e.Upgrade}, Previous segment: {previousUpgrade}, Next upgrade: {nextUpgrade}");
+        OnComboCheckedArgs args = new(e.Index, combo1, combo2);
+        OnComboChecked(args);
     }
+
+    
 
     // Update is called once per frame
     void Update()

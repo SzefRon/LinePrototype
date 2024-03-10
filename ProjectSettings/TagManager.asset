@@ -12,6 +12,7 @@ TagManager:
   - ActivatorCube
   - MirrorEffect
   - Segment
+  - Rope
   layers:
   - Default
   - TransparentFX
