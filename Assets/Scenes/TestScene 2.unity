@@ -417,6 +417,7 @@ MonoBehaviour:
   player1: {fileID: 464581754}
   player2: {fileID: 1177117560}
   smoothingFactor: 0.5
+  height: 5
 --- !u!114 &982192145 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2660645252722154815, guid: 138761a3c1d2f4440b5b1dc7d592f9f6, type: 3}
