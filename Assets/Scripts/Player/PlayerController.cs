@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -27,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 v = new (inputHorizontal * acceleration * Time.fixedDeltaTime, rb.velocity.y, inputVertical * acceleration * Time.fixedDeltaTime);
+        Vector3 v = new(inputHorizontal * acceleration * Time.fixedDeltaTime, rb.velocity.y, inputVertical * acceleration * Time.fixedDeltaTime);
         v = v.normalized * maxSpeed;
         rb.AddForce(v, ForceMode.Impulse);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -16,7 +15,7 @@ public class RopeGenerator : MonoBehaviour
     [Header("Segment Configuration")]
     [SerializeField] public int segmentNum;
     [SerializeField] public uint smallSegmentsNum;
-    
+
     [Header("Rope Fragments")]
     public List<GameObject> ballJoints = new();
     public List<GameObject> smallSegments = new();

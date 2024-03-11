@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TestSpawnerPrefab : MonoBehaviour
@@ -11,7 +10,7 @@ public class TestSpawnerPrefab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     private void OnEnable()
@@ -21,13 +20,13 @@ public class TestSpawnerPrefab : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        
+
 
         while (true)
         {
             yield return new WaitForSeconds(spawnInterval);
             GameObject enemy = Instantiate(enemyPrefab);
-            enemy.GetComponent<EnemyScript>().followTargets = new(new[] { t1, t2 });    
+            enemy.GetComponent<EnemyScript>().followTargets = new(new[] { t1, t2 });
             enemy.transform.parent = transform;
             enemy.transform.position = transform.position;
         }
@@ -36,6 +35,6 @@ public class TestSpawnerPrefab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

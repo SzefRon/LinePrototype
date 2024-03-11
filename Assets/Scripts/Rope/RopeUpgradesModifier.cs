@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class OnUpgradeChangedArgs : EventArgs
@@ -12,10 +9,10 @@ public class OnUpgradeChangedArgs : EventArgs
     public OnUpgradeChangedArgs(int index, SegmentUpgrades upgrade)
     {
         this.index = index;
-        this.upgrade = upgrade; 
+        this.upgrade = upgrade;
     }
     public int Index { get { return index; } }
-    public SegmentUpgrades Upgrade { get {  return upgrade; } }
+    public SegmentUpgrades Upgrade { get { return upgrade; } }
 }
 
 [Serializable]
@@ -48,7 +45,7 @@ public class RopeUpgradesModifier : MonoBehaviour
     {
         upgradeToPrefabDict = new();
 
-        for(int i = 0; i < pairs.Length; i++)
+        for (int i = 0; i < pairs.Length; i++)
         {
             upgradeToPrefabDict.Add(pairs[i].Upgrade, pairs[i].Prefab);
         }
@@ -87,7 +84,7 @@ public class RopeUpgradesModifier : MonoBehaviour
             a.transform.GetComponent<SmallSegment>().segmentType = segmentType;
         }
 
-        if(manager.selectedBigSegment > -1)
+        if (manager.selectedBigSegment > -1)
         {
             OnUpgradeChangedArgs onUpgradeChangedArgs = new OnUpgradeChangedArgs(manager.selectedBigSegment, segmentType);
             OnUpgradeChanged(onUpgradeChangedArgs);
@@ -120,9 +117,9 @@ public class RopeUpgradesModifier : MonoBehaviour
 
     void GetMessage(object sender, UpgradePickedArgs e)
     {
-        if(e.Upgrade == SegmentUpgrades.None)
+        if (e.Upgrade == SegmentUpgrades.None)
         {
-            ClearEffects(); 
+            ClearEffects();
         }
         else
         {

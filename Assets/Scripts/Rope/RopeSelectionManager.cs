@@ -1,9 +1,5 @@
-using JetBrains.Annotations;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 public class RopeSelectionManager : MonoBehaviour
 {
@@ -32,11 +28,11 @@ public class RopeSelectionManager : MonoBehaviour
     {
         previousSelectedBigSegment = selectedBigSegment;
         // Odznaczenie wszystkiego
-        if (Input.GetKey(KeyCode.Escape)) 
+        if (Input.GetKey(KeyCode.Escape))
         {
             selectedSmallSegments.Clear();
             selectedBigSegment = -1;
-            
+
             for (int i = 0; i < ropeGenerator.smallSegments.Count; i++)
             {
                 ropeGenerator.smallSegments[i].transform.GetComponent<MeshRenderer>().material = defaultMaterial;
@@ -49,7 +45,7 @@ public class RopeSelectionManager : MonoBehaviour
             selectedSmallSegments.Clear();
             selectedBigSegment++;
 
-            if(selectedBigSegment == segmentNum)
+            if (selectedBigSegment == segmentNum)
             {
                 selectedBigSegment = 0;
             }
@@ -57,12 +53,12 @@ public class RopeSelectionManager : MonoBehaviour
 
 
         // Przesuniecie od gracza 2 do gracza 1. Dla gracza 2
-        if(Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.RightShift))
         {
             selectedSmallSegments.Clear();
-            if((selectedBigSegment == -1) || (selectedBigSegment == 0))
+            if ((selectedBigSegment == -1) || (selectedBigSegment == 0))
             {
-                selectedBigSegment = segmentNum -1;
+                selectedBigSegment = segmentNum - 1;
             }
             else
             {
@@ -72,7 +68,7 @@ public class RopeSelectionManager : MonoBehaviour
         }
 
         // Wchodz jesli jest cos wybrane
-        if (selectedBigSegment != -1) 
+        if (selectedBigSegment != -1)
         {
             // Wchodzi jesli wybor sie zmienil
             if (previousSelectedBigSegment != selectedBigSegment)

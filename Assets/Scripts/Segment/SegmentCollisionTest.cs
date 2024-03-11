@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SegmentCollisionTest : MonoBehaviour
@@ -9,7 +7,7 @@ public class SegmentCollisionTest : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        transform.GetComponent<MeshRenderer>().material = collisionMaterial;  
+        transform.GetComponent<MeshRenderer>().material = collisionMaterial;
     }
 
     private void OnCollisionExit(Collision collision)

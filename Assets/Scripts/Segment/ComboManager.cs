@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +17,7 @@ public class OnComboCheckedArgs : EventArgs
         this.currentSegment = currentSegment;
         this.combo1 = combo1;
         this.combo2 = combo2;
-    }   
+    }
 }
 
 
@@ -73,7 +72,7 @@ public class ComboManager : MonoBehaviour
         selectionManager = GetComponent<RopeSelectionManager>();
 
         segments = new SegmentUpgrades[ropeGenerator.segmentNum];
-        for(int i = 0; i < segments.Length; i++)
+        for (int i = 0; i < segments.Length; i++)
         {
             segments[i] = SegmentUpgrades.None;
         }
@@ -93,7 +92,7 @@ public class ComboManager : MonoBehaviour
 
     void CheckForCombos(object sender, OnUpgradeChangedArgs e)
     {
-        segments[e.Index] = e.Upgrade; 
+        segments[e.Index] = e.Upgrade;
         int currentIndex = e.Index;
         int previous = currentIndex - 1;
         int next = currentIndex + 1;
@@ -112,14 +111,14 @@ public class ComboManager : MonoBehaviour
             previousUpgrade = segments[previous];
         }
 
-        if(next < segments.Length) 
+        if (next < segments.Length)
         {
             nextUpgrade = segments[next];
         }
 
-        if(e.Upgrade != SegmentUpgrades.None) 
+        if (e.Upgrade != SegmentUpgrades.None)
         {
-            if(previousUpgrade != SegmentUpgrades.None)
+            if (previousUpgrade != SegmentUpgrades.None)
             {
                 possibleCombo1 = (e.Upgrade, previousUpgrade);
                 if (comboDictionary.ContainsKey(possibleCombo1))
@@ -128,10 +127,10 @@ public class ComboManager : MonoBehaviour
                 }
             }
 
-            if(nextUpgrade != SegmentUpgrades.None)
+            if (nextUpgrade != SegmentUpgrades.None)
             {
                 possibleCombo2 = (e.Upgrade, nextUpgrade);
-                if(comboDictionary.ContainsKey(possibleCombo2))
+                if (comboDictionary.ContainsKey(possibleCombo2))
                 {
                     combo2 = comboDictionary[possibleCombo2];
                 }
@@ -142,11 +141,11 @@ public class ComboManager : MonoBehaviour
         OnComboChecked(args);
     }
 
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

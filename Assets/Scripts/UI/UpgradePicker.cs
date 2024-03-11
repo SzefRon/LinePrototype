@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +9,7 @@ public class UpgradePickedArgs : EventArgs
     public SegmentUpgrades Upgrade { get => upgrade; }
     public UpgradePickedArgs(SegmentUpgrades upgrade)
     {
-        this.upgrade = upgrade; 
+        this.upgrade = upgrade;
     }
 }
 
@@ -59,7 +56,7 @@ public class UpgradePicker : MonoBehaviour
 
     void UpdateComboSelection(object sender, OnComboCheckedArgs e)
     {
-        if(e.Combo1 == SegmentUpgrades.None)
+        if (e.Combo1 == SegmentUpgrades.None)
         {
             textCombo1.text = "No combo";
         }
@@ -126,12 +123,12 @@ public class UpgradePicker : MonoBehaviour
     public void AddSlime()
     {
         OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Slime));
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
