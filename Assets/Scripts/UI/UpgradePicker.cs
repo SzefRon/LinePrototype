@@ -32,6 +32,9 @@ public class UpgradePicker : MonoBehaviour
     TMP_Text textCombo1;
     TMP_Text textCombo2;
 
+    public SegmentUpgrades comboWithPreviousSegment = SegmentUpgrades.None;
+    public SegmentUpgrades comboWithNextSegment = SegmentUpgrades.None;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,22 +59,40 @@ public class UpgradePicker : MonoBehaviour
 
     void UpdateComboSelection(object sender, OnComboCheckedArgs e)
     {
-        if (e.Combo1 == SegmentUpgrades.None)
+        comboWithPreviousSegment = e.ComboWithPreviousSegment;
+        comboWithNextSegment = e.ComboWithNextSegment;
+        if (e.ComboWithPreviousSegment == SegmentUpgrades.None)
         {
             textCombo1.text = "No combo";
         }
         else
         {
-            textCombo1.text = e.Combo1.ToString();
+            textCombo1.text = e.ComboWithPreviousSegment.ToString();
         }
 
-        if (e.Combo2 == SegmentUpgrades.None)
+        if (e.ComboWithNextSegment == SegmentUpgrades.None)
         {
             textCombo2.text = "No combo";
         }
         else
         {
-            textCombo2.text = e.Combo2.ToString();
+            textCombo2.text = e.ComboWithNextSegment.ToString();
+        }
+    }
+
+    public void ApplyComboWithPreviousSegment()
+    {
+        if(comboWithPreviousSegment != SegmentUpgrades.None) 
+        {
+            print(comboWithPreviousSegment);
+        }
+    }
+
+    public void ApplyComboWithNextSegment()
+    {
+        if(comboWithNextSegment != SegmentUpgrades.None)
+        {
+            print(comboWithNextSegment);
         }
     }
 
@@ -125,6 +146,8 @@ public class UpgradePicker : MonoBehaviour
         OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Slime));
 
     }
+
+
 
     // Update is called once per frame
     void Update()
