@@ -62,6 +62,7 @@ public class ComboManager : MonoBehaviour
     RopeSelectionManager selectionManager;
 
     public SegmentUpgrades[] segments;
+    public (int, int)[] connections;
 
     // Start is called before the first frame update
     void Start()
@@ -92,53 +93,61 @@ public class ComboManager : MonoBehaviour
 
     void CheckForCombosOnSelection(object sender, OnSelectionChangedArgs e) 
     {
-        int currentIndex = e.CurrentSelection;
-        SegmentUpgrades currentUpgrade = segments[currentIndex];
-        int previous = currentIndex - 1;
-        int next = currentIndex + 1;
-
-        SegmentUpgrades previousUpgrade = SegmentUpgrades.None;
-        SegmentUpgrades nextUpgrade = SegmentUpgrades.None;
-
-        SegmentUpgrades combo1 = SegmentUpgrades.None;
-        SegmentUpgrades combo2 = SegmentUpgrades.None;
-
-        (SegmentUpgrades, SegmentUpgrades) possibleCombo1;
-        (SegmentUpgrades, SegmentUpgrades) possibleCombo2;
-
-        if (previous != -1)
+        if(e.CurrentSelection != -1)
         {
-            previousUpgrade = segments[previous];
-        }
+            int currentIndex = e.CurrentSelection;
+            SegmentUpgrades currentUpgrade = segments[currentIndex];
+            int previous = currentIndex - 1;
+            int next = currentIndex + 1;
 
-        if (next < segments.Length)
-        {
-            nextUpgrade = segments[next];
-        }
+            SegmentUpgrades previousUpgrade = SegmentUpgrades.None;
+            SegmentUpgrades nextUpgrade = SegmentUpgrades.None;
 
-        if (currentUpgrade != SegmentUpgrades.None)
-        {
-            if (previousUpgrade != SegmentUpgrades.None)
+            SegmentUpgrades combo1 = SegmentUpgrades.None;
+            SegmentUpgrades combo2 = SegmentUpgrades.None;
+
+            (SegmentUpgrades, SegmentUpgrades) possibleCombo1;
+            (SegmentUpgrades, SegmentUpgrades) possibleCombo2;
+
+            if (previous != -1)
             {
-                possibleCombo1 = (currentUpgrade, previousUpgrade);
-                if (comboDictionary.ContainsKey(possibleCombo1))
+                previousUpgrade = segments[previous];
+            }
+
+            if (next < segments.Length)
+            {
+                nextUpgrade = segments[next];
+            }
+
+            if (currentUpgrade != SegmentUpgrades.None)
+            {
+                if (previousUpgrade != SegmentUpgrades.None)
                 {
-                    combo1 = comboDictionary[possibleCombo1];
+                    possibleCombo1 = (currentUpgrade, previousUpgrade);
+                    if (comboDictionary.ContainsKey(possibleCombo1))
+                    {
+                        combo1 = comboDictionary[possibleCombo1];
+                    }
+                }
+
+                if (nextUpgrade != SegmentUpgrades.None)
+                {
+                    possibleCombo2 = (currentUpgrade, nextUpgrade);
+                    if (comboDictionary.ContainsKey(possibleCombo2))
+                    {
+                        combo2 = comboDictionary[possibleCombo2];
+                    }
                 }
             }
 
-            if (nextUpgrade != SegmentUpgrades.None)
-            {
-                possibleCombo2 = (currentUpgrade, nextUpgrade);
-                if (comboDictionary.ContainsKey(possibleCombo2))
-                {
-                    combo2 = comboDictionary[possibleCombo2];
-                }
-            }
+            OnComboCheckedArgs args = new(currentIndex, combo1, combo2);
+            OnComboChecked(args);
         }
-
-        OnComboCheckedArgs args = new(currentIndex, combo1, combo2);
-        OnComboChecked(args);
+        else
+        {
+            OnComboCheckedArgs args = new(-1, SegmentUpgrades.None, SegmentUpgrades.None);
+            OnComboChecked(args);
+        }
     }
 
     void CheckForCombosOnUpgrade(object sender, OnUpgradeChangedArgs e)
