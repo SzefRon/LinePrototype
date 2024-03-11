@@ -27,15 +27,9 @@ public struct UpgradeToPrefabDictPair
 
 public class RopeUpgradesModifier : MonoBehaviour
 {
+    [SerializeField] public UpgradeToPrefabDictPair[] pairs;
     public RopeGenerator data;
     public RopeSelectionManager manager;
-
-    [SerializeField] public GameObject bladesPrefab;
-    [SerializeField] public GameObject flamePrefab;
-    [SerializeField] public GameObject shockPrefab;
-    [SerializeField] public GameObject mirrorPrefab;
-
-    [SerializeField] public UpgradeToPrefabDictPair[] pairs;
 
     private Dictionary<SegmentUpgrades, GameObject> upgradeToPrefabDict;
 
@@ -135,30 +129,5 @@ public class RopeUpgradesModifier : MonoBehaviour
             AddEffect(upgradeToPrefabDict[e.Upgrade], e.Upgrade);
         }
 
-    }
-
-    void Update()
-    {
-       /* // Dodaje ostrza
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            AddEffect(bladesPrefab, SegmentUpgrades.Laser);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            AddEffect(flamePrefab, SegmentUpgrades.Fire);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            AddEffect(shockPrefab, SegmentUpgrades.Electricity);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            AddEffect(mirrorPrefab, SegmentUpgrades.Mirror);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            ClearEffects();
-        }*/
     }
 }

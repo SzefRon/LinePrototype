@@ -149,9 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde2301cb8304ee48a6764af28f28aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segmentType: 0
   object1: {fileID: 0}
   object2: {fileID: 0}
+  segmentType: 0
   id: 0
 --- !u!114 &5727719445559225072
 MonoBehaviour:

@@ -56,7 +56,7 @@ public class ComboManager : MonoBehaviour
         {(SegmentUpgrades.Mirror, SegmentUpgrades.Fire), (SegmentUpgrades.FireMirror) },
         {(SegmentUpgrades.Mirror, SegmentUpgrades.Electricity), (SegmentUpgrades.ElectricityMirror) },
         {(SegmentUpgrades.Mirror, SegmentUpgrades.Explosive), (SegmentUpgrades.ExplosiveMirror) },
-        {(SegmentUpgrades.Lifesteal, SegmentUpgrades.Shredder), (SegmentUpgrades.ShredderLifesteal) },
+        {(SegmentUpgrades.Lifesteal,    SegmentUpgrades.Shredder), (SegmentUpgrades.ShredderLifesteal) },
     };
 
     RopeGenerator ropeGenerator;
