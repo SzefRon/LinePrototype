@@ -65,7 +65,7 @@ public class UpgradePicker : MonoBehaviour
             textCombo1.text = e.Combo1.ToString();
         }
 
-        if (e.Combo1 == SegmentUpgrades.None)
+        if (e.Combo2 == SegmentUpgrades.None)
         {
             textCombo2.text = "No combo";
         }

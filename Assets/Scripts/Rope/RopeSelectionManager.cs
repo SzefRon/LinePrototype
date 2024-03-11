@@ -13,7 +13,7 @@ public class RopeSelectionManager : MonoBehaviour
     private int segInSeg;
 
     public List<GameObject> selectedSmallSegments = new();
-    private int segmentNum;
+    private int segmentNum;   
 
     // Start is called before the first frame update
     void Start()
