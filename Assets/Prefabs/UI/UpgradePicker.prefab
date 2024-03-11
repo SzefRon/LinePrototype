@@ -144,6 +144,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5598536525621364805}
   - component: {fileID: 4285738722572861353}
+  - component: {fileID: 6824827584751986420}
+  - component: {fileID: 528863066622167191}
+  - component: {fileID: 7909955464374512065}
   - component: {fileID: 1420994511830268660}
   m_Layer: 0
   m_Name: UpgradePicker
@@ -197,6 +200,58 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &6824827584751986420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56782678806352699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!114 &528863066622167191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56782678806352699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!225 &7909955464374512065
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56782678806352699}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &1420994511830268660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +264,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd1c26132a716a4d980e13a2689d226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonCombo1: {fileID: 8771057932325932065}
+  buttonCombo2: {fileID: 205529855164663456}
+  buttonNone: {fileID: 54902559640820528}
+  buttonFire: {fileID: 2660645252722154815}
+  buttonElectricity: {fileID: 2785054669741181321}
+  buttonLaser: {fileID: 9204307602225103316}
+  buttonShredder: {fileID: 4956345136584373236}
+  buttonMirror: {fileID: 5534410237254254579}
+  buttonBoom: {fileID: 1745612419267155291}
+  buttonVampirism: {fileID: 4872439762741486513}
+  buttonShield: {fileID: 3140540902578254709}
+  buttonSlime: {fileID: 8845542016878228676}
 --- !u!1 &882430358017551675
 GameObject:
   m_ObjectHideFlags: 0

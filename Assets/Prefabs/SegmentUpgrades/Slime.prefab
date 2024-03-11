@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1144519273305401397}
   - component: {fileID: -7469103806659179076}
   m_Layer: 8
-  m_Name: Flame
+  m_Name: Slime
   m_TagString: FlameEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
