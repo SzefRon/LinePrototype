@@ -36,7 +36,7 @@ public class ComboManager : MonoBehaviour
         {(SegmentUpgrades.Lifesteal, SegmentUpgrades.Lifesteal), (SegmentUpgrades.DoubleLifesteal) },
         {(SegmentUpgrades.Slime, SegmentUpgrades.Slime), (SegmentUpgrades.DoubleSlime) },
         
-        // Combos
+        // Combos - w jedna
         {(SegmentUpgrades.Fire, SegmentUpgrades.Shield), (SegmentUpgrades.FireShield) },
         {(SegmentUpgrades.Electricity, SegmentUpgrades.Shield), (SegmentUpgrades.ElectricityShield) },
         {(SegmentUpgrades.Explosive, SegmentUpgrades.Shield), (SegmentUpgrades.ExplosiveShield) },
@@ -46,6 +46,17 @@ public class ComboManager : MonoBehaviour
         {(SegmentUpgrades.Electricity, SegmentUpgrades.Mirror), (SegmentUpgrades.ElectricityMirror) },
         {(SegmentUpgrades.Explosive, SegmentUpgrades.Mirror), (SegmentUpgrades.ExplosiveMirror) },
         {(SegmentUpgrades.Shredder, SegmentUpgrades.Lifesteal), (SegmentUpgrades.ShredderLifesteal) },
+
+        // Combos - w druga
+        {(SegmentUpgrades.Shield, SegmentUpgrades.Fire), (SegmentUpgrades.FireShield) },
+        {(SegmentUpgrades.Shield, SegmentUpgrades.Electricity), (SegmentUpgrades.ElectricityShield) },
+        {(SegmentUpgrades.Shield, SegmentUpgrades.Explosive), (SegmentUpgrades.ExplosiveShield) },
+        {(SegmentUpgrades.Shredder, SegmentUpgrades.Electricity), (SegmentUpgrades.ElectricityShredder) },
+        {(SegmentUpgrades.Shredder, SegmentUpgrades.Laser), (SegmentUpgrades.LaserShredder) },
+        {(SegmentUpgrades.Mirror, SegmentUpgrades.Fire), (SegmentUpgrades.FireMirror) },
+        {(SegmentUpgrades.Mirror, SegmentUpgrades.Electricity), (SegmentUpgrades.ElectricityMirror) },
+        {(SegmentUpgrades.Mirror, SegmentUpgrades.Explosive), (SegmentUpgrades.ExplosiveMirror) },
+        {(SegmentUpgrades.Lifesteal, SegmentUpgrades.Shredder), (SegmentUpgrades.ShredderLifesteal) },
     };
 
     RopeGenerator ropeGenerator;

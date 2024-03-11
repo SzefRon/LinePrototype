@@ -18,6 +18,13 @@ public class OnUpgradeChangedArgs : EventArgs
     public SegmentUpgrades Upgrade { get {  return upgrade; } }
 }
 
+[Serializable]
+public struct UpgradeToPrefabDictPair
+{
+    public SegmentUpgrades Upgrade;
+    public GameObject Prefab;
+}
+
 public class RopeUpgradesModifier : MonoBehaviour
 {
     public RopeGenerator data;
@@ -27,6 +34,10 @@ public class RopeUpgradesModifier : MonoBehaviour
     [SerializeField] public GameObject flamePrefab;
     [SerializeField] public GameObject shockPrefab;
     [SerializeField] public GameObject mirrorPrefab;
+
+    [SerializeField] public UpgradeToPrefabDictPair[] pairs;
+
+    private Dictionary<SegmentUpgrades, GameObject> upgradeToPrefabDict;
 
     public event EventHandler<OnUpgradeChangedArgs> UpgradeChanged;
 
@@ -41,34 +52,45 @@ public class RopeUpgradesModifier : MonoBehaviour
 
     void Start()
     {
+        upgradeToPrefabDict = new();
+
+        for(int i = 0; i < pairs.Length; i++)
+        {
+            upgradeToPrefabDict.Add(pairs[i].Upgrade, pairs[i].Prefab);
+        }
+
         data = GetComponent<RopeGenerator>();
         manager = GetComponent<RopeSelectionManager>();
+        UpgradePicker picker = FindAnyObjectByType<UpgradePicker>();
+        picker.UpgradePicked += GetMessage;
     }
 
     void AddEffect(GameObject prefab, SegmentUpgrades segmentType)
     {
-        // Dla wszystkich obecnie wybranych segmentow
+        // Dla wszystkich obecnie wybranych ma³ych segmentow
         foreach (var a in manager.selectedSmallSegments)
         {
-            a.transform.GetComponent<SmallSegment>().segmentType = segmentType;
+            // Dla obu stron ma³ego segmentu
             foreach (var b in a.GetComponent<ModifiableSegment>().attachmentPoints)
             {
                 // Wchodzi jezeli obecnie jest cos doczepione do tego punku
                 if (b.transform.childCount > 0)
                 {
-                    // Niszczy obecne efekty
+                    // Niszczy obecne doczepione efekty
                     for (int i = 0; i < b.transform.childCount; i++)
                     {
                         DestroyImmediate(b.transform.GetChild(i).gameObject);
                     }
                 }
 
+                // Instancojune nowy efekt
                 GameObject newEffect = Instantiate(prefab);
                 newEffect.transform.SetParent(b.transform);
                 newEffect.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                 newEffect.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
                 newEffect.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
+            a.transform.GetComponent<SmallSegment>().segmentType = segmentType;
         }
 
         if(manager.selectedBigSegment > -1)
@@ -102,9 +124,22 @@ public class RopeUpgradesModifier : MonoBehaviour
         OnUpgradeChanged(onUpgradeChangedArgs);
     }
 
+    void GetMessage(object sender, UpgradePickedArgs e)
+    {
+        if(e.Upgrade == SegmentUpgrades.None)
+        {
+            ClearEffects(); 
+        }
+        else
+        {
+            AddEffect(upgradeToPrefabDict[e.Upgrade], e.Upgrade);
+        }
+
+    }
+
     void Update()
     {
-        // Dodaje ostrza
+       /* // Dodaje ostrza
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             AddEffect(bladesPrefab, SegmentUpgrades.Laser);
@@ -124,6 +159,6 @@ public class RopeUpgradesModifier : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             ClearEffects();
-        }
+        }*/
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482453, g: 0.49827206, b: 0.5755818, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1371,6 +1371,86 @@ PrefabInstance:
       propertyPath: mirrorPrefab
       value: 
       objectReference: {fileID: 6713796708977132582, guid: e24dcb24ee5c53b4a8e635a7f6097ede, type: 3}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[1].Prefab
+      value: 
+      objectReference: {fileID: 868394749264835347, guid: 0737e11e8b1070147bad8f439b7790db, type: 3}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[2].Prefab
+      value: 
+      objectReference: {fileID: 868394749264835347, guid: 96e5acf5eff25ce4eb2acb6b66c36820, type: 3}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[3].Prefab
+      value: 
+      objectReference: {fileID: 7772545682637155757, guid: c3a639d566ad1da439a1ee052c72be7e, type: 3}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[4].Prefab
+      value: 
+      objectReference: {fileID: 868394749264835347, guid: 474137718ade1884bbe2533cee1af968, type: 3}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[5].Prefab
+      value: 
+      objectReference: {fileID: 6713796708977132582, guid: e24dcb24ee5c53b4a8e635a7f6097ede, type: 3}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[6].Prefab
+      value: 
+      objectReference: {fileID: 868394749264835347, guid: 95feba29ba633614cb8b033ac90591e0, type: 3}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[7].Prefab
+      value: 
+      objectReference: {fileID: 868394749264835347, guid: 8b8071650f026d940b0707f1d41de41e, type: 3}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[8].Prefab
+      value: 
+      objectReference: {fileID: 868394749264835347, guid: bd1586718a6cb2c40a7251ab0c413a08, type: 3}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[9].Prefab
+      value: 
+      objectReference: {fileID: 868394749264835347, guid: c2712be8842e7c4418c8911ac9da5010, type: 3}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[0].Upgrade
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[1].Upgrade
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[2].Upgrade
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[3].Upgrade
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[4].Upgrade
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[5].Upgrade
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[6].Upgrade
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[7].Upgrade
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[8].Upgrade
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067376122058386996, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
+      propertyPath: pairs.Array.data[9].Upgrade
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4378397731803685280, guid: 048069cbd3c01a84a95d144df0de8617, type: 3}
       propertyPath: m_Name
       value: Rope

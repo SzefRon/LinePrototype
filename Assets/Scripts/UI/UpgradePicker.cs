@@ -1,9 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
+public class UpgradePickedArgs : EventArgs
+{
+    private SegmentUpgrades upgrade;
+    public SegmentUpgrades Upgrade { get => upgrade; }
+    public UpgradePickedArgs(SegmentUpgrades upgrade)
+    {
+        this.upgrade = upgrade; 
+    }
+}
 
 public class UpgradePicker : MonoBehaviour
 {
@@ -29,13 +40,24 @@ public class UpgradePicker : MonoBehaviour
     {
         ComboManager comboManager = FindObjectOfType<ComboManager>();
 
-        comboManager.ComboChanged += RecieveMessage;
+        comboManager.ComboChanged += UpdateComboSelection;
 
         textCombo1 = buttonCombo1.transform.GetChild(0).GetComponent<TMP_Text>();
         textCombo2 = buttonCombo2.transform.GetChild(0).GetComponent<TMP_Text>();
     }
 
-    void RecieveMessage(object sender, OnComboCheckedArgs e)
+    public event EventHandler<UpgradePickedArgs> UpgradePicked;
+
+    public virtual void OnUpgradePicked(UpgradePickedArgs e)
+    {
+        EventHandler<UpgradePickedArgs> handler = UpgradePicked;
+        if (handler != null)
+        {
+            handler(this, e);
+        }
+    }
+
+    void UpdateComboSelection(object sender, OnComboCheckedArgs e)
     {
         if(e.Combo1 == SegmentUpgrades.None)
         {
@@ -58,52 +80,53 @@ public class UpgradePicker : MonoBehaviour
 
     public void AddNone()
     {
-        print("Add None");
+        OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.None));
     }
 
     public void AddFire()
     {
-        print("Add Fire");
+        OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Fire));
     }
 
     public void AddElectricity()
     {
-        print("Add Electricity");
+        OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Electricity));
     }
 
     public void AddLaser()
     {
-        print("Add Laser");
+        OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Laser));
     }
 
     public void AddShredder()
     {
-        print("Add Shredder");
+        OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Shredder));
     }
 
     public void AddMirror()
     {
-        print("Add Mirror");
+        OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Mirror));
     }
 
     public void AddExplosive()
     {
-        print("Add Explosive");
+        OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Explosive));
     }
 
     public void AddVampirism()
     {
-        print("Add Vampirism");
+        OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Lifesteal));
     }
 
     public void AddShield()
     {
-        print("Add Shield");
+        OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Shield));
     }
 
     public void AddSlime()
     {
-        print("Add Slime");
+        OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Slime));
+        
     }
 
     // Update is called once per frame
