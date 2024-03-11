@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealthComponent : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
-    Coroutine DOTcoroutine;
+    Coroutine DOTcoroutine = null;
     public float Health
     {
         get { return health; }
@@ -33,11 +33,9 @@ public class HealthComponent : MonoBehaviour
 
     public void TakeDamageOverTime(float damage, float delay, int ticks)
     {
-        if (DOTcoroutine != null)
-        {
-            StopCoroutine(DOTcoroutine);
+        if (DOTcoroutine == null) {
+            DOTcoroutine = StartCoroutine(DamageOverTime(damage, delay, ticks));
         }
-        DOTcoroutine = StartCoroutine(DamageOverTime(damage, delay, ticks));
     }
 
     private IEnumerator DamageOverTime(float damage, float delay, int ticks)

@@ -70,10 +70,10 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        Debug.Log(collisions);
         if (closestTarget != null && closestDistance < followRange
             && collisions <= 4)
         {
+            Debug.Log("Following");
             transform.position += followSpeed * Time.fixedDeltaTime * directionToClosest.normalized;
         }
 

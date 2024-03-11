@@ -83,4 +83,9 @@ public class SmallSegment : MonoBehaviour
     {
         CorrectPlacement();
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        other.gameObject.GetComponent<EffectComponent>().TakeRopeEffect(segmentType);
+    }
 }
