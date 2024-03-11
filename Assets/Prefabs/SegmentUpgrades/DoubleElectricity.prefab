@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8965982440092259109}
   - component: {fileID: 1144519273305401397}
   m_Layer: 10
-  m_Name: Electricity
+  m_Name: DoubleElectricity
   m_TagString: ShockEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2743,8 +2743,8 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: 2
+      scalar: 8
+      minScalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:

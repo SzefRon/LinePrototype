@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OnUpgradeChangedArgs : EventArgs
@@ -53,7 +54,8 @@ public class RopeUpgradesModifier : MonoBehaviour
         data = GetComponent<RopeGenerator>();
         manager = GetComponent<RopeSelectionManager>();
         UpgradePicker picker = FindAnyObjectByType<UpgradePicker>();
-        picker.UpgradePicked += GetMessage;
+        picker.UpgradePicked += GetPickedUpgrade;
+        picker.ComboPicked += GePickedCombo;
     }
 
     void AddEffect(GameObject prefab, SegmentUpgrades segmentType)
@@ -115,8 +117,8 @@ public class RopeUpgradesModifier : MonoBehaviour
         OnUpgradeChanged(onUpgradeChangedArgs);
     }
 
-    void GetMessage(object sender, UpgradePickedArgs e)
-    {
+    void GetPickedUpgrade(object sender, UpgradePickedArgs e)
+        {
         if (e.Upgrade == SegmentUpgrades.None)
         {
             ClearEffects();
@@ -125,6 +127,50 @@ public class RopeUpgradesModifier : MonoBehaviour
         {
             AddEffect(upgradeToPrefabDict[e.Upgrade], e.Upgrade);
         }
+    }
 
+    void GePickedCombo(object sender, ComboPickedArgs e)
+    {
+        int beginning = e.B * manager.segInSeg;
+        int end = (e.B + 1) * manager.segInSeg;
+
+        List<GameObject> tmp = new();
+
+        for (int i = beginning; i < end; i++)
+        {
+            tmp.Add(data.smallSegments[i]);
+        }
+
+        beginning = e.A * manager.segInSeg;
+        end = (e.A + 1) * manager.segInSeg;
+
+        for (int i = beginning; i < end; i++)
+        {
+            tmp.Add(data.smallSegments[i]);
+        }
+
+        foreach (var a in tmp)
+        {
+            foreach (var b in a.GetComponent<ModifiableSegment>().attachmentPoints)
+            {
+                // Wchodzi jezeli obecnie jest cos doczepione do tego punku
+                if (b.transform.childCount > 0)
+                {
+                    // Niszczy obecne efekty
+                    for (int i = 0; i < b.transform.childCount; i++)
+                    {
+                        DestroyImmediate(b.transform.GetChild(i).gameObject);
+                    }
+                }
+
+                // Instancojune nowy efekt
+                GameObject newEffect = Instantiate(upgradeToPrefabDict[e.Upgrade]);
+                newEffect.transform.SetParent(b.transform);
+                newEffect.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                newEffect.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                newEffect.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            }
+            a.transform.GetComponent<SmallSegment>().segmentType = e.Upgrade;
+        }
     }
 }

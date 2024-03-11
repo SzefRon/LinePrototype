@@ -13,6 +13,24 @@ public class UpgradePickedArgs : EventArgs
     }
 }
 
+public class ComboPickedArgs : EventArgs
+{
+    private SegmentUpgrades upgrade;
+    private int a;
+    private int b;
+
+    public SegmentUpgrades Upgrade { get => upgrade; }
+    public int A { get => a; }
+    public int B { get => b; }
+
+    public ComboPickedArgs(int a, int b, SegmentUpgrades upgrade)
+    {
+        this.a = a; 
+        this.b = b;
+        this.upgrade = upgrade;
+    }
+}
+
 public class UpgradePicker : MonoBehaviour
 {
     [SerializeField] Button buttonCombo1;
@@ -35,22 +53,36 @@ public class UpgradePicker : MonoBehaviour
     public SegmentUpgrades comboWithPreviousSegment = SegmentUpgrades.None;
     public SegmentUpgrades comboWithNextSegment = SegmentUpgrades.None;
 
+    ComboManager comboManager;
+    RopeSelectionManager ropeSelectionManager;
+    RopeUpgradesModifier modifier;
     // Start is called before the first frame update
     void Start()
     {
-        ComboManager comboManager = FindObjectOfType<ComboManager>();
-
+        comboManager = FindObjectOfType<ComboManager>();
         comboManager.ComboChanged += UpdateComboSelection;
+
+        ropeSelectionManager = FindObjectOfType<RopeSelectionManager>();
+        modifier = FindObjectOfType<RopeUpgradesModifier>();
 
         textCombo1 = buttonCombo1.transform.GetChild(0).GetComponent<TMP_Text>();
         textCombo2 = buttonCombo2.transform.GetChild(0).GetComponent<TMP_Text>();
     }
 
     public event EventHandler<UpgradePickedArgs> UpgradePicked;
-
     public virtual void OnUpgradePicked(UpgradePickedArgs e)
     {
         EventHandler<UpgradePickedArgs> handler = UpgradePicked;
+        if (handler != null)
+        {
+            handler(this, e);
+        }
+    }
+
+    public event EventHandler<ComboPickedArgs> ComboPicked;
+    public virtual void OnComboPicked(ComboPickedArgs e) 
+    {
+        EventHandler<ComboPickedArgs> handler = ComboPicked;
         if (handler != null)
         {
             handler(this, e);
@@ -84,6 +116,14 @@ public class UpgradePicker : MonoBehaviour
     {
         if(comboWithPreviousSegment != SegmentUpgrades.None) 
         {
+            int currentSegment = ropeSelectionManager.selectedBigSegment;
+            int previousSegment = currentSegment - 1;
+
+            comboManager.segments[previousSegment] = comboWithPreviousSegment;
+            comboManager.segments[currentSegment] = comboWithPreviousSegment;
+
+            OnComboPicked(new ComboPickedArgs(currentSegment, previousSegment, comboWithPreviousSegment));
+
             print(comboWithPreviousSegment);
         }
     }
@@ -92,9 +132,18 @@ public class UpgradePicker : MonoBehaviour
     {
         if(comboWithNextSegment != SegmentUpgrades.None)
         {
+            int currentSegment = ropeSelectionManager.selectedBigSegment;
+            int nextSegment = currentSegment + 1;
+
+            comboManager.segments[nextSegment] = comboWithNextSegment;
+            comboManager.segments[currentSegment] = comboWithNextSegment;
+
+            OnComboPicked(new ComboPickedArgs(currentSegment, nextSegment, comboWithNextSegment));
+
             print(comboWithNextSegment);
         }
     }
+
 
     public void AddNone()
     {
@@ -144,14 +193,5 @@ public class UpgradePicker : MonoBehaviour
     public void AddSlime()
     {
         OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Slime));
-
-    }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

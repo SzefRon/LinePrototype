@@ -22,7 +22,7 @@ public class RopeSelectionManager : MonoBehaviour
 
     public int previousSelectedBigSegment = -1;
     public int selectedBigSegment = -1;
-    private int segInSeg;
+    public int segInSeg;
 
     public List<GameObject> selectedSmallSegments = new();
     private int segmentNum;

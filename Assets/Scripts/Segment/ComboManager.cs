@@ -20,7 +20,6 @@ public class OnComboCheckedArgs : EventArgs
     }
 }
 
-
 public class ComboManager : MonoBehaviour
 {
     public Dictionary<(SegmentUpgrades, SegmentUpgrades), SegmentUpgrades> comboDictionary = new Dictionary<(SegmentUpgrades, SegmentUpgrades), SegmentUpgrades>
@@ -192,8 +191,6 @@ public class ComboManager : MonoBehaviour
         OnComboCheckedArgs args = new(currentIndex, combo1, combo2);
         OnComboChecked(args);
     }
-
-
 
     // Update is called once per frame
     void Update()
