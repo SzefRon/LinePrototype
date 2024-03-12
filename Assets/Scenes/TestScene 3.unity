@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4482451, g: 0.49827182, b: 0.57558125, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482453, g: 0.49827206, b: 0.5755818, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -833,11 +833,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3921181631646407726, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 8.57
+    - target: {fileID: 2340388160093727874, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
+      propertyPath: collisionsToDeath
+      value: 14
       objectReference: {fileID: 0}
-    - target: {fileID: 3921181631646407726, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
     - target: {fileID: 2340388160093727874, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
       propertyPath: followTargets.Array.size
       value: 0
@@ -850,6 +849,15 @@ PrefabInstance:
       propertyPath: followTargets.Array.data[1]
       value: 
       objectReference: {fileID: 1177117557}
+    - target: {fileID: 3921181631646407726, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
+      propertyPath: 
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3921181631646407726, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 3921181631646407726, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
@@ -2123,8 +2131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac24f3eec0b295c4c92d6b1146b09ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  player2: {fileID: 0}
 --- !u!1 &669900944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3473,9 +3479,10 @@ AudioListener:
   m_Enabled: 1
 --- !u!20 &963194227
 Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_CorrespondingSourceObject: {fileID: 3850279647267203065, guid: a4ce9c89e797de74b8c285755b1da3bf, type: 3}
-  m_PrefabInstance: {fileID: 1652797630116688228}
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
@@ -8412,7 +8419,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1652797630116688228}
   - {fileID: 2012473675}
   - {fileID: 1463405351}
   - {fileID: 5054760598970730810}
@@ -8436,3 +8442,4 @@ SceneRoots:
   - {fileID: 1657514905}
   - {fileID: 979696384}
   - {fileID: 1791976146}
+  - {fileID: 963194228}

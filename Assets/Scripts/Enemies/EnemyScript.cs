@@ -36,6 +36,11 @@ public class EnemyScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(collisions >= collisionsToDeath) 
+        {
+            Destroy(gameObject, 1);
+        }
+
         GameObject closestTarget = null;
         float closestDistance = Mathf.Infinity;
         Vector3 directionToClosest = Vector3.zero;

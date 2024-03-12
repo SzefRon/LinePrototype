@@ -18,7 +18,7 @@ public class EffectComponent : MonoBehaviour
             case SegmentUpgrades.Fire:
                 Debug.Log("Fire");
                 float dmg = healthComponent.MaxHealthFraction(10);
-                healthComponent.TakeDamageOverTime(dmg, 1.0f, 3);
+                healthComponent.TakeDamageOverTime(dmg, 1.0f, 5);
                 break;
             case SegmentUpgrades.Electricity:
                 Debug.Log("Electricity");
