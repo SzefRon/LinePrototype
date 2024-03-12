@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] public float dmgTick;
+    [SerializeField] public float milisecondInterval;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
