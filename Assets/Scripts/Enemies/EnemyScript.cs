@@ -9,14 +9,12 @@ public class EnemyScript : MonoBehaviour
     private uint collisions = 0;
 
     [SerializeField] public int collisionsToDeath;
-
-    [SerializeField] public int hp;
     [SerializeField] public GameObject bloodSplashPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        followTargets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
     }
 
     private void OnCollisionEnter(Collision other)
@@ -25,11 +23,7 @@ public class EnemyScript : MonoBehaviour
         {
             collisions++;
         }
-
-        if (other.transform.tag == "BladeEffect")
-        {
-            hp--;
-        }
+        Debug.Log(collisions);
     }
 
     private void OnCollisionExit(Collision other)
@@ -42,19 +36,6 @@ public class EnemyScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (collisions >= collisionsToDeath)
-        {
-            Destroy(gameObject, 1);
-        }
-
-        if (hp == 0)
-        {
-            var effect = Instantiate(bloodSplashPrefab, transform.position, Quaternion.identity);
-            Destroy(effect, 2);
-            Destroy(gameObject, 1);
-
-        }
-
         GameObject closestTarget = null;
         float closestDistance = Mathf.Infinity;
         Vector3 directionToClosest = Vector3.zero;
@@ -73,10 +54,7 @@ public class EnemyScript : MonoBehaviour
         if (closestTarget != null && closestDistance < followRange
             && collisions <= 4)
         {
-            Debug.Log("Following");
             transform.position += followSpeed * Time.fixedDeltaTime * directionToClosest.normalized;
         }
-
-
     }
 }

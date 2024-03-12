@@ -11,7 +11,7 @@ public class EffectComponent : MonoBehaviour
         healthComponent = GetComponent<HealthComponent>();
     }
 
-    public void TakeRopeEffect(SegmentUpgrades upgrade)
+    public void ApplyRopeEffect(SegmentUpgrades upgrade)
     {
         switch (upgrade)
         {
