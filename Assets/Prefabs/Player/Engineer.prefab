@@ -48,8 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   acceleration: 100
-  inputNameHorizontal: Horizontal 1
-  inputNameVertical: Vertical 1
+  horizontalInput: Horizontal 1
+  verticalInput: Vertical 1
+  index: 0
+  input: {x: 0, y: 0}
 --- !u!54 &2199804774072115411
 Rigidbody:
   m_ObjectHideFlags: 0

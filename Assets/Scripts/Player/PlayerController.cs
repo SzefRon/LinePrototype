@@ -1,33 +1,36 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float maxSpeed;
     [SerializeField] private float acceleration;
-    [SerializeField] private string inputNameHorizontal;
-    [SerializeField] private string inputNameVertical;
+    [SerializeField] private string horizontalInput;
+    [SerializeField] private string verticalInput;
+    public int index;
+    public Vector2 input;
 
     private Rigidbody rb;
 
-    private float inputHorizontal;
-    private float inputVertical;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    public void MovementHandling(InputAction.CallbackContext context)
     {
-        inputHorizontal = Input.GetAxisRaw(inputNameHorizontal);
-        inputVertical = Input.GetAxisRaw(inputNameVertical);
+        input = context.ReadValue<Vector2>().normalized;
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        Vector3 v = new(inputHorizontal * acceleration * Time.fixedDeltaTime, rb.velocity.y, inputVertical * acceleration * Time.fixedDeltaTime);
+        Debug.Log(input);
+        Vector3 v = new(input.x * acceleration * Time.fixedDeltaTime, rb.velocity.y, input.y * acceleration * Time.fixedDeltaTime);
         v = v.normalized * maxSpeed;
         rb.AddForce(v, ForceMode.Impulse);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+        input = new Vector2(Input.GetAxisRaw(horizontalInput), Input.GetAxisRaw(verticalInput));
     }
 }

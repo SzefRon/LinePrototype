@@ -1,0 +1,78 @@
+{
+    "name": "PlayerInputActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "8241e9c1-be4b-4ea0-a09b-2560238cd747",
+            "actions": [
+                {
+                    "name": "MovementJOYSTICK",
+                    "type": "PassThrough",
+                    "id": "3e5bcd78-b420-4068-82ff-715ebdad974d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "Controller",
+                    "id": "636bee19-7265-4cf4-8aa1-cfa6651a997d",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "StickDeadzone(min=0.125)",
+                    "groups": "",
+                    "action": "MovementJOYSTICK",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "57b06717-5eaf-4c5b-b74e-d2d05e2f20b9",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementJOYSTICK",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "502c3456-9079-4eff-a534-addf9e9c8312",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementJOYSTICK",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "bf05ad9f-42d7-404d-a54d-ba3784ef427f",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementJOYSTICK",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "bf9385f3-8186-4815-a169-4a7f714ef34b",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementJOYSTICK",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
