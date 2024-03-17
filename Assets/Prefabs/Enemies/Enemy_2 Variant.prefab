@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 456830144427968659, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
+      propertyPath: raycasts
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 456830144427968659, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
+      propertyPath: chokeDistance
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2340388160093727874, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
       propertyPath: hp
       value: 3
@@ -23,6 +31,10 @@ PrefabInstance:
     - target: {fileID: 2340388160093727874, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
       propertyPath: collisionsToDeath
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3651888137639178387, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3921181631646407726, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,6 +79,10 @@ PrefabInstance:
     - target: {fileID: 3969806118158454820, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
       propertyPath: m_Name
       value: Enemy_2 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3969806118158454820, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3969806118158454820, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
       propertyPath: m_IsActive

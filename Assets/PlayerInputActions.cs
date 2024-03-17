@@ -92,6 +92,61 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""MovementJOYSTICK"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Joystick"",
+                    ""id"": ""d0c9554a-e03c-4fa7-912f-d92fa5342f2a"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone(min=0.125)"",
+                    ""groups"": """",
+                    ""action"": ""MovementJOYSTICK"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""134575c2-c0d5-49c4-9620-71550eaf0844"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementJOYSTICK"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b1f1e817-66fa-4740-a7df-0710aac2d5a9"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/stick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementJOYSTICK"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""b9d3d663-14cf-447c-b1b9-adb33f3640e0"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementJOYSTICK"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""8ff2b2bb-a7fb-418c-9e12-75fb974bed3e"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementJOYSTICK"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }

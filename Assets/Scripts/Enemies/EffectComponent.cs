@@ -45,7 +45,7 @@ public class EffectComponent : MonoBehaviour
                 Debug.Log("Slime");
                 break;
             default:
-                Debug.Log("None");
+                //Debug.Log("None");
                 break;
         }
     }

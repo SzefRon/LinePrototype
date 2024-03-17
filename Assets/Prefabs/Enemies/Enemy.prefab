@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: -4770632652049286998}
   - component: {fileID: -1109764036170716017}
   - component: {fileID: -1747557094991509134}
-  m_Layer: 0
+  - component: {fileID: 456830144427968659}
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -183,6 +184,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0087b4604dc67ab438f7b6ded500ab0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &456830144427968659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3969806118158454820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89db9f92b97c62444b14a718b9ef8b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycasts: 18
+  chokeDistance: 0.8
+  percentage: 0.7
+  isChoked: 0
+  collisionsWithSegment: 0
+  collisionsWithMonster: 0
 --- !u!1001 &6656739873447068346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,13 +254,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 7984707647650656809, guid: e396b814dd571774984d6e68199b0707, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e396b814dd571774984d6e68199b0707, type: 3}
---- !u!4 &3551517710960321124 stripped
-Transform:
+--- !u!224 &3551517710960321124 stripped
+RectTransform:
   m_CorrespondingSourceObject: {fileID: 7865812931868467422, guid: e396b814dd571774984d6e68199b0707, type: 3}
   m_PrefabInstance: {fileID: 6656739873447068346}
   m_PrefabAsset: {fileID: 0}

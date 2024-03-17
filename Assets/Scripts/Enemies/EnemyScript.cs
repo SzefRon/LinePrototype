@@ -23,7 +23,7 @@ public class EnemyScript : MonoBehaviour
         {
             collisions++;
         }
-        Debug.Log(collisions);
+        //Debug.Log(collisions);
     }
 
     private void OnCollisionExit(Collision other)
@@ -36,10 +36,10 @@ public class EnemyScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(collisions >= collisionsToDeath) 
+        /*if(collisions >= collisionsToDeath) 
         {
             Destroy(gameObject, 1);
-        }
+        }*/
 
         GameObject closestTarget = null;
         float closestDistance = Mathf.Infinity;

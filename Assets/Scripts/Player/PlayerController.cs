@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        
     }
 
     public void MovementHandling(InputAction.CallbackContext context)
@@ -26,11 +28,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(input);
+        //Debug.Log(input);
         Vector3 v = new(input.x * acceleration * Time.fixedDeltaTime, rb.velocity.y, input.y * acceleration * Time.fixedDeltaTime);
         v = v.normalized * maxSpeed;
         rb.AddForce(v, ForceMode.Impulse);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         input = new Vector2(Input.GetAxisRaw(horizontalInput), Input.GetAxisRaw(verticalInput));
     }
+
+    
 }
