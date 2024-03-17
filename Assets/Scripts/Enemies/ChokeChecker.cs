@@ -13,6 +13,8 @@ public class ChokeChecker : MonoBehaviour
     public int collisionsWithSegment;
     public int collisionsWithMonster;
 
+    public MinigameController minigameController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,8 +65,15 @@ public class ChokeChecker : MonoBehaviour
 
         if (chokeCount >= raycasts * percentage ) 
         {
-            Debug.Log("choked!!!");
-            Destroy(gameObject, 2);
+            minigameController.isMinigameActive = true;
+            if (minigameController.isMinigameActive)
+            {
+                if (minigameController.chocking)
+                {
+                    Debug.Log("choked!!!");
+                    Destroy(gameObject, 2); 
+                }
+            }
         }
 
         
