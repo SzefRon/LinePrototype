@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] Transform player1;
-    [SerializeField] Transform player2;
+    [SerializeField] public Transform player1;
+    [SerializeField] public Transform player2;
 
     [SerializeField] float smoothingFactor;
     [SerializeField] float height;
     
     Vector3 midpoint;
+
+    
 
     // Update is called once per frame
     void Update()

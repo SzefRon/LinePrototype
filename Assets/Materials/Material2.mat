@@ -10,7 +10,7 @@ Material:
   m_Name: Material2
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 2100000, guid: 0950c6e0ed3bd5d498959f0094156ca4, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
   - _NORMALMAP
   m_InvalidKeywords: []

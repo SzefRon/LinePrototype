@@ -71,11 +71,9 @@ public class ChokeChecker : MonoBehaviour
                 if (minigameController.chocking)
                 {
                     Debug.Log("choked!!!");
-                    Destroy(gameObject, 2); 
+                    Destroy(gameObject); 
                 }
             }
         }
-
-        
     }
 }
