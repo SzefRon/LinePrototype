@@ -38,15 +38,6 @@ public class RoomController : MonoBehaviour
             {
                 enemy.SetActive(false);
             }
-
-       /* if (isOpen)
-        {
-            Fade();
-        }
-        else
-        {
-            ResetFade();
-        }*/
     }
 
     private void OnTriggerEnter(Collider other)

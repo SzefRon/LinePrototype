@@ -14,6 +14,13 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] int depth;
 
     [SerializeField] GameObject[] enemiesPrefabs;
+    [SerializeField] int maxEnemiesInRoom;
+
+    [SerializeField] GameObject playerPrefab1;
+    [SerializeField] GameObject playerPrefab2;
+
+    //GameObject player1;
+    //GameObject player2;
 
     HashSet<Vector3> roomsPositions = new();
     HashSet<Vector3> horizontalCorridorPosition = new();
@@ -27,6 +34,7 @@ public class LevelGenerator : MonoBehaviour
     List<GameObject> rooms = new();
 
     GameObject Level;
+
 
     private void Start()
     {
@@ -54,7 +62,11 @@ public class LevelGenerator : MonoBehaviour
             corridorDepths[i].Clear();
         }
 
+        Populate();
+
         Level.transform.eulerAngles = new Vector3(0.0f, 225.0f, 0.0f);
+
+        
     }
 
     void NewRoom(int sign, Vector3 previousPosition, int currentWidth, int depth)
@@ -177,13 +189,55 @@ public class LevelGenerator : MonoBehaviour
         }
 
 
-
         foreach(var a in roomsPositions)
         {
             GameObject go = Instantiate(roomPrefab);
             go.transform.position = a;
             go.transform.parent = Level.transform;
             rooms.Add(go);
+        }
+    }
+   
+    void Populate()
+    {
+        bool first = true;
+        foreach (var room in rooms) 
+        {
+            var roomManager = room.GetComponent<RoomManager>();
+            if (!first)
+            {
+                
+                int enemiesNum = Random.Range(0, maxEnemiesInRoom);
+
+                if (enemiesNum == 0)
+                {
+                    //chill room
+                }
+                else
+                {
+                    Vector3 upBound = roomManager.bounds[0].transform.position;
+                    Vector3 botBound = roomManager.bounds[1].transform.position;
+
+                    for (int i = 0; i < enemiesNum; i++)
+                    {
+                        float x = Random.Range(upBound.x, botBound.x);
+                        float z = Random.Range(upBound.z, botBound.z);
+
+                        int enemyType = Random.Range(0, enemiesPrefabs.Length);
+
+                        GameObject enemy = Instantiate(enemiesPrefabs[enemyType]);
+                        enemy.transform.position = new Vector3(x, 0, z);
+                        enemy.transform.parent = room.transform;
+                        roomManager.enemies.Add(enemy);
+                    }
+                }
+            }
+            else
+            {
+                first = false;  
+                print(room.transform.position);
+                room.transform.name = "Starting room";
+            }
         }
     }
 }

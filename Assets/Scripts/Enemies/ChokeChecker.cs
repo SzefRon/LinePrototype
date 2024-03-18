@@ -64,9 +64,7 @@ public class ChokeChecker : MonoBehaviour
         if (chokeCount >= raycasts * percentage ) 
         {
             Debug.Log("choked!!!");
-            Destroy(gameObject, 2);
+            Destroy(gameObject);
         }
-
-        
     }
 }
