@@ -15,11 +15,20 @@ public class EffectComponent : MonoBehaviour
     {
         switch (upgrade)
         {
+            case SegmentUpgrades.Choke:
+            {
+                Debug.Log("Choke");
+                float dmg = healthComponent.MaxHealthFraction(3);
+                healthComponent.TakeDamageOverTime(SegmentUpgrades.Choke, dmg, 0.5f, 1);
+                break;
+            }
             case SegmentUpgrades.Fire:
+            {
                 Debug.Log("Fire");
                 float dmg = healthComponent.MaxHealthFraction(10);
-                healthComponent.TakeDamageOverTime(dmg, 1.0f, 5);
+                healthComponent.TakeDamageOverTime(SegmentUpgrades.Fire, dmg, 1.0f, 5);
                 break;
+            }
             case SegmentUpgrades.Electricity:
                 Debug.Log("Electricity");
                 break;

@@ -23,7 +23,7 @@ public class ChokeChecker : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         collisionsWithMonster = 0;
         collisionsWithSegment = 0;
@@ -64,7 +64,7 @@ public class ChokeChecker : MonoBehaviour
         if (chokeCount >= raycasts * percentage ) 
         {
             Debug.Log("choked!!!");
-            Destroy(gameObject);
+            GetComponent<EffectComponent>().ApplyRopeEffect(SegmentUpgrades.Choke);
         }
     }
 }

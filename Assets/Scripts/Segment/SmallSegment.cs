@@ -3,6 +3,7 @@ using UnityEngine;
 public enum SegmentUpgrades
 {
     None,
+    Choke,
 
     // Basic
     Fire,

@@ -12,7 +12,8 @@ public class HealthComponent : MonoBehaviour
     private float health;
     private Renderer renderer;
     private Color startColor;
-    private bool isBeingDamaged = false;
+    private bool isDying = false;
+    private readonly Dictionary<SegmentUpgrades, bool> dotCheck = new();
 
     void Start()
     {       
@@ -45,26 +46,43 @@ public class HealthComponent : MonoBehaviour
         renderer.material.color = startColor;
     }
 
-    public void TakeDamageOverTime(float damage, float delay, int ticks)
+    public void TakeDamageOverTime(SegmentUpgrades effect, float damage, float delay, int ticks)
     {
-        if (!isBeingDamaged) {
-            StartCoroutine(DamageOverTime(damage, delay, ticks));
+        if (!dotCheck.ContainsKey(effect)) {
+            dotCheck.Add(effect, false);
+        }
+        if (!dotCheck[effect]) {
+            StartCoroutine(DamageOverTime(effect, damage, delay, ticks));
         }
     }
 
-    private IEnumerator DamageOverTime(float damage, float delay, int ticks)
+    private IEnumerator DamageOverTime(SegmentUpgrades effect, float damage, float delay, int ticks)
     {
-        isBeingDamaged = true;
+        dotCheck[effect] = true;
         for (int i = 0; i < ticks; i++)
         {
             TakeDamage(damage);
             yield return new WaitForSeconds(delay);
         }
-        isBeingDamaged = false;
+        dotCheck[effect] = false;
     }
 
     private void Die()
     {
+        if (isDying) return;
+        isDying = true;
+        GetComponent<EnemyScript>().enabled = false;
+        StartCoroutine(DieAnimation());
+    }
+
+    private IEnumerator DieAnimation()
+    {
+        for (int i = 0; i < 50; i++)
+        {
+            transform.position += Vector3.down * 0.05f;
+            transform.localScale *= 0.95f;
+            yield return new WaitForSeconds(0.05f);
+        }
         Destroy(gameObject);
     }
 }
