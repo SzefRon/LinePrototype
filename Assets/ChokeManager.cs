@@ -52,7 +52,8 @@ public class ChokeManager : MonoBehaviour
 
     private void ChokeSuccessful()
     {
-        Debug.Log("Choke Successful");
+            Debug.Log("Choke Successful");
+        ChokeList.DealDmgToObjectsInList();
     }
 
     // Start is called before the first frame update
