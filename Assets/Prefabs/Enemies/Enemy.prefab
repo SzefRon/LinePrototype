@@ -128,7 +128,7 @@ MonoBehaviour:
   followTargets:
   - {fileID: 5315047056958734298, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
   - {fileID: 5315047056958734298, guid: bdae106fcdc24d244b0f1d3d5116a758, type: 3}
-  followSpeed: 2.64
+  followSpeed: 1.5
   followRange: 8.64
   collisionsToDeath: 16
   bloodSplashPrefab: {fileID: 7043002562970436748, guid: ab0abe6a42efe2c4cbec58ca44d89f7e, type: 3}
@@ -172,6 +172,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  damageCooldownTime: 0.8
+  renderer: {fileID: 0}
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  isMonster: 1
 --- !u!114 &-1747557094991509134
 MonoBehaviour:
   m_ObjectHideFlags: 0

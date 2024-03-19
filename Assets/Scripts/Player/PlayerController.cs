@@ -23,17 +23,20 @@ public class PlayerController : MonoBehaviour
     private Vector3 direciton;
 
     private ChokeManager chokeManager;
+    private HealthComponent healthComponent;
 
-    private void Awake()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         chokeManager = FindAnyObjectByType<ChokeManager>();
+        healthComponent = GetComponent<HealthComponent>();
+        healthComponent.renderer = transform.GetChild(0).GetComponent<Renderer>();
+        healthComponent.startColor = healthComponent.renderer.material.color;
     }
 
     public void MovementHandling(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>().normalized;
-        
     }
 
     void FixedUpdate()
@@ -64,6 +67,15 @@ public class PlayerController : MonoBehaviour
                 chokeManager.PullRope(index);
                 StartCoroutine(PullCooldown());
             }
+        }
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Monster"))
+        {
+            float dmg = healthComponent.MaxHealthFraction(10);
+            healthComponent.TakeDamage(dmg);
         }
     }
 

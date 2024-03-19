@@ -16,18 +16,10 @@ public class EffectComponent : MonoBehaviour
     {
         switch (upgrade)
         {
-            case SegmentUpgrades.Choke:
-            {
-                Debug.Log("Choke");
-                float dmg = healthComponent.MaxHealthFraction(3);
-                    /*if (minigame.GetComponent<MinigameController>().CHOKED == true)
-                    {
-                        healthComponent.TakeDamageOverTime(SegmentUpgrades.Choke, dmg, 0.5f, 1);
-                       minigame.SetActive(false);
-                    }*/
-                healthComponent.TakeDamageOverTime(SegmentUpgrades.Choke, dmg, 0.5f, 1);
+            case SegmentUpgrades.Minion:
+                Debug.Log("Minion");
+                healthComponent.willMorph = true;
                 break;
-            }
             case SegmentUpgrades.Fire:
             {
                 Debug.Log("Fire");

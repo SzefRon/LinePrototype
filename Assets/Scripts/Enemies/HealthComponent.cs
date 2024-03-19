@@ -5,21 +5,28 @@ using UnityEngine;
 public class HealthComponent : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
+    [SerializeField] private float damageCooldownTime = 0.8f;
     public float Health
     {
         get { return health; }
     }
     private float health;
-    private Renderer renderer;
-    private Color startColor;
+    public Renderer renderer;
+    public Color startColor;
+    public bool isMonster = false;
     private bool isDying = false;
-    private readonly Dictionary<SegmentUpgrades, bool> dotCheck = new();
+    private Dictionary<SegmentUpgrades, bool> dotCooldown = new();
+    private bool damageCooldown = false;
 
-    void Start()
+    [System.NonSerialized] public bool willMorph = false;
+
+    void Awake()
     {       
         health = maxHealth;
-        renderer = GetComponent<Renderer>();
-        startColor = renderer.material.color;
+        if (TryGetComponent<Renderer>(out renderer))
+        {
+            startColor = renderer.material.color;
+        }
     }
 
     public float MaxHealthFraction(float fraction)
@@ -29,14 +36,29 @@ public class HealthComponent : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (damageCooldown) return;
+        StartCoroutine(DamageCooldown());
+        ForceDamage(damage);
+    }
+
+    IEnumerator DamageCooldown()
+    {
+        damageCooldown = true;
+        yield return new WaitForSeconds(0.5f);
+        damageCooldown = false;
+    }
+
+    public void ForceDamage(float damage)
+    {
         health -= damage;
-        if (health <= 0) {
+        if (health <= 0)
+        {
             Die();
         }
-        else {
+        else
+        {
             StartCoroutine(FlashRed());
         }
-
     }
 
     IEnumerator FlashRed()
@@ -48,33 +70,43 @@ public class HealthComponent : MonoBehaviour
 
     public void TakeDamageOverTime(SegmentUpgrades effect, float damage, float delay, int ticks)
     {
-        if (!dotCheck.ContainsKey(effect)) {
-            dotCheck.Add(effect, false);
+        if (!dotCooldown.ContainsKey(effect)) {
+            dotCooldown.Add(effect, false);
         }
-        if (!dotCheck[effect]) {
+        if (!dotCooldown[effect]) {
             StartCoroutine(DamageOverTime(effect, damage, delay, ticks));
         }
     }
 
     private IEnumerator DamageOverTime(SegmentUpgrades effect, float damage, float delay, int ticks)
     {
-        dotCheck[effect] = true;
+        dotCooldown[effect] = true;
         for (int i = 0; i < ticks; i++)
         {
-            TakeDamage(damage);
+            ForceDamage(damage);
             yield return new WaitForSeconds(delay);
         }
-        dotCheck[effect] = false;
+        dotCooldown[effect] = false;
     }
 
     private void Die()
     {
         if (isDying) return;
         isDying = true;
+<<<<<<< Updated upstream
         ChokeList.chokedObjects.Remove(gameObject);
         GetComponent<EnemyScript>().Drop();
         GetComponent<EnemyScript>().enabled = false;
         StartCoroutine(DieAnimation());
+=======
+        if (isMonster)
+        {
+            ChokeList.chokedObjects.Remove(gameObject);
+            GetComponent<EnemyScript>().enabled = false;
+            StartCoroutine(DieAnimation());
+        }
+        Destroy(gameObject);
+>>>>>>> Stashed changes
     }
 
     private IEnumerator DieAnimation()
@@ -85,6 +117,5 @@ public class HealthComponent : MonoBehaviour
             transform.localScale *= 0.95f;
             yield return new WaitForSeconds(0.05f);
         }
-        Destroy(gameObject);
     }
 }

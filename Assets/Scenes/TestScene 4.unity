@@ -432,6 +432,10 @@ PrefabInstance:
       propertyPath: pullButton
       value: 113
       objectReference: {fileID: 0}
+    - target: {fileID: 1274530771298356088, guid: bdae106fcdc24d244b0f1d3d5116a758, type: 3}
+      propertyPath: pullCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2199804774072115411, guid: bdae106fcdc24d244b0f1d3d5116a758, type: 3}
       propertyPath: m_AngularDrag
       value: 5
@@ -567,6 +571,10 @@ PrefabInstance:
     - target: {fileID: 1274530771298356088, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
       propertyPath: pullButton
       value: 281
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274530771298356088, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
+      propertyPath: pullCooldown
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2199804774072115411, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
       propertyPath: m_AngularDrag

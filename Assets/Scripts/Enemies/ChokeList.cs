@@ -12,8 +12,8 @@ public static class ChokeList
         {
             var obj = chokedObjects[i];
             var health = obj.GetComponent<HealthComponent>();
-            float dmg = health.MaxHealthFraction(4);
-            health.TakeDamage(dmg);
+            float dmg = health.MaxHealthFraction(2 + (chokedObjects.Count - 1));
+            health.ForceDamage(dmg);
         }
     }
 }

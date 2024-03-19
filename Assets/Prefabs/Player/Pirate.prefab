@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3755873941597763541}
   - component: {fileID: 1274530771298356088}
   - component: {fileID: 2199804774072115411}
+  - component: {fileID: -7635155457306922711}
   m_Layer: 3
   m_Name: Pirate
   m_TagString: Player
@@ -82,6 +83,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 84
   m_CollisionDetection: 1
+--- !u!114 &-7635155457306922711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5315047056958734298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ad85be45a3b3b74e9d74f8c613f9210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  willMorph: 0
 --- !u!1 &7219511283122359415
 GameObject:
   m_ObjectHideFlags: 0
