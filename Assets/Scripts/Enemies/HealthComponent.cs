@@ -93,20 +93,14 @@ public class HealthComponent : MonoBehaviour
     {
         if (isDying) return;
         isDying = true;
-<<<<<<< Updated upstream
-        ChokeList.chokedObjects.Remove(gameObject);
-        GetComponent<EnemyScript>().Drop();
-        GetComponent<EnemyScript>().enabled = false;
-        StartCoroutine(DieAnimation());
-=======
         if (isMonster)
         {
             ChokeList.chokedObjects.Remove(gameObject);
+            GetComponent<EnemyScript>().Drop();
             GetComponent<EnemyScript>().enabled = false;
             StartCoroutine(DieAnimation());
         }
         Destroy(gameObject);
->>>>>>> Stashed changes
     }
 
     private IEnumerator DieAnimation()
