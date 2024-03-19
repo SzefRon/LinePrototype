@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode pullButton;
 
     [SerializeField] private KeyCode upButton;
+    [SerializeField] private float pullCooldown = 1.0f;
+    private bool isPulling = false;
     public int index;
     public Vector2 input;
 
@@ -54,8 +57,20 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(pullButton))
         {
-            rb.AddForce(direciton * 20.0f, ForceMode.Impulse);
-            chokeManager.PullRope(index);
+            if (!isPulling)
+            {
+                Debug.Log("Pulling");
+                rb.AddForce(direciton * 100.0f, ForceMode.Impulse);
+                chokeManager.PullRope(index);
+                StartCoroutine(PullCooldown());
+            }
         }
+    }
+
+    private IEnumerator PullCooldown()
+    {
+        isPulling = true;
+        yield return new WaitForSeconds(pullCooldown);
+        isPulling = false;
     }
 }

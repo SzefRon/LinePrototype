@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChokeManager : MonoBehaviour
 {
-    [SerializeField] private float inputWindow;
+    [SerializeField] private float inputWindow = 0.2f;
     private bool zeroIsChoking = false;
     private bool oneIsChoking = false;
 
