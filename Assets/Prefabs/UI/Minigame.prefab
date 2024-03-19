@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &786557704145169918
 RectTransform:
   m_ObjectHideFlags: 0
@@ -117,6 +117,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMinigameActive: 0
   chocking: 0
+  numberOfChokings: 3
+  CHOKED: 0
+  Player1Rect: {fileID: 0}
+  Player2Rect: {fileID: 0}
+  square1: {fileID: 0}
+  square2: {fileID: 0}
+  speed1: 1
+  speed2: 1
+  Bar: {fileID: 0}
 --- !u!1 &3397503349925442646
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +234,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.074272156, y: 0.25000012}
+  m_Offset: {x: -0.525589, y: 0.23432732}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -236,7 +245,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 49.437157, y: 0.4999998}
+  m_Size: {x: 63.594513, y: 51.492146}
   m_EdgeRadius: 0
 --- !u!1 &4240059909752536741
 GameObject:
@@ -423,7 +432,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 32, y: 0}
+  m_Offset: {x: -3.4524508, y: -0.5648842}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -434,5 +443,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 32, y: 32}
+  m_Size: {x: 61.76774, y: 50.464584}
   m_EdgeRadius: 0

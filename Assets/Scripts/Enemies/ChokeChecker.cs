@@ -13,7 +13,7 @@ public class ChokeChecker : MonoBehaviour
     public int collisionsWithSegment;
     public int collisionsWithMonster;
 
-    public MinigameController minigameController;
+    public GameObject minigame;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,7 @@ public class ChokeChecker : MonoBehaviour
         isChoked = false;
         collisionsWithMonster = 0;
         collisionsWithSegment = 0;
+        minigame.SetActive(false);
     }
 
     // Update is called once per frame
@@ -65,6 +66,7 @@ public class ChokeChecker : MonoBehaviour
 
         if (chokeCount >= raycasts * percentage ) 
         {
+            minigame.SetActive(true);
             Debug.Log("choked!!!");
             GetComponent<EffectComponent>().ApplyRopeEffect(SegmentUpgrades.Choke);
         }

@@ -1,69 +1,117 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
-
-
 
 public class MinigameController : MonoBehaviour
 {
     public bool isMinigameActive = false;
     public bool chocking = false;
+    public int numberOfChokings = 3;
+    public bool CHOKED = false;
+    private bool chocking1 = false;
+    private bool chocking2 = false;
+    private bool alreadyChoked = false;
 
-    private GameObject Player1Rect;
-    private GameObject Player2Rect;
+    public GameObject Player1Rect;
+    public GameObject Player2Rect;
 
-    public Transform square1;
-    public Transform square2;
+    public RectTransform square1;
+    public RectTransform square2;
 
-    public float speed = 1.0f;
-    private RectTransform Bar;
+    public float speed1 = 1.0f;
+    public float speed2 = 1.0f;
+    public RectTransform Bar;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(true);
-        Player1Rect = GameObject.Find("Player1");
-        Player2Rect = GameObject.Find("Player2");
-
-        Bar = GetComponent<RectTransform>();
-
-        //Player1Rect.GetComponent<BoxCollider2D>().enabled = true;
-        //Player2Rect.GetComponent<BoxCollider2D>().enabled = true;
+        //gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isMinigameActive)
+        if (isColliding() && !alreadyChoked)
         {
-            StartMinigame();
-            if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.M))
+            Debug.Log("collision!!!");
+            Debug.Log("Number of chockings: " + numberOfChokings);
+
+            if (chocking1 && chocking2)
             {
-                Player1Rect.GetComponent<BoxCollider2D>().enabled = true;
-                Player2Rect.GetComponent<BoxCollider2D>().enabled = true;
+                numberOfChokings--;
+                alreadyChoked = true; 
             }
-            
+        }
+
+        if (numberOfChokings == 0)
+        {
+            CHOKED = true;
+            Debug.Log("CHOCKED!!!");
+        }
+
+        MoveSquers();
+
+    }
+
+    /*private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(chocking)
+        {
+            Debug.Log("choking!!!");
+        }
+        else
+        {
+            Debug.Log("not choking!!!");
+        }
+
+    }*/
+
+    public void MoveSquers()
+    {
+        square1.transform.Translate(speed1 * Time.deltaTime, 0, 0);
+        square2.transform.Translate(speed2 * Time.deltaTime, 0, 0);
+
+        if (square1.anchoredPosition.x < Bar.anchoredPosition.x - 256 || square1.anchoredPosition.x > Bar.anchoredPosition.x + 256)
+        {
+            speed1 *= -1;
+
+        }
+        if (square2.anchoredPosition.x < Bar.anchoredPosition.x - 256 || square2.anchoredPosition.x > Bar.anchoredPosition.x + 256)
+        {
+            speed2 *= -1;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("choked!!!");
+    public bool isColliding()
+    {        
+        if(Vector2.Distance(square1.anchoredPosition, square2.anchoredPosition) < 200)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Debug.Log("The 1 is chocking!!!");
+                chocking1 = true;
+            }
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                Debug.Log("The 2 is chocking!!!");
+                chocking2 = true;
+            }
+
+            if (chocking1 && chocking2)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        else
+        {
+            chocking1 = false;
+            chocking2 = false;
+            alreadyChoked = false;
+
+            return false;
+        }
     }
-
-    public void StartMinigame()
-    {
-        float position1 = Mathf.PingPong(Time.time * speed, 1); // Normalizowana wartoœæ od 0 do 1
-        square1.position = new Vector3(Bar.rect.width * position1, square1.position.y, square1.position.z);
-
-        float position2 = 1 - Mathf.PingPong(Time.time * speed, 1); // Normalizowana wartoœæ od 1 do 0
-        square2.position = new Vector3(Bar.rect.width * position2, square2.position.y, square2.position.z);
-
-    }
-
 }

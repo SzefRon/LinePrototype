@@ -5,6 +5,7 @@ using UnityEngine;
 public class EffectComponent : MonoBehaviour
 {
     private HealthComponent healthComponent;
+    public GameObject minigame;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,11 @@ public class EffectComponent : MonoBehaviour
             {
                 Debug.Log("Choke");
                 float dmg = healthComponent.MaxHealthFraction(3);
+                    /*if (minigame.GetComponent<MinigameController>().CHOKED == true)
+                    {
+                        healthComponent.TakeDamageOverTime(SegmentUpgrades.Choke, dmg, 0.5f, 1);
+                       minigame.SetActive(false);
+                    }*/
                 healthComponent.TakeDamageOverTime(SegmentUpgrades.Choke, dmg, 0.5f, 1);
                 break;
             }
