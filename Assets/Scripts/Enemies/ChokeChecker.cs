@@ -65,15 +65,8 @@ public class ChokeChecker : MonoBehaviour
 
         if (chokeCount >= raycasts * percentage ) 
         {
-            minigameController.isMinigameActive = true;
-            if (minigameController.isMinigameActive)
-            {
-                if (minigameController.chocking)
-                {
                     Debug.Log("choked!!!");
                     Destroy(gameObject); 
-                }
-            }
         }
     }
 }

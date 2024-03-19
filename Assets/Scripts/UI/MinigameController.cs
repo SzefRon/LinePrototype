@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 
 
@@ -11,19 +12,28 @@ public class MinigameController : MonoBehaviour
     public bool isMinigameActive = false;
     public bool chocking = false;
 
-    private RectTransform Player1Rect;
-    private RectTransform Player2Rect;
-    private RectTransform BackGround;
+    private GameObject Player1Rect;
+    private GameObject Player2Rect;
+
+    public Transform square1;
+    public Transform square2;
+
+    public float speed = 1.0f;
+    private RectTransform Bar;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(false);
-        Player1Rect = GameObject.Find("Player1").GetComponent<RectTransform>();
-        Player2Rect = GameObject.Find("Player2").GetComponent<RectTransform>();
-        BackGround = GameObject.Find("Background").GetComponent<RectTransform>();
+        gameObject.SetActive(true);
+        Player1Rect = GameObject.Find("Player1");
+        Player2Rect = GameObject.Find("Player2");
+
+        Bar = GetComponent<RectTransform>();
+
+        //Player1Rect.GetComponent<BoxCollider2D>().enabled = true;
+        //Player2Rect.GetComponent<BoxCollider2D>().enabled = true;
     }
 
     // Update is called once per frame
@@ -31,30 +41,29 @@ public class MinigameController : MonoBehaviour
     {
         if (isMinigameActive)
         {
+            StartMinigame();
             if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.M))
             {
-                if (checkForCollision())
-                {
-                    
-                    chocking = true;
-                }
+                Player1Rect.GetComponent<BoxCollider2D>().enabled = true;
+                Player2Rect.GetComponent<BoxCollider2D>().enabled = true;
             }
             
         }
     }
 
-    bool checkForCollision()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        //check for collision on X with two rect
-        if (Player1Rect.position.x + Player1Rect.rect.width / 2 > Player2Rect.position.x - Player2Rect.rect.width / 2 &&
-                       Player1Rect.position.x - Player1Rect.rect.width / 2 < Player2Rect.position.x + Player2Rect.rect.width / 2)
-        {
-            return true;
-        }
-        else
-        {
-            Debug.Log("No collision");
-            return false;
-        }
+        Debug.Log("choked!!!");
     }
+
+    public void StartMinigame()
+    {
+        float position1 = Mathf.PingPong(Time.time * speed, 1); // Normalizowana wartoœæ od 0 do 1
+        square1.position = new Vector3(Bar.rect.width * position1, square1.position.y, square1.position.z);
+
+        float position2 = 1 - Mathf.PingPong(Time.time * speed, 1); // Normalizowana wartoœæ od 1 do 0
+        square2.position = new Vector3(Bar.rect.width * position2, square2.position.y, square2.position.z);
+
+    }
+
 }

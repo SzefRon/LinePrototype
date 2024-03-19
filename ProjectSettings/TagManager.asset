@@ -13,6 +13,8 @@ TagManager:
   - MirrorEffect
   - Segment
   - Rope
+  - Player1_Slider
+  - Player2_Slider
   layers:
   - Default
   - TransparentFX
