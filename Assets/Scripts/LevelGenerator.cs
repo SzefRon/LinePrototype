@@ -16,6 +16,9 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] GameObject[] enemiesPrefabs;
     [SerializeField] int maxEnemiesInRoom;
 
+    [SerializeField] GameObject[] pillars;
+    [SerializeField] int maxPillarsInRoom;
+
     [SerializeField] GameObject playerPrefab1;
     [SerializeField] GameObject playerPrefab2;
 
@@ -213,6 +216,22 @@ public class LevelGenerator : MonoBehaviour
             {
                 
                 int enemiesNum = Random.Range(0, maxEnemiesInRoom);
+                int pillarNum  = Random.Range(0, maxPillarsInRoom);
+
+                for (int i = 0; i < pillarNum; i++)
+                {
+                    Vector3 upBound = roomManager.bounds[0].transform.position;
+                    Vector3 botBound = roomManager.bounds[1].transform.position;
+
+                    float x = Random.Range(upBound.x, botBound.x);
+                    float z = Random.Range(upBound.z, botBound.z);
+
+                    int enemyType = Random.Range(0, pillars.Length);
+
+                    GameObject pillar = Instantiate(pillars[enemyType]);
+                    pillar.transform.position = new Vector3(x, 0, z);
+                    pillar.transform.parent = room.transform;
+                }
 
                 if (enemiesNum == 0)
                 {
