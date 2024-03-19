@@ -30,6 +30,7 @@ public class ChokeManager : MonoBehaviour
     {
         if(zeroIsChoking && oneIsChoking)
         {
+            ChokeList.DealDmgToObjectsInList();
             Debug.Log("CHOKE!!!");
             ctrZero = 0;
             ctrOne = 0;
@@ -38,13 +39,6 @@ public class ChokeManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (ctrZero > 0)

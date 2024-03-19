@@ -8,9 +8,10 @@ public static class ChokeList
 
     public static void DealDmgToObjectsInList()
     {
-        foreach (GameObject obj in chokedObjects) 
+        for(int i = 0; i < chokedObjects.Count; i++)
         {
-            var health = obj.GetComponent<HealthComponent>();   
+            var obj = chokedObjects[i];
+            var health = obj.GetComponent<HealthComponent>();
             float dmg = health.MaxHealthFraction(4);
             health.TakeDamage(dmg);
         }
