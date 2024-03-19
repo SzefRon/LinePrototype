@@ -264,6 +264,7 @@ public class LevelGenerator : MonoBehaviour
                         GameObject enemy = Instantiate(enemiesPrefabs[enemyType]);
                         enemy.transform.position = new Vector3(x, 0, z);
                         enemy.transform.parent = room.transform;
+                        enemy.GetComponent<EnemyScript>().dropRate = roomManager.pillarNum;
                         roomManager.enemies.Add(enemy);
                     }
 

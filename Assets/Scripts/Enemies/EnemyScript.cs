@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+
     [SerializeField] public List<GameObject> followTargets;
     [SerializeField] private float followSpeed;
     [SerializeField] private float followRange;
@@ -10,6 +11,7 @@ public class EnemyScript : MonoBehaviour
 
     [SerializeField] public int collisionsToDeath;
     [SerializeField] public GameObject bloodSplashPrefab;
+    public int dropRate;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,11 @@ public class EnemyScript : MonoBehaviour
         {
             collisions--;
         }
+    }
+
+    public void Drop()
+    {
+        FindAnyObjectByType<DropManager>().Drop(transform.position, dropRate);
     }
 
     void FixedUpdate()

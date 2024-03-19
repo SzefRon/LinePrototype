@@ -72,6 +72,7 @@ public class HealthComponent : MonoBehaviour
         if (isDying) return;
         isDying = true;
         ChokeList.chokedObjects.Remove(gameObject);
+        GetComponent<EnemyScript>().Drop();
         GetComponent<EnemyScript>().enabled = false;
         StartCoroutine(DieAnimation());
     }

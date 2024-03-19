@@ -24,7 +24,7 @@ public class ChokeManager : MonoBehaviour
         }
         else if (a == 1) 
         {
-            if (zeroIsChoking)
+            if (zeroIsChoking)  
             {
                 ChokeSuccessful();
             }
