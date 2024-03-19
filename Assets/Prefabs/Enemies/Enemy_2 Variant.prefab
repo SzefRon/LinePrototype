@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456830144427968659, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
       propertyPath: chokeDistance
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2340388160093727874, guid: d73ee9113974e314cbfc33c578dfaa1b, type: 3}
       propertyPath: hp

@@ -2,17 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnSelectionChangedArgs : EventArgs
-{
-    private int currentSelection;
-    
-    public OnSelectionChangedArgs(int currentSelection)
-    {
-        this.currentSelection = currentSelection;
-    }
-    public int CurrentSelection { get { return currentSelection; } }
-}
-
 public class RopeSelectionManager : MonoBehaviour
 {
     [SerializeField] public RopeGenerator ropeGenerator;
@@ -27,16 +16,7 @@ public class RopeSelectionManager : MonoBehaviour
     public List<GameObject> selectedSmallSegments = new();
     private int segmentNum;
 
-    public event EventHandler<OnSelectionChangedArgs> SelectionChanged;
-
-    public virtual void OnSelectionChanged(OnSelectionChangedArgs e)
-    {
-        EventHandler<OnSelectionChangedArgs> handler = SelectionChanged;
-        if (handler != null)
-        {
-            handler(this, e);
-        }
-    }
+   
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +25,8 @@ public class RopeSelectionManager : MonoBehaviour
         segmentNum = ropeGenerator.segmentNum;
         segInSeg = (int)ropeGenerator.smallSegmentsNum / segmentNum;
     }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -60,7 +42,6 @@ public class RopeSelectionManager : MonoBehaviour
             {
                 ropeGenerator.smallSegments[i].transform.GetComponent<MeshRenderer>().material = defaultMaterial;
             }
-            OnSelectionChanged(new OnSelectionChangedArgs(selectedBigSegment));
         }
 
         // Przesuniecie od gracza 1 do gracza 2. W domysle bedzie to udostepnione graczowi 1
@@ -73,7 +54,6 @@ public class RopeSelectionManager : MonoBehaviour
             {
                 selectedBigSegment = 0;
             }
-            OnSelectionChanged(new OnSelectionChangedArgs(selectedBigSegment));
         }
 
 
@@ -89,7 +69,6 @@ public class RopeSelectionManager : MonoBehaviour
             {
                 selectedBigSegment--;
             }
-            OnSelectionChanged(new OnSelectionChangedArgs(selectedBigSegment));
         }
 
         // Wchodz jesli jest cos wybrane
@@ -123,6 +102,11 @@ public class RopeSelectionManager : MonoBehaviour
                     selectedSmallSegments.Add(ropeGenerator.smallSegments[i]);
                 }
             }
+        }
+    
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            
         }
     }
 }

@@ -53,10 +53,9 @@ public class UpgradePicker : MonoBehaviour
     public SegmentUpgrades comboWithPreviousSegment = SegmentUpgrades.None;
     public SegmentUpgrades comboWithNextSegment = SegmentUpgrades.None;
 
-    ComboManager comboManager;
     RopeSelectionManager ropeSelectionManager;
-    RopeUpgradesModifier modifier;
-    // Start is called before the first frame update
+  
+/*    // Start is called before the first frame update
     void Start()
     {
         comboManager = FindObjectOfType<ComboManager>();
@@ -193,5 +192,5 @@ public class UpgradePicker : MonoBehaviour
     public void AddSlime()
     {
         OnUpgradePicked(new UpgradePickedArgs(SegmentUpgrades.Slime));
-    }
+    }*/
 }

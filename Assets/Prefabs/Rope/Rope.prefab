@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 7437676848645323050}
   - component: {fileID: 5786150756979566397}
   - component: {fileID: 6777137705573853140}
-  - component: {fileID: 3067376122058386996}
-  - component: {fileID: 2992781348547531614}
+  - component: {fileID: 8762135555964655661}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Rope
@@ -72,8 +71,9 @@ MonoBehaviour:
   defaultMaterial: {fileID: 2100000, guid: 92cd24af8bb70cf46a9d8ff215c40201, type: 2}
   previousSelectedBigSegment: 0
   selectedBigSegment: -1
+  segInSeg: 0
   selectedSmallSegments: []
---- !u!114 &3067376122058386996
+--- !u!114 &8762135555964655661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,25 +82,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4378397731803685280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 456b3944763c86f4e88a48e4a88628a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e9105e0813df9145b367c12fcd2b50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 5786150756979566397}
-  manager: {fileID: 6777137705573853140}
-  bladesPrefab: {fileID: 7772545682637155757, guid: c3a639d566ad1da439a1ee052c72be7e, type: 3}
-  flamePrefab: {fileID: 868394749264835347, guid: 0737e11e8b1070147bad8f439b7790db, type: 3}
-  shockPrefab: {fileID: 868394749264835347, guid: 96e5acf5eff25ce4eb2acb6b66c36820, type: 3}
-  mirrorPrefab: {fileID: 6713796708977132582, guid: e24dcb24ee5c53b4a8e635a7f6097ede, type: 3}
---- !u!114 &2992781348547531614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4378397731803685280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc5f1963256b4454e830f4cf4aab5a1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  segments: 

@@ -198,8 +198,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycasts: 18
-  chokeDistance: 0.75
-  percentage: 0.8
+  chokeDistance: 1
+  percentage: 0.75
+  previousIsChoked: 0
   isChoked: 0
   collisionsWithSegment: 0
   collisionsWithMonster: 0

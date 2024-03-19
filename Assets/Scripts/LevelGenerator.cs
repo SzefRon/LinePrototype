@@ -19,9 +19,6 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] GameObject playerPrefab1;
     [SerializeField] GameObject playerPrefab2;
 
-    //GameObject player1;
-    //GameObject player2;
-
     HashSet<Vector3> roomsPositions = new();
     HashSet<Vector3> horizontalCorridorPosition = new();
 
@@ -34,7 +31,8 @@ public class LevelGenerator : MonoBehaviour
     List<GameObject> rooms = new();
 
     GameObject Level;
-
+    GameObject Rooms;
+    GameObject Corridors;
 
     private void Start()
     {
@@ -49,8 +47,17 @@ public class LevelGenerator : MonoBehaviour
         }
 
         Level = new GameObject();
+        Rooms = new();
+        Corridors = new();
 
-        Generate();
+        Level.name = "Level";
+        Rooms.name = "Rooms";
+        Corridors.name = "Corridors";
+
+        Rooms.transform.parent = Level.transform;
+        Corridors.transform.parent = Level.transform;
+
+        GenerateRooms();
         CreateCorridorsHorizontal();
         ConnectDepths();
 
@@ -65,8 +72,6 @@ public class LevelGenerator : MonoBehaviour
         Populate();
 
         Level.transform.eulerAngles = new Vector3(0.0f, 225.0f, 0.0f);
-
-        
     }
 
     void NewRoom(int sign, Vector3 previousPosition, int currentWidth, int depth)
@@ -113,7 +118,7 @@ public class LevelGenerator : MonoBehaviour
             GameObject go = Instantiate(corridorPrefab);
             go.transform.position = a;
             go.transform.eulerAngles = new Vector3(0.0f, -90.0f, 0.0f);
-            go.transform.parent = Level.transform;
+            go.transform.parent = Corridors.transform;
         }
     }
 
@@ -140,12 +145,12 @@ public class LevelGenerator : MonoBehaviour
             {
                 GameObject go = Instantiate(corridorPrefab);
                 go.transform.position = corridorDepths[i][j];
-                go.transform.parent = Level.transform;
+                go.transform.parent = Corridors.transform;
             }
         }
     }
 
-    void Generate()
+    void GenerateRooms()
     {
         roomsPositions.Add(startingPosition);
         depths[0].Add(startingPosition);
@@ -193,7 +198,7 @@ public class LevelGenerator : MonoBehaviour
         {
             GameObject go = Instantiate(roomPrefab);
             go.transform.position = a;
-            go.transform.parent = Level.transform;
+            go.transform.parent = Rooms.transform;
             rooms.Add(go);
         }
     }

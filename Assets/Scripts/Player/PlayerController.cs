@@ -1,4 +1,5 @@
 using System;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,33 +9,56 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float acceleration;
     [SerializeField] private string horizontalInput;
     [SerializeField] private string verticalInput;
+
+    [SerializeField] private KeyCode pullButton;
+
+    [SerializeField] private KeyCode upButton;
     public int index;
     public Vector2 input;
 
     private Rigidbody rb;
+    private Vector3 direciton;
 
+    private ChokeManager chokeManager;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
-        
+        chokeManager = FindAnyObjectByType<ChokeManager>();
     }
 
     public void MovementHandling(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>().normalized;
+        
     }
 
     void FixedUpdate()
     {
         //Debug.Log(input);
         Vector3 v = new(input.x * acceleration * Time.fixedDeltaTime, rb.velocity.y, input.y * acceleration * Time.fixedDeltaTime);
+        
         v = v.normalized * maxSpeed;
+        
         rb.AddForce(v, ForceMode.Impulse);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         input = new Vector2(Input.GetAxisRaw(horizontalInput), Input.GetAxisRaw(verticalInput));
+        
+        if(input.sqrMagnitude > 0) 
+        {
+            direciton = input;
+        }
     }
 
-    
+    private void Update()
+    {
+        if (Input.GetKeyDown(pullButton))
+        {
+            Debug.Log($"{transform.name} pull");
+            Debug.Log(direciton);
+            rb.AddForce(direciton * 20.0f, ForceMode.Impulse);
+            chokeManager.PullRope(index);
+            
+        }
+    }
 }

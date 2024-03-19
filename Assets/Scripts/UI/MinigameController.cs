@@ -26,12 +26,13 @@ public class MinigameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //gameObject.SetActive(false);
+        // gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (isColliding() && !alreadyChoked)
         {
             Debug.Log("collision!!!");
@@ -39,6 +40,7 @@ public class MinigameController : MonoBehaviour
 
             if (chocking1 && chocking2)
             {
+                ChokeList.DealDmgToObjectsInList();
                 numberOfChokings--;
                 alreadyChoked = true; 
             }
@@ -50,24 +52,12 @@ public class MinigameController : MonoBehaviour
             Debug.Log("CHOCKED!!!");
         }
 
-        MoveSquers();
+        MoveSquares();
 
     }
 
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(chocking)
-        {
-            Debug.Log("choking!!!");
-        }
-        else
-        {
-            Debug.Log("not choking!!!");
-        }
-
-    }*/
-
-    public void MoveSquers()
+   
+    public void MoveSquares()
     {
         square1.transform.Translate(speed1 * Time.deltaTime, 0, 0);
         square2.transform.Translate(speed2 * Time.deltaTime, 0, 0);
@@ -85,7 +75,7 @@ public class MinigameController : MonoBehaviour
 
     public bool isColliding()
     {        
-        if(Vector2.Distance(square1.anchoredPosition, square2.anchoredPosition) < 200)
+        if(Vector2.Distance(square1.anchoredPosition, square2.anchoredPosition) < 200)  
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {

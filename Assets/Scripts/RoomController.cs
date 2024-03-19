@@ -28,15 +28,23 @@ public class RoomController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        enemies.RemoveAll(item => item == null);
         if (isOpen)
             foreach (GameObject enemy in enemies)
             {
-                enemy.SetActive(true);
+                if (enemy is not null)
+                {
+                    enemy.SetActive(true);
+                }
+                
             }
         else
             foreach (GameObject enemy in enemies)
             {
-                enemy.SetActive(false);
+                if(enemy is not null) 
+                {
+                    enemy.SetActive(false);
+                }
             }
     }
 

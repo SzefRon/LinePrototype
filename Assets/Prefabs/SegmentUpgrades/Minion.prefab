@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1144519273305401397}
   - component: {fileID: -7469103806659179076}
   m_Layer: 8
-  m_Name: Boom
+  m_Name: Minion
   m_TagString: FlameEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,7 +305,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5471698, g: 0.10065861, b: 0.14537697, a: 1}
+      maxColor: {r: 0.71907777, g: 0.051886797, b: 0.78039217, a: 0.7882353}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0, b: 0, a: 0.74509805}
@@ -2928,9 +2928,9 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 4.84
+    frequency: 1
     damping: 1
-    octaves: 3
+    octaves: 2
     octaveMultiplier: 0.5
     octaveScale: 2
     quality: 2
@@ -4016,9 +4016,9 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
+    enabled: 1
     mode: 0
-    ratio: 1
+    ratio: 0
     lifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -4089,7 +4089,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.990566, g: 0.13550198, b: 0.6932667, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4207,7 +4207,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.9786186, g: 0, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4859,7 +4859,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e66b74395f9f285429d044a4a1e686e2, type: 2}
+  - {fileID: 2100000, guid: 7922ec0644ae87c46a622ff1f509627c, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

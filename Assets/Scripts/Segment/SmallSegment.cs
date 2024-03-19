@@ -15,6 +15,7 @@ public enum SegmentUpgrades
     Lifesteal,
     Shield,
     Slime,
+    Minion,
 
     // Doubles
     DoubleFire,

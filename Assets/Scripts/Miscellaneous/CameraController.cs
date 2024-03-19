@@ -21,5 +21,7 @@ public class CameraController : MonoBehaviour
         transform.position += -1.0f * height * Vector3.forward;
         midpoint.y = 1.0f;
         transform.LookAt(midpoint);
+
+        Debug.Log(ChokeList.chokedObjects.Count);
     }
 }

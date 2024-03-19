@@ -8,6 +8,7 @@ public class ChokeChecker : MonoBehaviour
     [SerializeField] float chokeDistance;
     [SerializeField] float percentage;
     int angleStep;
+    public bool previousIsChoked;
     public bool isChoked;
     
     public int collisionsWithSegment;
@@ -19,6 +20,7 @@ public class ChokeChecker : MonoBehaviour
     void Start()
     {
         angleStep = 360 / raycasts;
+        previousIsChoked = false;   
         isChoked = false;
         collisionsWithMonster = 0;
         collisionsWithSegment = 0;
@@ -28,6 +30,7 @@ public class ChokeChecker : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        previousIsChoked = isChoked;
         collisionsWithMonster = 0;
         collisionsWithSegment = 0;
         int layerMask = 288;
@@ -67,8 +70,28 @@ public class ChokeChecker : MonoBehaviour
         if (chokeCount >= raycasts * percentage ) 
         {
             minigame.SetActive(true);
-            Debug.Log("choked!!!");
-            GetComponent<EffectComponent>().ApplyRopeEffect(SegmentUpgrades.Choke);
+            //Debug.Log("choked!!!");
+            //GetComponent<EffectComponent>().ApplyRopeEffect(SegmentUpgrades.Choke);
+            isChoked = true;
+        }
+        else
+        {
+            isChoked= false;
+        }
+
+        if (isChoked)
+        {
+            if (!previousIsChoked)
+            {
+                ChokeList.chokedObjects.Add(gameObject);
+            }
+        }
+        else
+        {
+            if(previousIsChoked) 
+            {
+                ChokeList.chokedObjects.Remove(gameObject);
+            }
         }
     }
 }
