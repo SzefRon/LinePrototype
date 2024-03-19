@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -18,6 +19,8 @@ public class LevelGenerator : MonoBehaviour
 
     [SerializeField] GameObject[] pillars;
     [SerializeField] int maxPillarsInRoom;
+
+    [SerializeField] GameObject altarPrefab;
 
     [SerializeField] GameObject playerPrefab1;
     [SerializeField] GameObject playerPrefab2;
@@ -208,6 +211,9 @@ public class LevelGenerator : MonoBehaviour
    
     void Populate()
     {
+        GameObject startingAltar = Instantiate(altarPrefab);
+        startingAltar.transform.position = new Vector3(-5.0f, 0.0f, 0.0f);
+
         bool first = true;
         foreach (var room in rooms) 
         {
@@ -231,11 +237,17 @@ public class LevelGenerator : MonoBehaviour
                     GameObject pillar = Instantiate(pillars[enemyType]);
                     pillar.transform.position = new Vector3(x, 0, z);
                     pillar.transform.parent = room.transform;
+                    roomManager.pillars.Add(pillar);
                 }
+
+                roomManager.pillarNum = roomManager.pillars.Count;  
 
                 if (enemiesNum == 0)
                 {
-                    //chill room
+                    GameObject altar = Instantiate(altarPrefab);
+                    altar.transform.position = roomManager.gameObject.transform.position;
+                    altar.transform.parent = room.transform;
+                    
                 }
                 else
                 {
@@ -254,6 +266,8 @@ public class LevelGenerator : MonoBehaviour
                         enemy.transform.parent = room.transform;
                         roomManager.enemies.Add(enemy);
                     }
+
+                    roomManager.enemyNum = roomManager.enemies.Count;
                 }
             }
             else

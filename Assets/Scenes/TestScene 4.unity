@@ -162,11 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40103a0d14d05004aa230a887f9031c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chokeFrames: 10
-  ctrZero: 0
-  ctrOne: 0
-  zeroIsChoking: 0
-  oneIsChoking: 0
+  inputWindow: 0
 --- !u!4 &590512531
 Transform:
   m_ObjectHideFlags: 0
@@ -368,6 +364,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1274530771298356088, guid: bdae106fcdc24d244b0f1d3d5116a758, type: 3}
+      propertyPath: maxSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274530771298356088, guid: bdae106fcdc24d244b0f1d3d5116a758, type: 3}
       propertyPath: pullButton
       value: 113
       objectReference: {fileID: 0}
@@ -499,6 +499,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1274530771298356088, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
+      propertyPath: maxSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1274530771298356088, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
       propertyPath: pullButton
       value: 281
@@ -709,6 +713,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5626269847108663609, guid: eab858cc62a9cea428b7a52ca9d7d7eb, type: 3}
+      propertyPath: altarPrefab
+      value: 
+      objectReference: {fileID: 2794365571516690428, guid: f4c66037a5b34134b9cebbb6f9a35a6f, type: 3}
+    - target: {fileID: 5626269847108663609, guid: eab858cc62a9cea428b7a52ca9d7d7eb, type: 3}
+      propertyPath: maxPillarsInRoom
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626269847108663609, guid: eab858cc62a9cea428b7a52ca9d7d7eb, type: 3}
+      propertyPath: pillars.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5626269847108663609, guid: eab858cc62a9cea428b7a52ca9d7d7eb, type: 3}
+      propertyPath: pillars.Array.data[0]
+      value: 
+      objectReference: {fileID: 1999084102569924409, guid: f0b1eacb1b1853d41adb715a14a4bee1, type: 3}
     - target: {fileID: 8418150604245025842, guid: eab858cc62a9cea428b7a52ca9d7d7eb, type: 3}
       propertyPath: m_Name
       value: Generator
@@ -734,6 +754,10 @@ PrefabInstance:
       propertyPath: start
       value: 
       objectReference: {fileID: 464581751}
+    - target: {fileID: 2179843811742750892, guid: 67e64759d7e42f7468200b6e217246b7, type: 3}
+      propertyPath: segmentNum
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2971032972066277051, guid: 67e64759d7e42f7468200b6e217246b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
