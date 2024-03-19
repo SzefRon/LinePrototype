@@ -50,6 +50,9 @@ MonoBehaviour:
   acceleration: 100
   horizontalInput: Horizontal 2
   verticalInput: Vertical 2
+  pullButton: 0
+  upButton: 0
+  pullCooldown: 1
   index: 1
   input: {x: 0, y: 0}
 --- !u!54 &2199804774072115411
