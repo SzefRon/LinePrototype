@@ -4,60 +4,60 @@ using UnityEngine;
 
 public class ChokeManager : MonoBehaviour
 {
-    public   int chokeFrames;
-
-    public int ctrZero = 0;
-    public int ctrOne = 0;
-
-    public bool zeroIsChoking = false;
-    public bool oneIsChoking = false;
+    [SerializeField] private float inputWindow;
+    private bool zeroIsChoking = false;
+    private bool oneIsChoking = false;
 
     public void PullRope(int a)
     {
         if(a == 0)
         {
-            zeroIsChoking = true;
-            ctrZero = chokeFrames;
+            if (oneIsChoking)
+            {
+                ChokeSuccessful();
+            }
+            else if (!zeroIsChoking)
+            {
+                zeroIsChoking = true;
+                StartCoroutine(Choke(0));
+            }
         }
         else if (a == 1) 
         {
-            oneIsChoking = true;
-            ctrOne = chokeFrames;
+            if (zeroIsChoking)
+            {
+                ChokeSuccessful();
+            }
+            else if (!oneIsChoking)
+            {
+                oneIsChoking = true;
+                StartCoroutine(Choke(1));
+            }
         }
     }
 
-    void Choke()
+    private IEnumerator Choke(int index)
     {
-        if(zeroIsChoking && oneIsChoking)
+        if (index == 0)
         {
-            ChokeList.DealDmgToObjectsInList();
-            Debug.Log("CHOKE!!!");
-            ctrZero = 0;
-            ctrOne = 0;
+            yield return new WaitForSeconds(inputWindow);
             zeroIsChoking = false;
+        }
+        else if (index == 1)
+        {
+            yield return new WaitForSeconds(inputWindow);
             oneIsChoking = false;
         }
     }
 
-    void FixedUpdate()
+    private void ChokeSuccessful()
     {
-        if (ctrZero > 0)
-        {
-            ctrZero--;
-        }
-        else
-        {
-            zeroIsChoking = false;
-        }
+        Debug.Log("Choke Successful");
+    }
 
-        if (ctrOne > 0)
-        {
-            ctrOne--;
-        }
-        else
-        {
-            oneIsChoking = false;   
-        }
-        Choke();
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 }
