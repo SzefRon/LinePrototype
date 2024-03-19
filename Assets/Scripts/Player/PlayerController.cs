@@ -54,11 +54,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(pullButton))
         {
-            Debug.Log($"{transform.name} pull");
-            Debug.Log(direciton);
             rb.AddForce(direciton * 20.0f, ForceMode.Impulse);
             chokeManager.PullRope(index);
-            
         }
     }
 }
