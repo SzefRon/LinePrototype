@@ -12,6 +12,16 @@ public class DropScript : MonoBehaviour
         {
             Debug.Log($"{type} upgrade collected!");
             Destroy(gameObject);
+
+            var inventory = FindAnyObjectByType<Inventory>();
+            if (inventory.inventory.ContainsKey(type))
+            {
+                inventory.inventory[type]++;
+            }
+            else
+            {
+                inventory.inventory.Add(type, 1);   
+            }
         }
     }
 }

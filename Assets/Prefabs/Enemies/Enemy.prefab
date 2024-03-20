@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6357e6af76e36f046b9b1f480dbc2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  morphPrefab: {fileID: 5315047056958734298, guid: c2b10513c038631498666bbf363bc643, type: 3}
+  morphPrefab: {fileID: 5789979294561312146, guid: 54b179a372f0a4042b73491d38eb3b1f, type: 3}
   followTargets:
   - {fileID: 5315047056958734298, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
   - {fileID: 5315047056958734298, guid: bdae106fcdc24d244b0f1d3d5116a758, type: 3}
@@ -209,7 +209,7 @@ MonoBehaviour:
   isChoked: 0
   collisionsWithSegment: 0
   collisionsWithMonster: 0
-  minigame: {fileID: 437664086422363873, guid: cba2c78f7ab76f24a821fc1577afe308, type: 3}
+  minigame: {fileID: 5315047056958734298, guid: c2b10513c038631498666bbf363bc643, type: 3}
 --- !u!1001 &6656739873447068346
 PrefabInstance:
   m_ObjectHideFlags: 0

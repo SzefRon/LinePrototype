@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!isPulling)
             {
-                Debug.Log("Pulling");
+                Debug.Log("Pulling");   
                 rb.AddForce(direciton * 100.0f, ForceMode.Impulse);
                 chokeManager.PullRope(index);
                 StartCoroutine(PullCooldown());
