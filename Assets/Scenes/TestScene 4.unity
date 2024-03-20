@@ -618,7 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bb45bb3ec0cfc46b0355236e0107c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMeshProUGUI: {fileID: 0}
+  textMeshProUGUI: {fileID: 797316933}
 --- !u!4 &1206091938
 Transform:
   m_ObjectHideFlags: 0

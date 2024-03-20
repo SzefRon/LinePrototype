@@ -20,7 +20,7 @@ public class DropScript : MonoBehaviour
             }
             else
             {
-                inventory.inventory.Add(type, 1);   
+                inventory.inventory.Add(type, 1);       
             }
         }
     }

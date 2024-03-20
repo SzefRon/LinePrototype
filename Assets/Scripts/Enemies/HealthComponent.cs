@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
-    [SerializeField] private float damageCooldownTime = 0.8f;
-    [SerializeField] private Renderer renderer;
+    [SerializeField] public float maxHealth;
+    [SerializeField] public float damageCooldownTime = 0.8f;
+    [SerializeField] public Renderer renderer;
     public float Health
     {
         get { return health; }
     }
-    private float health;
-    private Color startColor;
+    public float health;
+    public Color startColor;
     public bool isMonster = false;
-    private bool isDying = false;
-    private Dictionary<SegmentUpgrades, bool> dotCooldown = new();
-    private bool damageCooldown = false;
+    public bool isDying = false;
+    public Dictionary<SegmentUpgrades, bool> dotCooldown = new();
+    public bool damageCooldown = false;
 
     [System.NonSerialized] public bool willMorph = false;
 
