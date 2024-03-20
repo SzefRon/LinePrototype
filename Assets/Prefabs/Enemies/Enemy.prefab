@@ -109,10 +109,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6101681
+  m_Radius: 0.6128148
   m_Height: 4.279463
   m_Direction: 1
-  m_Center: {x: -0.041269302, y: 2.1386294, z: -0.15143728}
+  m_Center: {x: 0.0022330284, y: 2.1386294, z: 0.0041635036}
 --- !u!114 &2340388160093727874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6357e6af76e36f046b9b1f480dbc2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  morphPrefab: {fileID: 5315047056958734298, guid: c2b10513c038631498666bbf363bc643, type: 3}
   followTargets:
   - {fileID: 5315047056958734298, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
   - {fileID: 5315047056958734298, guid: bdae106fcdc24d244b0f1d3d5116a758, type: 3}
@@ -132,6 +133,7 @@ MonoBehaviour:
   followRange: 8.64
   collisionsToDeath: 16
   bloodSplashPrefab: {fileID: 7043002562970436748, guid: ab0abe6a42efe2c4cbec58ca44d89f7e, type: 3}
+  dropRate: 0
 --- !u!54 &-4770632652049286998
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -173,8 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   damageCooldownTime: 0.8
-  renderer: {fileID: 0}
-  startColor: {r: 0, g: 0, b: 0, a: 0}
+  renderer: {fileID: 3052103280444718026}
   isMonster: 1
 --- !u!114 &-1747557094991509134
 MonoBehaviour:

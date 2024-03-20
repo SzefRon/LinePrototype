@@ -6,13 +6,13 @@ public class HealthComponent : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
     [SerializeField] private float damageCooldownTime = 0.8f;
+    [SerializeField] private Renderer renderer;
     public float Health
     {
         get { return health; }
     }
     private float health;
-    public Renderer renderer;
-    public Color startColor;
+    private Color startColor;
     public bool isMonster = false;
     private bool isDying = false;
     private Dictionary<SegmentUpgrades, bool> dotCooldown = new();
@@ -23,10 +23,7 @@ public class HealthComponent : MonoBehaviour
     void Awake()
     {       
         health = maxHealth;
-        if (TryGetComponent<Renderer>(out renderer))
-        {
-            startColor = renderer.material.color;
-        }
+        startColor = renderer.material.color;
     }
 
     public float MaxHealthFraction(float fraction)
@@ -95,6 +92,10 @@ public class HealthComponent : MonoBehaviour
         isDying = true;
         if (isMonster)
         {
+            if (willMorph)
+            {
+                GetComponent<EnemyScript>().Morph();
+            }
             ChokeList.chokedObjects.Remove(gameObject);
             GetComponent<EnemyScript>().Drop();
             GetComponent<EnemyScript>().enabled = false;

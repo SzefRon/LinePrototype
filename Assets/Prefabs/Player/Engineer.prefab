@@ -97,6 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   damageCooldownTime: 0.8
+  renderer: {fileID: 7492053974384513300}
+  isMonster: 0
 --- !u!1 &7219511283122359415
 GameObject:
   m_ObjectHideFlags: 0

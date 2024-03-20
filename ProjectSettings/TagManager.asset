@@ -15,6 +15,7 @@ TagManager:
   - Rope
   - Player1_Slider
   - Player2_Slider
+  - Minion
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - SegmentEffect
   - Monster
   - ShockLayer
-  - 
+  - Minion
   - 
   - 
   - 

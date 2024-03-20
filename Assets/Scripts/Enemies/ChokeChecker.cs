@@ -50,7 +50,7 @@ public class ChokeChecker : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(begining, newAngle, out hit, chokeDistance))
             {
-                if(hit.transform.tag == "Segment")
+                if(hit.transform.tag == "Segment" || hit.transform.tag == "FlameEffect")
                 {
                     collisionsWithSegment++;
                 }

@@ -3,7 +3,6 @@ using UnityEngine;
 public enum SegmentUpgrades
 {
     None,
-    Choke,
 
     // Basic
     Fire,
@@ -92,6 +91,7 @@ public class SmallSegment : MonoBehaviour
         if (ec != null)
         {
             ec.ApplyRopeEffect(segmentType);
+            Debug.Log(segmentType);
         }
     }
 }

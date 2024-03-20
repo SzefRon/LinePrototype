@@ -20,6 +20,7 @@ public class RopeModifier : MonoBehaviour
         foreach (var segment in ropeSelectionManager.selectedSmallSegments)
         {
             var attachmentPoints = segment.GetComponent<ModifiableSegment>().attachmentPoints;
+            segment.GetComponent<SmallSegment>().segmentType = type;
 
             for (int i = 0; i < attachmentPoints.Length; i++)
             {
@@ -61,7 +62,7 @@ public class RopeModifier : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1)) 
         {
-            AddUpgrade(minonEffect, minionType);
+            AddUpgrade(minonEffect, SegmentUpgrades.Minion);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha0))

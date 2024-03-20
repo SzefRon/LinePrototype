@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-
+    [SerializeField] private GameObject morphPrefab;
     [SerializeField] public List<GameObject> followTargets;
     [SerializeField] private float followSpeed;
     [SerializeField] private float followRange;
     private uint collisions = 0;
+    private ChokeChecker chokeChecker;
 
     [SerializeField] public int collisionsToDeath;
     [SerializeField] public GameObject bloodSplashPrefab;
@@ -17,6 +18,19 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         followTargets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+        chokeChecker = GetComponent<ChokeChecker>();
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Minion"))
+        {
+            if (!chokeChecker.isChoked)
+            {
+                var healthComponent = other.gameObject.GetComponent<HealthComponent>();
+                healthComponent.TakeDamage(5.0f);
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -68,5 +82,10 @@ public class EnemyScript : MonoBehaviour
         {
             transform.position += followSpeed * Time.fixedDeltaTime * directionToClosest.normalized;
         }
+    }
+
+    public void Morph()
+    {
+        Instantiate(morphPrefab, transform.position - Vector3.down * 0.5f, transform.rotation);
     }
 }
