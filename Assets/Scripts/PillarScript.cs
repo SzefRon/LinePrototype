@@ -15,6 +15,7 @@ public class PillarScript : MonoBehaviour
 
     [SerializeField] public Material hasntHealedMaterial;
     [SerializeField] public Material healedMaterial;
+    [SerializeField] public ParticleSystem ps;
 
     public List<GameObject> players = new();
 
@@ -79,5 +80,6 @@ public class PillarScript : MonoBehaviour
             player.GetComponent<HealthComponent>().ForceHeal(healAmount);
         }
         hasHealed = true;
+        ps.Emit(50);
     }
 }
