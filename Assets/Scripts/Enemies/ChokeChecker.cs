@@ -5,6 +5,9 @@ public class ChokeChecker : MonoBehaviour
     [SerializeField] int raycasts;
     [SerializeField] float chokeDistance;
     [SerializeField] float percentage;
+
+    [SerializeField] GameObject canvas;
+
     int angleStep;
     public bool previousIsChoked;
     public bool isChoked;
@@ -59,6 +62,15 @@ public class ChokeChecker : MonoBehaviour
 
                 Debug.DrawRay(begining, newAngle * hit.distance, Color.yellow);
             }
+        }
+
+        if(collisionsWithSegment > 0)
+        {
+            canvas.SetActive(true);
+        }
+        else
+        {
+            canvas.SetActive(false);
         }
 
         chokeCount = collisionsWithMonster + collisionsWithSegment;
