@@ -47,7 +47,9 @@ public class MinionScript : MonoBehaviour
     {
         if (followTarget == null)
         {
-            Debug.Log("No target!! WTF?");
+            var player= GameObject.FindGameObjectsWithTag("Player");
+            followTarget = player[0].transform;
+            Debug.Log("Should follow Player");
             return;
         }
         Vector3 direction = (followTarget.position - transform.position).normalized;

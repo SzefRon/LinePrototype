@@ -7,6 +7,8 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] public float maxHealth;
     [SerializeField] public float damageCooldownTime = 0.8f;
     [SerializeField] public Renderer renderer;
+    [SerializeField] public int morphUpgrades;
+    [SerializeField] public int morphUpgradesToAddOneMorph = 2;
     public float Health
     {
         get { return health; }
@@ -94,7 +96,10 @@ public class HealthComponent : MonoBehaviour
         {
             if (willMorph)
             {
-                GetComponent<EnemyScript>().Morph();
+                for(int i = morphUpgrades / morphUpgradesToAddOneMorph; i > 0; i--)
+                {
+                    GetComponent<EnemyScript>().Morph();
+                }
             }
             ChokeList.chokedObjects.Remove(gameObject);
             GetComponent<EnemyScript>().Drop();
