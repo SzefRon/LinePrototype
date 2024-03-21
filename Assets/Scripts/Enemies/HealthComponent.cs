@@ -38,6 +38,7 @@ public class HealthComponent : MonoBehaviour
         if (damageCooldown) return;
         StartCoroutine(DamageCooldown());
         ForceDamage(damage);
+        gameObject.GetComponent<PlayerController>().dummy.GetComponent<DummyController>().Dmg();
     }
 
     IEnumerator DamageCooldown()
@@ -70,6 +71,7 @@ public class HealthComponent : MonoBehaviour
         else
         {
             StartCoroutine(Flash(Color.green));
+            gameObject.GetComponent<PlayerController>().dummy.GetComponent<DummyController>().Heal();
         }
     }
 
