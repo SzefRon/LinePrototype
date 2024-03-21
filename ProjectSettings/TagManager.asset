@@ -16,6 +16,7 @@ TagManager:
   - Player1_Slider
   - Player2_Slider
   - Minion
+  - Altar
   layers:
   - Default
   - TransparentFX

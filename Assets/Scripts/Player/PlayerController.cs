@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(PullCooldown());
             }
         }
+        checkIfAltarInRange();
     }
 
     private IEnumerator PullCooldown()
@@ -73,5 +74,24 @@ public class PlayerController : MonoBehaviour
         isPulling = true;
         yield return new WaitForSeconds(pullCooldown);
         isPulling = false;
+    }
+    public void checkIfAltarInRange()
+    {
+        var altars = GameObject.FindGameObjectsWithTag("Altar");
+        if (altars == null)
+        {
+            Debug.Log("Where are the altars??");
+            return;
+        }
+        foreach (var altar in altars)
+        {
+            float distance = Vector3.Distance(altar.transform.position, transform.position);
+            if (distance < 4.0f)
+            {
+                FindAnyObjectByType<RopeSelectionManager>().isInAltarRange = true;
+                Debug.Log("In Altar Range");
+                return;
+            }
+        }
     }
 }

@@ -19,6 +19,11 @@ public class MinionScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         var enemies = GameObject.FindGameObjectsWithTag("Monster");
+        if (enemies == null)
+        {
+            Debug.Log("No enemies found. Follow Player");
+            enemies = GameObject.FindGameObjectsWithTag("Player");
+        }
         float minDistance = Mathf.Infinity;
         foreach (var enemy in enemies)
         {
@@ -42,6 +47,7 @@ public class MinionScript : MonoBehaviour
     {
         if (followTarget == null)
         {
+            Debug.Log("No target!! WTF?");
             return;
         }
         Vector3 direction = (followTarget.position - transform.position).normalized;
