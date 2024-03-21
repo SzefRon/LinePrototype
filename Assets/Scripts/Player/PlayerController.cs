@@ -110,7 +110,6 @@ public class PlayerController : MonoBehaviour
             else
             {
                 FindAnyObjectByType<RopeSelectionManager>().isInAltarRange = false;
-                return;
             }
         }
     }

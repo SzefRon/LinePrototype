@@ -3,11 +3,13 @@ using UnityEngine;
 public class EffectComponent : MonoBehaviour
 {
     private HealthComponent healthComponent;
+    public Inventory inventory;
     public GameObject minigame;
     // Start is called before the first frame update
     void Start()
     {
         healthComponent = GetComponent<HealthComponent>();
+        inventory = FindAnyObjectByType<Inventory>();
     }
 
     public void ApplyRopeEffect(SegmentUpgrades upgrade)
@@ -17,6 +19,8 @@ public class EffectComponent : MonoBehaviour
             case SegmentUpgrades.Minion:
                 Debug.Log("Minion");
                 healthComponent.willMorph = true;
+                healthComponent.morphUpgrades = inventory.inventory[SegmentUpgrades.Minion];
+
                 break;
             case SegmentUpgrades.Fire:
                 {

@@ -79,6 +79,8 @@ MonoBehaviour:
   maxHealth: 20
   damageCooldownTime: 0.8
   renderer: {fileID: 6948423360295768610}
+  morphUpgrades: 0
+  morphUpgradesToAddOneMorph: 2
   health: 0
   startColor: {r: 0, g: 0, b: 0, a: 0}
   isMonster: 0
