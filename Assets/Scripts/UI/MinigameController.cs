@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MinigameController : MonoBehaviour
@@ -42,7 +41,7 @@ public class MinigameController : MonoBehaviour
             {
                 ChokeList.DealDmgToObjectsInList();
                 numberOfChokings--;
-                alreadyChoked = true; 
+                alreadyChoked = true;
             }
         }
 
@@ -56,7 +55,7 @@ public class MinigameController : MonoBehaviour
 
     }
 
-   
+
     public void MoveSquares()
     {
         square1.transform.Translate(speed1 * Time.deltaTime, 0, 0);
@@ -74,8 +73,8 @@ public class MinigameController : MonoBehaviour
     }
 
     public bool isColliding()
-    {        
-        if(Vector2.Distance(square1.anchoredPosition, square2.anchoredPosition) < 200)  
+    {
+        if (Vector2.Distance(square1.anchoredPosition, square2.anchoredPosition) < 200)
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {

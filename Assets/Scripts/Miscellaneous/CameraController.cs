@@ -7,10 +7,10 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] float smoothingFactor;
     [SerializeField] float height;
-    
+
     Vector3 midpoint;
 
-    
+
 
     // Update is called once per frame
     void Update()

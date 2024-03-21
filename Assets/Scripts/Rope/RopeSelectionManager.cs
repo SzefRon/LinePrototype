@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +17,7 @@ public class RopeSelectionManager : MonoBehaviour
 
     public bool isInAltarRange = false;
 
-   
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +27,12 @@ public class RopeSelectionManager : MonoBehaviour
         segInSeg = (int)ropeGenerator.smallSegmentsNum / segmentNum;
     }
 
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        
+
         previousSelectedBigSegment = selectedBigSegment;
         // Odznaczenie wszystkiego
         if (Input.GetKey(KeyCode.Escape) || !isInAltarRange)
@@ -47,7 +46,7 @@ public class RopeSelectionManager : MonoBehaviour
             }
         }
         if (isInAltarRange)
-                {
+        {
             // Przesuniecie od gracza 1 do gracza 2. W domysle bedzie to udostepnione graczowi 1
             if (Input.GetKeyDown(KeyCode.Tab))
             {
@@ -108,13 +107,13 @@ public class RopeSelectionManager : MonoBehaviour
                 }
             }
         }
-        
-    
+
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            
+
         }
     }
 
-    
+
 }

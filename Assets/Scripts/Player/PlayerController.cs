@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -44,17 +42,17 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 v = new(input.x * acceleration * Time.fixedDeltaTime, rb.velocity.y, input.y * acceleration * Time.fixedDeltaTime);
-        
+
         v = v.normalized * maxSpeed;
-        
+
         rb.AddForce(v, ForceMode.Impulse);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         if (!usingController)
         {
             input = new Vector2(Input.GetAxisRaw(horizontalInput), Input.GetAxisRaw(verticalInput));
         }
-        
-        if(input.sqrMagnitude > 0) 
+
+        if (input.sqrMagnitude > 0)
         {
             direction = input;
         }
@@ -75,12 +73,11 @@ public class PlayerController : MonoBehaviour
     {
         if (!isPulling)
         {
-            Debug.Log("Pulling");   
+            Debug.Log("Pulling");
             rb.AddForce(direction * 100.0f, ForceMode.Impulse);
             chokeManager.PullRope(index);
             StartCoroutine(PullCooldown());
         }
-        
     }
 
     private IEnumerator PullCooldown()
@@ -89,16 +86,20 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(pullCooldown);
         isPulling = false;
     }
+
     public void CheckIfAltarInRange()
     {
         var altars = GameObject.FindGameObjectsWithTag("Altar");
+       
         if (altars == null)
         {
             Debug.Log("Where are the altars??");
             return;
         }
+        
         foreach (var altar in altars)
         {
+
             float distance = Vector3.Distance(altar.transform.position, transform.position);
             if (distance < 5.0f)
             {

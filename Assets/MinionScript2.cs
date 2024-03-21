@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 
 public class MinionScript2 : MonoBehaviour
 {
@@ -30,7 +27,7 @@ public class MinionScript2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        for(int i = 0; i < numRaycast; i++)
+        for (int i = 0; i < numRaycast; i++)
         {
             var newAngle = Quaternion.AngleAxis(i * angleStep, Vector3.up) * transform.forward;
             Debug.DrawRay(transform.position, newAngle * enemyFollowRange, Color.yellow);
@@ -38,19 +35,19 @@ public class MinionScript2 : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(transform.position, newAngle, out hit, enemyFollowRange))
             {
-                if(hit.transform.tag == "Monster")
+                if (hit.transform.tag == "Monster")
                 {
                     enemyTarget = hit.transform.gameObject;
                     break;
                 }
                 else
                 {
-                    enemyTarget = null; 
+                    enemyTarget = null;
                 }
             }
         }
 
-        if(enemyTarget is not null)
+        if (enemyTarget is not null)
         {
             Vector3 direction = (enemyTarget.transform.position - transform.position).normalized;
             var targetPos = transform.position + direction * followSpeed;
@@ -65,23 +62,23 @@ public class MinionScript2 : MonoBehaviour
             var distance = Mathf.Min(p1d, p2d);
             Vector3 followPoint;
 
-            if(p1d < p2d) 
+            if (p1d < p2d)
             {
                 followPoint = player1.transform.position;
-            } 
+            }
             else
             {
                 followPoint = player2.transform.position;
             }
 
-            if(distance > masterDistance) 
+            if (distance > masterDistance)
             {
                 Vector3 direction = (followPoint - transform.position).normalized;
                 var targetPos = transform.position + direction * followSpeed;
                 var newPos = Vector3.Lerp(transform.position, targetPos, 0.1f);
                 transform.position = newPos;
             }
-            
+
         }
     }
 }

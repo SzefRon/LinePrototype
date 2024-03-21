@@ -21,7 +21,7 @@ public class HealthComponent : MonoBehaviour
     [System.NonSerialized] public bool willMorph = false;
 
     void Awake()
-    {       
+    {
         health = maxHealth;
         startColor = renderer.material.color;
     }
@@ -54,7 +54,20 @@ public class HealthComponent : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FlashRed());
+            StartCoroutine(Flash(Color.red));
+        }
+    }
+
+    public void ForceHeal(float heal)
+    {
+        health += heal;
+        if (health <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            StartCoroutine(Flash(Color.green));
         }
     }
 
@@ -65,12 +78,21 @@ public class HealthComponent : MonoBehaviour
         renderer.material.color = startColor;
     }
 
+    IEnumerator Flash(Color color)
+    {
+        renderer.material.color = color;
+        yield return new WaitForSeconds(0.1f);
+        renderer.material.color = startColor;
+    }
+
     public void TakeDamageOverTime(SegmentUpgrades effect, float damage, float delay, int ticks)
     {
-        if (!dotCooldown.ContainsKey(effect)) {
+        if (!dotCooldown.ContainsKey(effect))
+        {
             dotCooldown.Add(effect, false);
         }
-        if (!dotCooldown[effect]) {
+        if (!dotCooldown[effect])
+        {
             StartCoroutine(DamageOverTime(effect, damage, delay, ticks));
         }
     }

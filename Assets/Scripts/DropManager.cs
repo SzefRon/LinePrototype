@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DropManager : MonoBehaviour
@@ -10,9 +8,9 @@ public class DropManager : MonoBehaviour
     public void Drop(Vector3 position, int rate)
     {
         int chance = baseChance * rate;
-        
+
         //Drop
-        if(chance > 100)
+        if (chance > 100)
         {
             int randomIndex = Random.Range(0, prefabs.Length);
             GameObject loot = Instantiate(prefabs[randomIndex]);
@@ -22,7 +20,7 @@ public class DropManager : MonoBehaviour
         {
             int rng = Random.Range(0, 100);
             {
-                if(rng <= chance)
+                if (rng <= chance)
                 {
                     int randomIndex = Random.Range(0, prefabs.Length);
                     GameObject loot = Instantiate(prefabs[randomIndex]);
@@ -30,11 +28,5 @@ public class DropManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

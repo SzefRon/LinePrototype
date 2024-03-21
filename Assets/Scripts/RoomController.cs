@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
     [SerializeField] GameObject player1;
-    [SerializeField] GameObject player2; 
+    [SerializeField] GameObject player2;
     Material mat;
     float fadeAmount = 0;
     float originalOpacity;
@@ -36,12 +35,12 @@ public class RoomController : MonoBehaviour
                 {
                     enemy.SetActive(true);
                 }
-                
+
             }
         else
             foreach (GameObject enemy in enemies)
             {
-                if(enemy is not null) 
+                if (enemy is not null)
                 {
                     enemy.SetActive(false);
                 }
@@ -65,9 +64,9 @@ public class RoomController : MonoBehaviour
     {
         Color color = mat.color;
         Color smoothcolor = new Color(color.r, color.g, color.b, 0);
-         Mathf.Lerp(color.a, fadeAmount, fadeSpeed * Time.deltaTime);
+        Mathf.Lerp(color.a, fadeAmount, fadeSpeed * Time.deltaTime);
         mat.color = smoothcolor;
-    }   
+    }
 
     void ResetFade()
     {

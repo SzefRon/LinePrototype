@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChokeManager : MonoBehaviour
@@ -10,7 +9,7 @@ public class ChokeManager : MonoBehaviour
 
     public void PullRope(int a)
     {
-        if(a == 0)
+        if (a == 0)
         {
             if (oneIsChoking)
             {
@@ -22,9 +21,9 @@ public class ChokeManager : MonoBehaviour
                 StartCoroutine(Choke(0));
             }
         }
-        else if (a == 1) 
+        else if (a == 1)
         {
-            if (zeroIsChoking)  
+            if (zeroIsChoking)
             {
                 ChokeSuccessful();
             }

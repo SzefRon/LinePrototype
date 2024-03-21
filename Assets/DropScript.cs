@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DropScript : MonoBehaviour
@@ -8,7 +6,7 @@ public class DropScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag == "Player")
+        if (collision.transform.tag == "Player")
         {
             Debug.Log($"{type} upgrade collected!");
             Destroy(gameObject);
@@ -20,7 +18,7 @@ public class DropScript : MonoBehaviour
             }
             else
             {
-                inventory.inventory.Add(type, 1);       
+                inventory.inventory.Add(type, 1);
             }
         }
     }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MinionScript : MonoBehaviour
@@ -7,12 +6,14 @@ public class MinionScript : MonoBehaviour
     [SerializeField] private float followSpeed = 0.1f;
     private HealthComponent healthComponent;
     Transform followTarget = null;
+    [SerializeField] float minonDmg;
 
     // Start is called before the first frame update
     void Start()
     {
         healthComponent = GetComponent<HealthComponent>();
         StartCoroutine(SetTarget());
+        StartCoroutine(Lifetime());
     }
 
     IEnumerator SetTarget()
@@ -38,7 +39,7 @@ public class MinionScript : MonoBehaviour
 
     IEnumerator Lifetime()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(10.0f);
         healthComponent.TakeDamage(healthComponent.MaxHealthFraction(1.0f));
     }
 
@@ -48,10 +49,12 @@ public class MinionScript : MonoBehaviour
         if (followTarget == null)
         {
             Debug.Log("No target!! WTF?");
-            return;
+            StartCoroutine(SetTarget());
         }
         Vector3 direction = (followTarget.position - transform.position).normalized;
         transform.position += direction * followSpeed;
+
+
     }
 
     void OnCollisionStay(Collision other)
@@ -59,7 +62,7 @@ public class MinionScript : MonoBehaviour
         if (other.gameObject.tag == "Monster")
         {
             var otherHealthComponent = other.gameObject.GetComponent<HealthComponent>();
-            otherHealthComponent.TakeDamage(5.0f);
+            otherHealthComponent.TakeDamage(minonDmg);
         }
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3258934164176203603}
   - component: {fileID: 5449103254097598530}
   - component: {fileID: 6237044103806946412}
+  - component: {fileID: 8091841188183687354}
   m_Layer: 0
   m_Name: Erected Pillar
   m_TagString: Untagged
@@ -129,3 +130,23 @@ CapsuleCollider:
   m_Height: 0.050155982
   m_Direction: 2
   m_Center: {x: -0.00006309986, y: 0.00011251271, z: 0.026990827}
+--- !u!114 &8091841188183687354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999084102569924409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3030cb1f9ae923142ba573236264b1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycasts: 10
+  chokeDistance: 1
+  percentage: 70
+  healAmount: 10
+  hasHealed: 0
+  hasntHealedMaterial: {fileID: 2100000, guid: 8876bdd1b348f564ca7987b6cd6c0186, type: 2}
+  healedMaterial: {fileID: 2100000, guid: 32532290509f99743bbddc6d91177e56, type: 2}
+  players: []

@@ -133,7 +133,8 @@ MonoBehaviour:
   followRange: 8.64
   collisionsToDeath: 16
   bloodSplashPrefab: {fileID: 7043002562970436748, guid: ab0abe6a42efe2c4cbec58ca44d89f7e, type: 3}
-  dropRate: 0
+  dropRate: 10
+  spawnRate: 3
 --- !u!54 &-4770632652049286998
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -176,7 +177,11 @@ MonoBehaviour:
   maxHealth: 100
   damageCooldownTime: 0.8
   renderer: {fileID: 3052103280444718026}
+  health: 0
+  startColor: {r: 0, g: 0, b: 0, a: 0}
   isMonster: 1
+  isDying: 0
+  damageCooldown: 0
 --- !u!114 &-1747557094991509134
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -310,7 +310,8 @@ MonoBehaviour:
   followRange: 8.64
   collisionsToDeath: 16
   bloodSplashPrefab: {fileID: 7043002562970436748, guid: ab0abe6a42efe2c4cbec58ca44d89f7e, type: 3}
-  dropRate: 0
+  dropRate: 10
+  spawnRate: 3
 --- !u!54 &-4770632652049286998
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -403,7 +404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c104acb71ccc6c64f85e566320beb4ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 1394972481385391580}
+  s: {fileID: 0}
+  slider: {fileID: 2004916582973748897}
+  healthComponent: {fileID: 0}
 --- !u!1 &4367464206822145038
 GameObject:
   m_ObjectHideFlags: 0

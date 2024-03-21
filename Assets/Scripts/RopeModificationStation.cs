@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RopeModificationStation : MonoBehaviour
@@ -13,7 +11,7 @@ public class RopeModificationStation : MonoBehaviour
     private void Update()
     {
         distance = (Vector3.Distance(transform.position, enginieer.transform.position));
-        if(distance > range)
+        if (distance > range)
         {
             upgradePicker.active = false;
         }

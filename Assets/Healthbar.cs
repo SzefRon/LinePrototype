@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +19,6 @@ public class Healthbar : MonoBehaviour
     void Update()
     {
         float currentHP = healthComponent.health / healthComponent.maxHealth;
-        slider.value = currentHP; 
+        slider.value = currentHP;
     }
 }

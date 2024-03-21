@@ -1,20 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
     public Dictionary<SegmentUpgrades, int> inventory = new();
 
-    [SerializeField] public TextMeshProUGUI textMeshProUGUI;    
+    [SerializeField] public TextMeshProUGUI textMeshProUGUI;
 
     private void Update()
     {
         string text = string.Empty;
 
-        if(inventory.Count > 0 )
+        if (inventory.Count > 0)
         {
             foreach (KeyValuePair<SegmentUpgrades, int> keyValuePair in inventory)
             {

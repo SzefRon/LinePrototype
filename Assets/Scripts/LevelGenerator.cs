@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -67,9 +65,9 @@ public class LevelGenerator : MonoBehaviour
         CreateCorridorsHorizontal();
         ConnectDepths();
 
-        roomsPositions.Clear(); 
-        horizontalCorridorPosition.Clear(); 
-        for(int i = 0; i < depth; i++)
+        roomsPositions.Clear();
+        horizontalCorridorPosition.Clear();
+        for (int i = 0; i < depth; i++)
         {
             depths[i].Clear();
             corridorDepths[i].Clear();
@@ -82,27 +80,27 @@ public class LevelGenerator : MonoBehaviour
 
     void NewRoom(int sign, Vector3 previousPosition, int currentWidth, int depth)
     {
-        if(currentWidth < width) 
+        if (currentWidth < width)
         {
             Vector3 newPosition = previousPosition + sign * sprawlDirection * 2 * roomSize;
             roomsPositions.Add(newPosition);
-            depths[depth].Add(newPosition); 
+            depths[depth].Add(newPosition);
             currentWidth++;
             float next = Random.Range(0.0f, 1.0f);
-            if(next > sprawl) 
+            if (next > sprawl)
             {
                 NewRoom(sign, newPosition, currentWidth, depth);
             }
         }
     }
-    
+
     void CreateCorridorsHorizontal()
     {
-        for (int i = 0; i < depths.Length; i++) 
+        for (int i = 0; i < depths.Length; i++)
         {
             Vector3 currentPosition = depths[i][0];
-            
-            while(roomsPositions.Contains(currentPosition + 2 * sprawlDirection * roomSize)) 
+
+            while (roomsPositions.Contains(currentPosition + 2 * sprawlDirection * roomSize))
             {
                 Vector3 corridorPosition = currentPosition + sprawlDirection * roomSize;
                 horizontalCorridorPosition.Add(corridorPosition);
@@ -132,7 +130,7 @@ public class LevelGenerator : MonoBehaviour
     {
         for (int i = 0; i < depths.Length; i++)
         {
-            for(int j = 0; j < depths[i].Count; j++)
+            for (int j = 0; j < depths[i].Count; j++)
             {
                 var bottomRoom = depths[i][j] + roomAdditionDirection * 2 * roomSize;
                 if (roomsPositions.Contains(bottomRoom))
@@ -142,12 +140,12 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        for(int i =0; i < corridorDepths.Length; i++)
+        for (int i = 0; i < corridorDepths.Length; i++)
         {
-            int len = corridorDepths[i].Count;  
+            int len = corridorDepths[i].Count;
             int amount = Random.Range(1, len);
-                
-            for(int j = 0; j < amount; j++) 
+
+            for (int j = 0; j < amount; j++)
             {
                 GameObject go = Instantiate(corridorPrefab);
                 go.transform.position = corridorDepths[i][j];
@@ -163,7 +161,7 @@ public class LevelGenerator : MonoBehaviour
         var previous = startingPosition + roomAdditionDirection * 2 * roomSize;
         roomsPositions.Add(previous);
 
-        for(int i = 1; i < depth; i++)
+        for (int i = 1; i < depth; i++)
         {
             int tempWidth = 0;
             float goLeft = Random.Range(0.0f, 1.0f);
@@ -192,7 +190,7 @@ public class LevelGenerator : MonoBehaviour
                 if (goLeft > sprawl)
                 {
                     NewRoom(-1, previous, tempWidth, i);
-                }   
+                }
             }
 
             previous = previous + roomAdditionDirection * 2 * roomSize;
@@ -200,7 +198,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
 
-        foreach(var a in roomsPositions)
+        foreach (var a in roomsPositions)
         {
             GameObject go = Instantiate(roomPrefab);
             go.transform.position = a;
@@ -208,21 +206,21 @@ public class LevelGenerator : MonoBehaviour
             rooms.Add(go);
         }
     }
-   
+
     void Populate()
     {
         GameObject startingAltar = Instantiate(altarPrefab);
         startingAltar.transform.position = new Vector3(-5.0f, 0.0f, 0.0f);
 
         bool first = true;
-        foreach (var room in rooms) 
+        foreach (var room in rooms)
         {
             var roomManager = room.GetComponent<RoomManager>();
             if (!first)
             {
-                
+
                 int enemiesNum = Random.Range(0, maxEnemiesInRoom);
-                int pillarNum  = Random.Range(0, maxPillarsInRoom);
+                int pillarNum = Random.Range(0, maxPillarsInRoom);
 
                 for (int i = 0; i < pillarNum; i++)
                 {
@@ -240,14 +238,14 @@ public class LevelGenerator : MonoBehaviour
                     roomManager.pillars.Add(pillar);
                 }
 
-                roomManager.pillarNum = roomManager.pillars.Count;  
+                roomManager.pillarNum = roomManager.pillars.Count;
 
                 if (enemiesNum == 0)
                 {
                     GameObject altar = Instantiate(altarPrefab);
                     altar.transform.position = roomManager.gameObject.transform.position;
                     altar.transform.parent = room.transform;
-                    
+
                 }
                 else
                 {
@@ -273,7 +271,7 @@ public class LevelGenerator : MonoBehaviour
             }
             else
             {
-                first = false;  
+                first = false;
                 print(room.transform.position);
                 room.transform.name = "Starting room";
             }

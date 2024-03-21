@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,8 +11,10 @@ public class PlayerInput : MonoBehaviour
         playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         var index = playerInput.playerIndex;
         var players = FindObjectsOfType<PlayerController>();
-        foreach (var player in players) {
-            if (player.index == index) {
+        foreach (var player in players)
+        {
+            if (player.index == index)
+            {
                 playerController = player;
                 break;
             }

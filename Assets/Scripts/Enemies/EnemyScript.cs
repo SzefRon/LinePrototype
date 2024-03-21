@@ -13,6 +13,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] public int collisionsToDeath;
     [SerializeField] public GameObject bloodSplashPrefab;
     public int dropRate;
+    public int spawnRate;
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +87,28 @@ public class EnemyScript : MonoBehaviour
 
     public void Morph()
     {
-        Instantiate(morphPrefab, transform.position - Vector3.down * 0.5f, transform.rotation);
+        var inventory = FindAnyObjectByType<Inventory>();
+        if (inventory.inventory.ContainsKey(SegmentUpgrades.Minion))
+        {
+            int a = inventory.inventory[SegmentUpgrades.Minion];
+            Debug.Log(a);
+
+            if (a == 0)
+            {
+
+            }
+            else if (a > 0 && a < spawnRate + 1)
+            {
+                Instantiate(morphPrefab, transform.position - Vector3.down * 0.5f, transform.rotation);
+            }
+            else if( a > spawnRate)
+            {
+                int amount = a / spawnRate;
+                for (int i = 0; i < amount; i++)
+                {
+                    Instantiate(morphPrefab, transform.position - Vector3.down * 0.5f, transform.rotation);
+                }
+            }
+        }
     }
 }

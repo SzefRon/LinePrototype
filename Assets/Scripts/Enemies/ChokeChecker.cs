@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ChokeChecker : MonoBehaviour
@@ -10,7 +8,7 @@ public class ChokeChecker : MonoBehaviour
     int angleStep;
     public bool previousIsChoked;
     public bool isChoked;
-    
+
     public int collisionsWithSegment;
     public int collisionsWithMonster;
 
@@ -20,7 +18,7 @@ public class ChokeChecker : MonoBehaviour
     void Start()
     {
         angleStep = 360 / raycasts;
-        previousIsChoked = false;   
+        previousIsChoked = false;
         isChoked = false;
         collisionsWithMonster = 0;
         collisionsWithSegment = 0;
@@ -34,7 +32,7 @@ public class ChokeChecker : MonoBehaviour
         collisionsWithMonster = 0;
         collisionsWithSegment = 0;
         int layerMask = 288;
-        
+
         int chokeCount = 0;
 
         var forward = transform.forward;
@@ -44,17 +42,17 @@ public class ChokeChecker : MonoBehaviour
         for (int i = 0; i < raycasts; i++)
         {
             var newAngle = Quaternion.AngleAxis(i * angleStep, Vector3.up) * forward;
-            
+
             currentStep += angleStep;
 
             RaycastHit hit;
             if (Physics.Raycast(begining, newAngle, out hit, chokeDistance))
             {
-                if(hit.transform.tag == "Segment" || hit.transform.tag == "FlameEffect")
+                if (hit.transform.tag == "Segment" || hit.transform.tag == "FlameEffect")
                 {
                     collisionsWithSegment++;
                 }
-                else if(hit.transform.tag == "Monster")
+                else if (hit.transform.tag == "Monster")
                 {
                     collisionsWithMonster++;
                 }
@@ -62,12 +60,12 @@ public class ChokeChecker : MonoBehaviour
                 Debug.DrawRay(begining, newAngle * hit.distance, Color.yellow);
             }
         }
-        
+
         chokeCount = collisionsWithMonster + collisionsWithSegment;
 
         //Debug.Log(chokeCount);
 
-        if (chokeCount >= raycasts * percentage ) 
+        if (chokeCount >= raycasts * percentage)
         {
             minigame.SetActive(true);
             //Debug.Log("choked!!!");
@@ -76,7 +74,7 @@ public class ChokeChecker : MonoBehaviour
         }
         else
         {
-            isChoked= false;
+            isChoked = false;
         }
 
         if (isChoked)
@@ -88,7 +86,7 @@ public class ChokeChecker : MonoBehaviour
         }
         else
         {
-            if(previousIsChoked) 
+            if (previousIsChoked)
             {
                 ChokeList.chokedObjects.Remove(gameObject);
             }

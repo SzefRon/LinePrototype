@@ -78,7 +78,11 @@ MonoBehaviour:
   maxHealth: 20
   damageCooldownTime: 0.8
   renderer: {fileID: 775331041692968282}
+  health: 0
+  startColor: {r: 0, g: 0, b: 0, a: 0}
   isMonster: 0
+  isDying: 0
+  damageCooldown: 0
 --- !u!136 &2223426848786494845
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followSpeed: 0.1
+  minonDmg: 10
 --- !u!1001 &2306270838585115012
 PrefabInstance:
   m_ObjectHideFlags: 0

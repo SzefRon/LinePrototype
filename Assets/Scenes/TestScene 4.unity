@@ -143,7 +143,6 @@ GameObject:
   m_Component:
   - component: {fileID: 639840333}
   - component: {fileID: 639840332}
-  - component: {fileID: 639840334}
   m_Layer: 0
   m_Name: DropEngine
   m_TagString: Untagged
@@ -164,7 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 4104038289620290425, guid: a3d18cc4293b8ba43b17f5ab968fef00, type: 3}
   - {fileID: 4104038289620290425, guid: 3291c6aef9117254fbf599bd0cb0bfdd, type: 3}
   baseChance: 100
 --- !u!4 &639840333
@@ -182,19 +180,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &639840334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639840331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ef0463f4c95c94281fd13161d88d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
 --- !u!1 &651315678
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +511,14 @@ PrefabInstance:
       propertyPath: pullCooldown
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1830819975926777865, guid: bdae106fcdc24d244b0f1d3d5116a758, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830819975926777865, guid: bdae106fcdc24d244b0f1d3d5116a758, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2199804774072115411, guid: bdae106fcdc24d244b0f1d3d5116a758, type: 3}
       propertyPath: m_AngularDrag
       value: 5
@@ -714,6 +707,14 @@ PrefabInstance:
     - target: {fileID: 2199804774072115411, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
       propertyPath: m_AngularDrag
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622365237481382372, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622365237481382372, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3755873941597763541, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
       propertyPath: m_LocalPosition.x
@@ -905,20 +906,20 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.26962438, g: 0.45443657, b: 0.6886792, a: 1}
+  m_Intensity: 1.39
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize: 11.39
   m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
+    m_Type: 2
+    m_Resolution: 3
     m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_Strength: 0.783
+    m_Bias: 0.53
+    m_NormalBias: 0
+    m_NearPlane: 0.41
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -1095,6 +1096,10 @@ PrefabInstance:
     - target: {fileID: 4308964416029714899, guid: 397e1723f64c8844aab48b7a9ce284fb, type: 3}
       propertyPath: m_Name
       value: ChokeManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8900435369804021021, guid: 397e1723f64c8844aab48b7a9ce284fb, type: 3}
+      propertyPath: inputWindow
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectComponent : MonoBehaviour
@@ -21,12 +19,12 @@ public class EffectComponent : MonoBehaviour
                 healthComponent.willMorph = true;
                 break;
             case SegmentUpgrades.Fire:
-            {
-                Debug.Log("Fire");
-                float dmg = healthComponent.MaxHealthFraction(10);
-                healthComponent.TakeDamageOverTime(SegmentUpgrades.Fire, dmg, 1.0f, 5);
-                break;
-            }
+                {
+                    Debug.Log("Fire");
+                    float dmg = healthComponent.MaxHealthFraction(10);
+                    healthComponent.TakeDamageOverTime(SegmentUpgrades.Fire, dmg, 1.0f, 5);
+                    break;
+                }
             case SegmentUpgrades.Electricity:
                 Debug.Log("Electricity");
                 break;
