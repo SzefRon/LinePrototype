@@ -20,10 +20,11 @@ public class PlayerController : MonoBehaviour
     public Vector2 input;
 
     private Rigidbody rb;
-    private Vector3 direciton;
+    private Vector3 direction;
 
     private ChokeManager chokeManager;
     private HealthComponent healthComponent;
+    public bool usingController = false;
 
     private void Start()
     {
@@ -34,23 +35,28 @@ public class PlayerController : MonoBehaviour
 
     public void MovementHandling(InputAction.CallbackContext context)
     {
-        input = context.ReadValue<Vector2>().normalized;
+        if (usingController)
+        {
+            input = context.ReadValue<Vector2>();
+        }
     }
 
     void FixedUpdate()
     {
-        //Debug.Log(input);
         Vector3 v = new(input.x * acceleration * Time.fixedDeltaTime, rb.velocity.y, input.y * acceleration * Time.fixedDeltaTime);
         
         v = v.normalized * maxSpeed;
         
         rb.AddForce(v, ForceMode.Impulse);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-        input = new Vector2(Input.GetAxisRaw(horizontalInput), Input.GetAxisRaw(verticalInput));
+        if (!usingController)
+        {
+            input = new Vector2(Input.GetAxisRaw(horizontalInput), Input.GetAxisRaw(verticalInput));
+        }
         
         if(input.sqrMagnitude > 0) 
         {
-            direciton = input;
+            direction = input;
         }
     }
 
@@ -58,13 +64,19 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(pullButton))
         {
-            if (!isPulling)
-            {
-                Debug.Log("Pulling");   
-                rb.AddForce(direciton * 100.0f, ForceMode.Impulse);
-                chokeManager.PullRope(index);
-                StartCoroutine(PullCooldown());
-            }
+            usingController = false;
+            PullRope();
+        }
+    }
+
+    public void PullRope()
+    {
+        if (!isPulling)
+        {
+            Debug.Log("Pulling");   
+            rb.AddForce(direction * 100.0f, ForceMode.Impulse);
+            chokeManager.PullRope(index);
+            StartCoroutine(PullCooldown());
         }
         checkIfAltarInRange();
     }

@@ -76,9 +76,9 @@ MonoBehaviour:
     m_ActionName: Player1/Movement[/DualShock4GamepadHID1/leftStick/up,/DualShock4GamepadHID1/leftStick/down,/DualShock4GamepadHID1/leftStick/left,/DualShock4GamepadHID1/leftStick/right]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1274530771298356088, guid: 30cbc5325b2bf7840a92ca6f0b78ac05, type: 3}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: MovementHandling
+      - m_Target: {fileID: -6378230185906135285}
+        m_TargetAssemblyTypeName: PlayerInputManager, Assembly-CSharp
+        m_MethodName: OnPull
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -88,24 +88,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: ebdd65c1-e09f-4ae1-827e-ebf279866200
-    m_ActionName: Player/MovementWASD[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1274530771298356088, guid: bdae106fcdc24d244b0f1d3d5116a758, type: 3}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: MovementHandling
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 822e5857-fc19-41ce-852a-f8dc1cdde548
-    m_ActionName: Player/MovementArrows[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+    m_ActionId: ba114f7b-f816-482e-8470-f49361a682fd
+    m_ActionName: Player/PullJOYSTICK[/DualShock4GamepadHID/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
