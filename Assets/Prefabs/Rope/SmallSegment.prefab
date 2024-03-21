@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5902858657614305653}
-  - component: {fileID: 4561399955218691649}
   - component: {fileID: 5133849619494045655}
+  - component: {fileID: 4561399955218691649}
   - component: {fileID: 2738030090715206555}
   - component: {fileID: 610468801872972299}
   - component: {fileID: 2989692154783119049}
@@ -39,6 +39,14 @@ Transform:
   - {fileID: 5401289275706307668}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5133849619494045655
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170365448108215950}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &4561399955218691649
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -81,14 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &5133849619494045655
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170365448108215950}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &2738030090715206555
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -153,6 +153,9 @@ MonoBehaviour:
   object2: {fileID: 0}
   segmentType: 0
   id: 0
+  material: {fileID: 2100000, guid: 92cd24af8bb70cf46a9d8ff215c40201, type: 2}
+  startColor: {r: 0.22745098, g: 0.13725491, b: 0.0627451, a: 0}
+  targetColor: {r: 0.16718373, g: 0.81960785, b: 0.0039215805, a: 1}
 --- !u!114 &5727719445559225072
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChokeManager : MonoBehaviour
@@ -6,6 +7,10 @@ public class ChokeManager : MonoBehaviour
     [SerializeField] private float inputWindow = 0.2f;
     private bool zeroIsChoking = false;
     private bool oneIsChoking = false;
+
+    public Material material;
+    public Color normalColor;
+    public Color chokingColor;
 
     public void PullRope(int a)
     {
@@ -53,6 +58,29 @@ public class ChokeManager : MonoBehaviour
     {
         Debug.Log("Choke Successful");
         ChokeList.DealDmgToObjectsInList();
+        StartCoroutine(FlashLine());   
+        
+    }
+
+    /*IEnumerator FlashLine()
+    {
+        var rope = FindAnyObjectByType<RopeGenerator>().smallSegments;
+        foreach (var segment in rope)
+        {
+            segment.GetComponent<SmallSegment>().Succes();
+        }
+        yield return new WaitForSeconds(0.2f);
+        foreach (var segment in rope)
+        {
+            segment.GetComponent<SmallSegment>().Normal();
+        }
+    }*/
+
+    IEnumerator FlashLine()
+    {
+        material.color = chokingColor;
+        yield return new WaitForSeconds(inputWindow);
+        material.color = normalColor;
     }
 
     // Start is called before the first frame update

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public enum SegmentUpgrades
 {
@@ -75,8 +76,10 @@ public class SmallSegment : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, Vector3.Distance(object1.position, object2.position));
     }
 
+
     private void Start()
     {
+        
         Initialize();
     }
 
@@ -94,4 +97,5 @@ public class SmallSegment : MonoBehaviour
             Debug.Log(segmentType);
         }
     }
+
 }
