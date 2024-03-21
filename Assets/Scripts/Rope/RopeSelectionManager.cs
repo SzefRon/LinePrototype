@@ -33,21 +33,21 @@ public class RopeSelectionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isInAltarRange)
+        
+        previousSelectedBigSegment = selectedBigSegment;
+        // Odznaczenie wszystkiego
+        if (Input.GetKey(KeyCode.Escape) || !isInAltarRange)
         {
-            previousSelectedBigSegment = selectedBigSegment;
-            // Odznaczenie wszystkiego
-            if (Input.GetKey(KeyCode.Escape))
+            selectedSmallSegments.Clear();
+            selectedBigSegment = -1;
+
+            for (int i = 0; i < ropeGenerator.smallSegments.Count; i++)
             {
-                selectedSmallSegments.Clear();
-                selectedBigSegment = -1;
-
-                for (int i = 0; i < ropeGenerator.smallSegments.Count; i++)
-                {
-                    ropeGenerator.smallSegments[i].transform.GetComponent<MeshRenderer>().material = defaultMaterial;
-                }
+                ropeGenerator.smallSegments[i].transform.GetComponent<MeshRenderer>().material = defaultMaterial;
             }
-
+        }
+        if (isInAltarRange)
+                {
             // Przesuniecie od gracza 1 do gracza 2. W domysle bedzie to udostepnione graczowi 1
             if (Input.GetKeyDown(KeyCode.Tab))
             {

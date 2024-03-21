@@ -67,6 +67,8 @@ public class PlayerController : MonoBehaviour
             usingController = false;
             PullRope();
         }
+
+        CheckIfAltarInRange();
     }
 
     public void PullRope()
@@ -78,7 +80,7 @@ public class PlayerController : MonoBehaviour
             chokeManager.PullRope(index);
             StartCoroutine(PullCooldown());
         }
-        checkIfAltarInRange();
+        
     }
 
     private IEnumerator PullCooldown()
@@ -87,7 +89,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(pullCooldown);
         isPulling = false;
     }
-    public void checkIfAltarInRange()
+    public void CheckIfAltarInRange()
     {
         var altars = GameObject.FindGameObjectsWithTag("Altar");
         if (altars == null)
@@ -98,10 +100,15 @@ public class PlayerController : MonoBehaviour
         foreach (var altar in altars)
         {
             float distance = Vector3.Distance(altar.transform.position, transform.position);
-            if (distance < 4.0f)
+            if (distance < 5.0f)
             {
                 FindAnyObjectByType<RopeSelectionManager>().isInAltarRange = true;
                 Debug.Log("In Altar Range");
+                return;
+            }
+            else
+            {
+                FindAnyObjectByType<RopeSelectionManager>().isInAltarRange = false;
                 return;
             }
         }
