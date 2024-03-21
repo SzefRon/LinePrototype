@@ -35,13 +35,22 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PullJOYSTICK"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba114f7b-f816-482e-8470-f49361a682fd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": ""Controller"",
                     ""id"": ""636bee19-7265-4cf4-8aa1-cfa6651a997d"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": ""StickDeadzone(min=0.125)"",
                     ""groups"": """",
@@ -96,7 +105,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Joystick"",
                     ""id"": ""d0c9554a-e03c-4fa7-912f-d92fa5342f2a"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": ""StickDeadzone(min=0.125)"",
                     ""groups"": """",
@@ -147,6 +156,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""MovementJOYSTICK"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""073816c2-669c-4650-ae5c-bf53eca4a441"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PullJOYSTICK"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -156,6 +176,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_MovementJOYSTICK = m_Player.FindAction("MovementJOYSTICK", throwIfNotFound: true);
+        m_Player_PullJOYSTICK = m_Player.FindAction("PullJOYSTICK", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -218,11 +239,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_MovementJOYSTICK;
+    private readonly InputAction m_Player_PullJOYSTICK;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @MovementJOYSTICK => m_Wrapper.m_Player_MovementJOYSTICK;
+        public InputAction @PullJOYSTICK => m_Wrapper.m_Player_PullJOYSTICK;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -235,6 +258,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @MovementJOYSTICK.started += instance.OnMovementJOYSTICK;
             @MovementJOYSTICK.performed += instance.OnMovementJOYSTICK;
             @MovementJOYSTICK.canceled += instance.OnMovementJOYSTICK;
+            @PullJOYSTICK.started += instance.OnPullJOYSTICK;
+            @PullJOYSTICK.performed += instance.OnPullJOYSTICK;
+            @PullJOYSTICK.canceled += instance.OnPullJOYSTICK;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -242,6 +268,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @MovementJOYSTICK.started -= instance.OnMovementJOYSTICK;
             @MovementJOYSTICK.performed -= instance.OnMovementJOYSTICK;
             @MovementJOYSTICK.canceled -= instance.OnMovementJOYSTICK;
+            @PullJOYSTICK.started -= instance.OnPullJOYSTICK;
+            @PullJOYSTICK.performed -= instance.OnPullJOYSTICK;
+            @PullJOYSTICK.canceled -= instance.OnPullJOYSTICK;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -262,5 +291,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMovementJOYSTICK(InputAction.CallbackContext context);
+        void OnPullJOYSTICK(InputAction.CallbackContext context);
     }
 }

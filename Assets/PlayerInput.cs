@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputManager : MonoBehaviour
+public class PlayerInput : MonoBehaviour
 {
-    private PlayerInput playerInput;
+    private UnityEngine.InputSystem.PlayerInput playerInput;
     private PlayerController playerController;
     // Start is called before the first frame update
     void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
+        playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         var index = playerInput.playerIndex;
         var players = FindObjectsOfType<PlayerController>();
         foreach (var player in players) {
@@ -23,6 +23,15 @@ public class PlayerInputManager : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        playerController.input = context.ReadValue<Vector2>().normalized;
+        playerController.MovementHandling(context);
+    }
+
+    public void OnPull(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            playerController.usingController = true;
+            playerController.PullRope();
+        }
     }
 }

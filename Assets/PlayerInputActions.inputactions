@@ -13,13 +13,22 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "PullJOYSTICK",
+                    "type": "Button",
+                    "id": "ba114f7b-f816-482e-8470-f49361a682fd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "Controller",
                     "id": "636bee19-7265-4cf4-8aa1-cfa6651a997d",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "StickDeadzone(min=0.125)",
                     "groups": "",
@@ -74,7 +83,7 @@
                 {
                     "name": "Joystick",
                     "id": "d0c9554a-e03c-4fa7-912f-d92fa5342f2a",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "StickDeadzone(min=0.125)",
                     "groups": "",
@@ -125,6 +134,17 @@
                     "action": "MovementJOYSTICK",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "073816c2-669c-4650-ae5c-bf53eca4a441",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PullJOYSTICK",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
