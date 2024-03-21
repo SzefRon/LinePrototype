@@ -19,11 +19,8 @@ public class MinionScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         var enemies = GameObject.FindGameObjectsWithTag("Monster");
-        if (enemies == null)
-        {
-            Debug.Log("No enemies found. Follow Player");
-            enemies = GameObject.FindGameObjectsWithTag("Player");
-        }
+        var players = GameObject.FindGameObjectsWithTag("Player");
+        
         float minDistance = Mathf.Infinity;
         foreach (var enemy in enemies)
         {
@@ -34,6 +31,19 @@ public class MinionScript : MonoBehaviour
                 followTarget = enemy.transform;
             }
         }
+        if (followTarget == null)
+        {
+            foreach (var player in players)
+            {
+                float distance = Vector3.Distance(player.transform.position, transform.position);
+                if (distance < 50.0f && distance < minDistance)
+                {
+                    minDistance = distance;
+                    followTarget = player.transform;
+                }
+            }
+        }
+
     }
 
     IEnumerator Lifetime()
