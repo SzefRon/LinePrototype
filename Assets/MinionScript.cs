@@ -13,7 +13,7 @@ public class MinionScript : MonoBehaviour
     {
         healthComponent = GetComponent<HealthComponent>();
         StartCoroutine(SetTarget());
-        StartCoroutine(Lifetime());
+        //StartCoroutine(Lifetime());
     }
 
     IEnumerator SetTarget()

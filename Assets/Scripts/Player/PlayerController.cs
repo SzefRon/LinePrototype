@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private KeyCode upButton;
     [SerializeField] private float pullCooldown = 1.0f;
+
+    [SerializeField] public GameObject dummy;
+
     private bool isPulling = false;
     public int index;
     public Vector2 input;
@@ -77,6 +80,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(direction * 100.0f, ForceMode.Impulse);
             chokeManager.PullRope(index);
             StartCoroutine(PullCooldown());
+            dummy.transform.position += new Vector3(0.0f, -1.0f, 0.0f);
         }
     }
 
