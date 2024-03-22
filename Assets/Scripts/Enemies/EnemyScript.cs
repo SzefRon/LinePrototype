@@ -15,6 +15,8 @@ public class EnemyScript : MonoBehaviour
     public int dropRate;
     public int spawnRate;
 
+    [SerializeField] public ParticleSystem ps;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -61,6 +61,11 @@ public class HealthComponent : MonoBehaviour
             {
                 gameObject.GetComponent<RescaleBounce>().StartBounce();
             }
+
+            if (gameObject.GetComponent<EnemyScript>() != null)
+            {
+                gameObject.GetComponent<EnemyScript>().ps.Emit(30);
+            }
             StartCoroutine(Flash(Color.red));
         }
     }
