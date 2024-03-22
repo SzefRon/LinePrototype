@@ -219,7 +219,8 @@ public class LevelGenerator : MonoBehaviour
             if (!first)
             {
 
-                int enemiesNum = Random.Range(0, maxEnemiesInRoom);
+                int enemiesNum = Random.Range(0, -(int)(room.transform.position.x / roomSize));
+                Debug.Log(-(int)(room.transform.position.x / roomSize));
                 int pillarNum = Random.Range(0, maxPillarsInRoom);
 
                 for (int i = 0; i < pillarNum; i++)
