@@ -57,6 +57,10 @@ public class HealthComponent : MonoBehaviour
         }
         else
         {
+            if(gameObject.GetComponent<RescaleBounce>() != null) 
+            {
+                gameObject.GetComponent<RescaleBounce>().StartBounce();
+            }
             StartCoroutine(Flash(Color.red));
         }
     }
